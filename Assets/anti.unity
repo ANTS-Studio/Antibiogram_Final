@@ -194,7 +194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -358,9 +358,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5838969740171518243, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_Name
+      value: Sink
+      objectReference: {fileID: 0}
+    - target: {fileID: -717349383704479284, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_Name
+      value: Tap
+      objectReference: {fileID: 0}
+    - target: {fileID: 389879389232274626, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b68213027a988af4cbde295e452c8c02, type: 3}
       propertyPath: m_Name
       value: Lab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3207728748792921213, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_Name
+      value: Mikroskop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867088128146089108, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_Name
+      value: Mikroskop
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816094005235251740, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_Name
+      value: Sink and tap
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080923994315838452, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 167.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080923994315838452, guid: b68213027a988af4cbde295e452c8c02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 75.17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68213027a988af4cbde295e452c8c02, type: 3}
