@@ -1,39 +1,243 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.3f1 (76626098c1c4) revision 7758432'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19042.985; Version 2009; 64bit' Language: 'en' Physical Memory: 8073 MB
+OS: 'Windows 10 Pro; OS build 19042.928; Version 2009; 64bit' Language: 'en' Physical Memory: 15741 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-D:\Programi\Visual Studio\2020.3.3f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2020.3.3f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/Stjepan/Desktop/Antibiogram_Final
+C:/Users/nikki/Documents/GitHub/Antibiogram_Final
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-64115
-Successfully changed project path to: C:/Users/Stjepan/Desktop/Antibiogram_Final
-C:/Users/Stjepan/Desktop/Antibiogram_Final
+52241
+Successfully changed project path to: C:/Users/nikki/Documents/GitHub/Antibiogram_Final
+C:/Users/nikki/Documents/GitHub/Antibiogram_Final
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 30.75 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 26.72 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.3f1 (76626098c1c4)
-[Subsystems] Discovering subsystems at path D:/Programi/Visual Studio/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Stjepan/Desktop/Antibiogram_Final/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/nikki/Documents/GitHub/Antibiogram_Final/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c8d)
+    Renderer: NVIDIA GeForce GTX 1650 Ti (ID=0x1f95)
     Vendor:   
-    VRAM:     4021 MB
-    Driver:   26.21.14.4274
+    VRAM:     3962 MB
+    Driver:   27.21.14.6627
 Initialize mono
-Mono path[0] = 'D:/Programi/Visual Studio/2020.3.3f1/Editor/Data/Managed'
-Mono path[1] = 'D:/Programi/Visual Studio/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'D:/Programi/Visual Studio/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56664
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56044
 Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001487 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 23.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.855 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000595 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.23 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.735 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.24 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1118 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 69.8 MB.
+System memory in use after: 69.8 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 1576.
+Total: 2.433900 ms (FindLiveObjects: 0.340500 ms CreateObjectMapping: 0.092000 ms MarkObjects: 1.875100 ms  DeleteObjects: 0.123300 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Medical worker.Fbx
+  artifactKey: Guid(09c83720872059d47b7f1601dab9c8bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker.Fbx using Guid(09c83720872059d47b7f1601dab9c8bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbc9309f8bb864f0384f25614f5ac7e6') in 0.580747 seconds
+  Import took 0.586319 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 263.131392 seconds.
+  path: Assets/Medical worker.Fbx
+  artifactKey: Guid(09c83720872059d47b7f1601dab9c8bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker.Fbx using Guid(09c83720872059d47b7f1601dab9c8bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a2baf6d0542b463365bbd846fae7eb7') in 0.354585 seconds
+  Import took 0.366199 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.619838 seconds.
+  path: Assets/textures
+  artifactKey: Guid(1ceeb2b21361afc48a668db455ba2726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/textures using Guid(1ceeb2b21361afc48a668db455ba2726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3e42938bf9d87c9ba9d28cdd3d59152') in 0.007321 seconds
+  Import took 0.009262 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.448838 seconds.
+  path: Assets/Medical worker
+  artifactKey: Guid(1ceeb2b21361afc48a668db455ba2726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker using Guid(1ceeb2b21361afc48a668db455ba2726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d70d043f289616218982a1157368186') in 0.002315 seconds
+  Import took 0.004795 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.013318 seconds.
+  path: Assets/Medical worker/Medical worker
+  artifactKey: Guid(eba7162dd0c525743890dce30b185df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Medical worker using Guid(eba7162dd0c525743890dce30b185df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29c5ac798ac80f3511fa385fa3f5c2a5') in 0.002543 seconds
+  Import took 0.004940 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.291527 seconds.
+  path: Assets/Medical worker/Textures
+  artifactKey: Guid(eba7162dd0c525743890dce30b185df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Textures using Guid(eba7162dd0c525743890dce30b185df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c410986c2bfd1a00c50d9e87de8956cf') in 0.007375 seconds
+  Import took 0.009752 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 93.094673 seconds.
+  path: Assets/Medical worker.fbm
+  artifactKey: Guid(f8c9221380a7edb46ad96699ebcabc60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker.fbm using Guid(f8c9221380a7edb46ad96699ebcabc60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e8653bbfc0d9cbdb113a2f16564c77e') in 0.006742 seconds
+  Import took 0.009235 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 91.498762 seconds.
+  path: Assets/Medical worker.Fbx
+  artifactKey: Guid(18299e740729e2d4587617654018c5a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker.Fbx using Guid(18299e740729e2d4587617654018c5a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '660ba34e1b20da9471622cb5ad20422e') in 0.333044 seconds
+  Import took 0.338459 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 78.106449 seconds.
+  path: Assets/textures
+  artifactKey: Guid(777f6d245f341ab40803c667fdeebfb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/textures using Guid(777f6d245f341ab40803c667fdeebfb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f049fce5f0ec26c5a23944510fa5d958') in 0.002946 seconds
+  Import took 0.005225 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.980673 seconds.
+  path: Assets/textures/Medical worker
+  artifactKey: Guid(4c1bcfa9cca0aa54eae933c95f35587c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/textures/Medical worker using Guid(4c1bcfa9cca0aa54eae933c95f35587c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bec83255e307469c22abeef4e0d84fd5') in 0.006894 seconds
+  Import took 0.008860 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.790335 seconds.
+  path: Assets/textures/Textures
+  artifactKey: Guid(4c1bcfa9cca0aa54eae933c95f35587c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/textures/Textures using Guid(4c1bcfa9cca0aa54eae933c95f35587c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e52c0e78396d8a5a8319ce9401efe067') in 0.007144 seconds
+  Import took 0.009227 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.068184 seconds.
+  path: Assets/Medical worker
+  artifactKey: Guid(777f6d245f341ab40803c667fdeebfb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker using Guid(777f6d245f341ab40803c667fdeebfb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '677586e966c40b589fb9d089c3a1c470') in 0.003446 seconds
+  Import took 0.005554 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.195513 seconds.
+  path: Assets/Medical worker/Textures/Bodysuit
+  artifactKey: Guid(a6629bced46bc944f822e5f0bf6b075b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Textures/Bodysuit using Guid(a6629bced46bc944f822e5f0bf6b075b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c95c426da74311748974a518e463855') in 0.006961 seconds
+  Import took 0.009532 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.947242 seconds.
+  path: Assets/Medical worker/Textures/Bodysuit/Bodysuit
+  artifactKey: Guid(d1bc9ac39203f264489bd9e0248091c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Textures/Bodysuit/Bodysuit using Guid(d1bc9ac39203f264489bd9e0248091c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c17b7bf36ab17c5393f430b3149ab832') in 0.002541 seconds
+  Import took 0.004636 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.427492 seconds.
+  path: Assets/Medical worker/Textures/Bodysuit/Bodysuit/Basic_Suit_Mat
+  artifactKey: Guid(ec5a726e86d179d4693530f38b11ccd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Textures/Bodysuit/Bodysuit/Basic_Suit_Mat using Guid(ec5a726e86d179d4693530f38b11ccd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b43d4de539c178ed8957edf9daac0829') in 0.007961 seconds
+  Import took 0.010069 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001875 seconds.
+  path: Assets/Medical worker/Textures/Bodysuit/Bodysuit/Basic_Suit_Mat
+  artifactKey: Guid(ec5a726e86d179d4693530f38b11ccd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Textures/Bodysuit/Bodysuit/Basic_Suit_Mat using Guid(ec5a726e86d179d4693530f38b11ccd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b43d4de539c178ed8957edf9daac0829') in 0.002496 seconds
+  Import took 0.004530 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.623768 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(20bf6225dec2803408edd0973038c335) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(20bf6225dec2803408edd0973038c335) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95ac0a330d1f69e0fc96d8833605abab') in 0.007213 seconds
+  Import took 0.009469 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000844 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(20bf6225dec2803408edd0973038c335) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(20bf6225dec2803408edd0973038c335) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95ac0a330d1f69e0fc96d8833605abab') in 0.002545 seconds
+  Import took 0.004597 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.050576 seconds.
+  path: Assets/Scenes/Medical worker.Fbx
+  artifactKey: Guid(7681fab4222a4dd44a988d987a18ce2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Medical worker.Fbx using Guid(7681fab4222a4dd44a988d987a18ce2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51fcc8c791c567fc82d56f94011e066c') in 0.466694 seconds
+  Import took 0.476532 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.608477 seconds.
+  path: Assets/Scenes/Medical worker.Fbx
+  artifactKey: Guid(7681fab4222a4dd44a988d987a18ce2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Medical worker.Fbx using Guid(7681fab4222a4dd44a988d987a18ce2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c271bdd05fa368bd9b3dbeb3b7ebf13') in 0.327226 seconds
+  Import took 0.337587 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 60.420372 seconds.
+  path: Assets/Medical worker/Medical worker.fbm
+  artifactKey: Guid(96aa6f4d9e227354cb0248faa8460000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Medical worker/Medical worker.fbm using Guid(96aa6f4d9e227354cb0248faa8460000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e66ae6eef1c96eae9c07ceffe279f0c3') in 0.007177 seconds
+  Import took 0.009721 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
