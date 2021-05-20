@@ -253,8 +253,6 @@ GameObject:
   m_Component:
   - component: {fileID: 277415014}
   - component: {fileID: 277415013}
-  - component: {fileID: 277415017}
-  - component: {fileID: 277415018}
   - component: {fileID: 277415015}
   - component: {fileID: 277415016}
   m_Layer: 0
@@ -281,7 +279,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!4 &277415014
 Transform:
   m_ObjectHideFlags: 0
@@ -322,43 +320,14 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
   m_Controller: {fileID: 9100000, guid: 4c6dcf920f45e46469d123ba4b00d482, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
+  m_CullingMode: 1
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &277415017
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277415012}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &277415018
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277415012}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7199219, y: 2.016458, z: 0.6771582}
-  m_Center: {x: -0.0047338866, y: 0.008229065, z: -0.20581055}
 --- !u!1 &513577058 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -641598988870609441, guid: b68213027a988af4cbde295e452c8c02, type: 3}
@@ -8031,7 +8000,7 @@ PrefabInstance:
       objectReference: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
       propertyPath: m_Name
-      value: Worker
+      value: Patrick
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
       propertyPath: m_Enabled
