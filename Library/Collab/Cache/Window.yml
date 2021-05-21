@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
-    m_Keys: []
-    m_Values: 
+    m_Keys:
+    - Assets/Equipment/Eza.meta
+    - Assets/Equipment/Eza/EzaModel.dae
+    - Assets/Equipment/Eza/EzaModel.dae.meta
+    - Assets/Equipment/Eza/EzaModel.mat
+    - Assets/Equipment/Eza/EzaModel.mat.meta
+    - Assets/Prefabs/Oprema/Eza.meta
+    - Assets/Prefabs/Oprema/Eza/EzaModel.dae.meta
+    - Assets/Prefabs/Oprema/Eza/EzaModel.mat.meta
+    - 
+    m_Values: 000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
