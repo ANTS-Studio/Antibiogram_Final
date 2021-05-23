@@ -20,7 +20,7 @@ public class ToggleParticles : MonoBehaviour
     void Update()
     {
         Ray ray = mainCam.ViewportPointToRay(Vector3.one / 2f);
-        //Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red); 
+        Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red); 
 
         RaycastHit hitInfo;
 
