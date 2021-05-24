@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         MouseLookScript = PlayerCamera.GetComponent<MouseLook>();
+        PauseMenuUI.SetActive(false);
     }
 
     void Update()
