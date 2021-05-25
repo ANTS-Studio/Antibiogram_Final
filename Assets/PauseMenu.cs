@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject PlayerCamera;
     public GameObject PauseMenuUI;
     public static bool IsPaused = false;
-    public bool MouseLookScript;
+    public MouseLook MouseLookScript;
 
     // Start is called before the first frame update
     void Start()
@@ -22,19 +24,19 @@ public class PauseMenu : MonoBehaviour
         {
             if (IsPaused)
             {
-                MouseLookScript = true;
                 Resume();
             }
             else
             {
-                MouseLookScript = false;
                 Pause();
             }
         }
     }
 
-    void Resume()
+    public void Resume()
     {
+        MouseLookScript.enabled = true;
+        Cursor.visible = false;
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
@@ -42,8 +44,25 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        MouseLookScript.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         IsPaused = true;
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu_Scene");
+    }
+
+    public void Quit()
+    {
+        if (UnityEditor.EditorApplication.isPlaying == true) {
+            UnityEditor.EditorApplication.isPlaying = false;
+        } else {
+            Application.Quit();
+        }
     }
 }
