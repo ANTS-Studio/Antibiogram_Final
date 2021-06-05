@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerCamera
+  - PetriPoklopac
+  - PetriZdjelica
+  - Ravnalo
+  - Marker
+  - OpasniOtpad
+  - Hladnjak
+  - Vrata
+  - Fotelja
   layers:
   - Default
   - TransparentFX
