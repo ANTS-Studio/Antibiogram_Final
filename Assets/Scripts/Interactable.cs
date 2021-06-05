@@ -1,22 +1,28 @@
-
 using System;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public float radius = 35f;
-    public Vector3 position;
+    public float radius = 30f;
+    public Transform interactionTransform;
     private bool isFocus = false;
+    private bool hasInteracted = false;
     private Transform player;
 
+    public virtual void Interact()
+    {
+        //za overridanje
+        Debug.Log("Interakcija s " + interactionTransform.tag);
+    }
     private void Update()
     {
-        if (isFocus)
+        if (isFocus && !hasInteracted)
         {
-            float distance = Vector3.Distance(player.position, transform.position);
+            float distance = Vector3.Distance(player.position, interactionTransform.position);
             if (distance <= radius)
             {
-                Debug.Log("INTERACT");
+                Interact();
+                hasInteracted = true;
             }
         }
     }
@@ -25,12 +31,18 @@ public class Interactable : MonoBehaviour
     {
         isFocus = true;
         player = playerTransform;
+        hasInteracted = false;
+    }
+
+    public void OnDefocused()
+    {
+        isFocus = false;
+        player = null;
+        hasInteracted = false;
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        position = transform.position;
-        Gizmos.DrawWireSphere(position, radius);
+        Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
 }
-
