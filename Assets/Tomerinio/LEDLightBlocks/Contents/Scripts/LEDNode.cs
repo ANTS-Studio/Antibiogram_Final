@@ -43,8 +43,10 @@ public class LEDNode : MonoBehaviour
 
     void Update()
     {
-        ResolveNodeState();
-        UpdateColor();
+        pointLight = this.GetComponent<Light>();
+        rend = GetComponent<Renderer>();
+        //ResolveNodeState();
+        //UpdateColor();
     }
 
     // Decides on state of fading in/out based on the input parameters.
