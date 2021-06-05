@@ -1786,7 +1786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 30
-  interactionTransform: {fileID: 52518588}
+  interactionTransform: {fileID: 0}
+  obj: {fileID: 0}
 --- !u!65 &30741284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6940,13 +6941,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112470174}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.096969, y: 0.10935, z: 0.00006318}
-  m_LocalScale: {x: 1.5109653, y: 1.7413558, z: 1}
+  m_LocalRotation: {x: -0.0033652782, y: -0, z: -0, w: 0.9999944}
+  m_LocalPosition: {x: 0, y: -0.0014453465, z: 0.2385025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2042292182}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.386, y: 0, z: 0}
 --- !u!23 &112470176
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29424,7 +29425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 35
-  interactionTransform: {fileID: 1022416291}
+  interactionTransform: {fileID: 0}
+  obj: {fileID: 0}
 --- !u!1 &559682487
 GameObject:
   m_ObjectHideFlags: 0
@@ -34069,6 +34071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   interactionTransform: {fileID: 1226135849}
+  obj: {fileID: 0}
 --- !u!4 &643880842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a576a6b8b95105428f5d3b6a6aa4fb9, type: 3}
@@ -36623,7 +36626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
-  interactionTransform: {fileID: 1270955956}
+  interactionTransform: {fileID: 0}
+  obj: {fileID: 0}
 --- !u!4 &693681163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 07b615e33dbc7a547a3a139b87ea8260, type: 3}
@@ -42894,6 +42898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 30
   interactionTransform: {fileID: 784929961}
+  obj: {fileID: 0}
 --- !u!1 &799199340
 GameObject:
   m_ObjectHideFlags: 0
@@ -47271,6 +47276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   interactionTransform: {fileID: 956612232}
+  obj: {fileID: 0}
 --- !u!1 &875813632
 GameObject:
   m_ObjectHideFlags: 0
@@ -61721,7 +61727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  interactionTransform: {fileID: 920750498}
+  interactionTransform: {fileID: 0}
+  obj: {fileID: 0}
 --- !u!4 &1136881518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d239b403e95f484aaaeb3dfc13ff4b1, type: 3}
@@ -103762,6 +103769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   interactionTransform: {fileID: 808492236}
+  obj: {fileID: 0}
 --- !u!4 &1977661423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfdc0749096070e489618c202118ec1b, type: 3}

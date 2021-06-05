@@ -5,15 +5,25 @@ public class Interactable : MonoBehaviour
 {
     public float radius = 30f;
     public Transform interactionTransform;
+    public GameObject obj;
     private bool isFocus = false;
     private bool hasInteracted = false;
     private Transform player;
+    private Animator anim;
 
-    public virtual void Interact()
+    public void Start()
     {
-        //za overridanje
-        Debug.Log("Interakcija s " + interactionTransform.tag);
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        anim = playerObj.GetComponent<Animator>();
+        if (gameObject.transform.Find("InteractionPoint") != null)
+        {
+            Transform forInteractionTransform = gameObject.transform.Find("InteractionPoint");
+            interactionTransform = forInteractionTransform;
+        }
+        else interactionTransform = transform;
     }
+
+
     private void Update()
     {
         if (isFocus && !hasInteracted)
@@ -40,9 +50,36 @@ public class Interactable : MonoBehaviour
         player = null;
         hasInteracted = false;
     }
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(interactionTransform.position, radius);
+        if (interactionTransform != null) Gizmos.DrawWireSphere(interactionTransform.position, radius);
+    }
+    
+    public virtual void Interact()
+    {
+        Debug.Log("Interakcija s " + transform.tag);
+        switch (interactionTransform.tag)
+        {
+            case "Fotelja":
+                InteractionFotelja();
+                break;
+            case "Vrata":
+                InteractionVrata();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void InteractionFotelja()
+    {
+        anim.SetTrigger(Animator.StringToHash("SitDown"));
+    }
+
+    public void InteractionVrata()
+    {
+        anim.SetTrigger(Animator.StringToHash("OpenDoor"));
     }
 }
