@@ -6,25 +6,29 @@ using UnityEngine.UI;
 public class PlayerInventory : MonoBehaviour
 {
     public LayerMask layerMask;
-    
+
     public Camera mainCam;
     public GameObject dropOff;
 
-    public Text interactText;
     public Text selectedSlotDisplay;
+    public List<Text> interactText;
 
     public float maxDistance = 60f;
 
     private bool hasGloves = false;
+    public bool cleanHands = false;
+
     private int selectedInventorySlot = 0;
     public int inventorySize = 5;
     public List<GameObject> playerInventory = new List<GameObject>();
 
+    // when no item in inventory, getSelectedItem returns this
+    private GameObject fallBackObject;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        fallBackObject = new GameObject("emptyList");
     }
 
     // Update is called once per frame
@@ -35,9 +39,15 @@ public class PlayerInventory : MonoBehaviour
         this.DropItem();
         this.AddItemToInventory();
     }
+
+    void SetText(int fieldIndex, string text)
+    {
+        fieldIndex = fieldIndex > interactText.Count ? fieldIndex : 0;
+        interactText[fieldIndex].text = text;
+    }
     public GameObject getSelectedItem()
     {
-        return playerInventory.Count == 0 ? new GameObject("emptyList") : playerInventory[selectedInventorySlot];
+        return playerInventory.Count == 0 ? fallBackObject : playerInventory[selectedInventorySlot];
     }
     void AddItemToInventory()
     {
@@ -53,16 +63,17 @@ public class PlayerInventory : MonoBehaviour
             if (hitItem.name == "LabOpasniOtpad")
             {
                 ThrowAwayItem();
+                ThrowAwayGloves();
                 return;
             }
-            if(hitItem.name == "Gloves")
+            if (hitItem.name == "Gloves")
             {
                 EquipGloves(hitItem);
                 return;
             }
             // Prikazi poruku playeru i dohvati reference na pogodeni item
-            interactText.text = "Press 'E' to pick up";
-            
+            SetText(0, "Press 'E' to pick up");
+
             // Ako player pritisne 'E' i ima mjesta u inventory, dodaj item
             if (Input.GetKeyDown(KeyCode.E) && playerInventory.Count <= inventorySize)
             {
@@ -73,34 +84,49 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            interactText.text = "";
+            SetText(0, "");
         }
     }
+
     void EquipGloves(GameObject gloves)
     {
-        interactText.text = "Press 'E' to put on gloves!";
+        SetText(0, "Press 'E' to put on gloves!");
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             gloves.SetActive(false);
             hasGloves = true;
+
+            if (!cleanHands) Debug.Log("+1 Mistake(player didnt was hands)");
         }
     }
+    void ThrowAwayGloves()
+    {
+        if (!hasGloves) return;
+        SetText(1, "Press 'R' to throw away gloves!");
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            hasGloves = false;
+            cleanHands = false;
+        }
+    }
+
     void ThrowAwayItem()
     {
         if (playerInventory.Count == 0)
         {
-            interactText.text = "";
+            SetText(0, "");
             return;
         }
 
-        interactText.text = "Press 'E' to throw item away";
+        SetText(0, "Press 'E' to throw item away");
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             GameObject item = getSelectedItem();
             playerInventory.RemoveAt(selectedInventorySlot);
-            
+
             Destroy(item);
             this.AdjustSelectedItemDisplay();
         }
@@ -125,6 +151,7 @@ public class PlayerInventory : MonoBehaviour
             this.AdjustSelectedItemDisplay();
         }
     }
+
     void AdjustSelectedItemDisplay()
     {
         int itemsInInventory = playerInventory.Count;
@@ -134,21 +161,21 @@ public class PlayerInventory : MonoBehaviour
         {
             selectedInventorySlot = -1;
         }
-        
+
         // Ako je dodan prvi item u inventory, postavi selectedSlot na njega
-        else if(selectedInventorySlot == -1)
+        else if (selectedInventorySlot == -1)
         {
             selectedInventorySlot = 0;
         }
 
         // Ako je iz inventory-a izbacen posljednji item, postavi selectedSlot na prvi slobodni ili na -1
-        else if(selectedInventorySlot > itemsInInventory - 1)
+        else if (selectedInventorySlot > itemsInInventory - 1)
         {
             selectedInventorySlot = itemsInInventory - 1;
         }
 
         // Postavi/Ukloni ime item-a
-        selectedSlotDisplay.text = selectedInventorySlot != -1? getSelectedItem().name: "";
+        selectedSlotDisplay.text = selectedInventorySlot != -1 ? getSelectedItem().name : "";
     }
     void SelectInventorySlot()
     {
@@ -159,7 +186,7 @@ public class PlayerInventory : MonoBehaviour
         if (mouseScroll == 0 || itemInInventorys == 0) return;
 
         // Odaberi sljedeci item u inventory-u ako trenutni nije ujedno i posljednji
-        if(mouseScroll > 0 && (selectedInventorySlot < (itemInInventorys - 1)))
+        if (mouseScroll > 0 && (selectedInventorySlot < (itemInInventorys - 1)))
         {
             selectedInventorySlot++;
         }
@@ -170,6 +197,6 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // Postavi display tekst imena odabranog item-a
-        selectedSlotDisplay.text = getSelectedItem()? getSelectedItem().name: "";
+        selectedSlotDisplay.text = getSelectedItem() ? getSelectedItem().name : "";
     }
 }
