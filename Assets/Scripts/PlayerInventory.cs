@@ -13,11 +13,13 @@ public class PlayerInventory : MonoBehaviour
     public Text interactText;
     public Text selectedSlotDisplay;
 
+    public float maxDistance = 60f;
+
+    private bool hasGloves = false;
     private int selectedInventorySlot = 0;
     public int inventorySize = 5;
     public List<GameObject> playerInventory = new List<GameObject>();
 
-    public float maxDistance = 60f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +31,13 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         this.SelectInventorySlot();
+
         this.DropItem();
         this.AddItemToInventory();
+    }
+    public GameObject getSelectedItem()
+    {
+        return playerInventory.Count == 0 ? new GameObject("emptyList") : playerInventory[selectedInventorySlot];
     }
     void AddItemToInventory()
     {
@@ -42,10 +49,20 @@ public class PlayerInventory : MonoBehaviour
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
         {
+            GameObject hitItem = hitInfo.collider.gameObject;
+            if (hitItem.name == "LabOpasniOtpad")
+            {
+                ThrowAwayItem();
+                return;
+            }
+            if(hitItem.name == "Gloves")
+            {
+                EquipGloves(hitItem);
+                return;
+            }
             // Prikazi poruku playeru i dohvati reference na pogodeni item
             interactText.text = "Press 'E' to pick up";
-            GameObject hitItem = hitInfo.collider.gameObject;
-
+            
             // Ako player pritisne 'E' i ima mjesta u inventory, dodaj item
             if (Input.GetKeyDown(KeyCode.E) && playerInventory.Count <= inventorySize)
             {
@@ -57,6 +74,35 @@ public class PlayerInventory : MonoBehaviour
         else
         {
             interactText.text = "";
+        }
+    }
+    void EquipGloves(GameObject gloves)
+    {
+        interactText.text = "Press 'E' to put on gloves!";
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            gloves.SetActive(false);
+            hasGloves = true;
+        }
+    }
+    void ThrowAwayItem()
+    {
+        if (playerInventory.Count == 0)
+        {
+            interactText.text = "";
+            return;
+        }
+
+        interactText.text = "Press 'E' to throw item away";
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GameObject item = getSelectedItem();
+            playerInventory.RemoveAt(selectedInventorySlot);
+            
+            Destroy(item);
+            this.AdjustSelectedItemDisplay();
         }
     }
     void DropItem()
@@ -102,7 +148,7 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // Postavi/Ukloni ime item-a
-        selectedSlotDisplay.text = selectedInventorySlot != -1? playerInventory[selectedInventorySlot].name: "";
+        selectedSlotDisplay.text = selectedInventorySlot != -1? getSelectedItem().name: "";
     }
     void SelectInventorySlot()
     {
@@ -124,7 +170,6 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // Postavi display tekst imena odabranog item-a
-        GameObject selectedItem = playerInventory[selectedInventorySlot];
-        selectedSlotDisplay.text = selectedItem? selectedItem.name: "";
+        selectedSlotDisplay.text = getSelectedItem()? getSelectedItem().name: "";
     }
 }
