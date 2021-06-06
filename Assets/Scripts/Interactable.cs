@@ -50,13 +50,13 @@ public class Interactable : MonoBehaviour
         player = null;
         hasInteracted = false;
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         if (interactionTransform != null) Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
-    
+
     public virtual void Interact()
     {
         Debug.Log("Interakcija s " + transform.tag);
@@ -80,6 +80,6 @@ public class Interactable : MonoBehaviour
 
     public void InteractionVrata()
     {
-        anim.SetTrigger(Animator.StringToHash("OpenDoor"));
+        //to do
     }
 }
