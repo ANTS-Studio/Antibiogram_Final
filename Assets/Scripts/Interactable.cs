@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     private bool hasInteracted = false;
     private Transform player;
     private Animator anim;
+    private Boolean opened = false;
 
     public void Start()
     {
@@ -80,6 +81,8 @@ public class Interactable : MonoBehaviour
 
     public void InteractionVrata()
     {
-        //to do
+        Animator door = transform.GetComponent<Animator>();
+        opened = !opened;
+        door.SetBool("Opened", opened);
     }
 }
