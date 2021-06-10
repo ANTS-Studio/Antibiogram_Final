@@ -14,7 +14,12 @@ public class InteractWithObjects : MonoBehaviour
     private ParticleSystem particles;
     private List<string> canDisinfectWithFire;
     private List<string> canDisinfectWithWater;
-    private
+
+    private float currentInteractionTimer = 0;
+    public Image InteractionProgressImg;
+
+    public float fireInteractionDuration = 4f;
+    public float waterInteractionDuration = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -71,24 +76,47 @@ public class InteractWithObjects : MonoBehaviour
     {
         DisinfectionScript disinfectionScript = selectedObject.GetComponent<DisinfectionScript>();
 
-        interactText.text = "Press 'E' to disinfect item!";
-        if (Input.GetKeyDown(KeyCode.E))
+        interactText.text = "Hold 'E' to disinfect item!";
+        if (Input.GetKey(KeyCode.E))
         {
+            if (!IncrementInteractionProggress(fireInteractionDuration)) return;
             disinfectionScript.DisinfectItem();
-            //interactText.text = "Item disinfected!";
+            currentInteractionTimer = 0;
         }
+        else currentInteractionTimer = 0;
+
+        UpdateInteractionImg(fireInteractionDuration);
     }
+
 
     void DisinfectWithWater(GameObject selectedObject)
     {
-        interactText.text = "Press 'E' to wash and disinfect hands!";
+        interactText.text = "Hold 'E' to wash and disinfect hands!";
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
+            if (!IncrementInteractionProggress(waterInteractionDuration)) return;
+
             PlayerInventory inventory = gameObject.GetComponent<PlayerInventory>();
             inventory.cleanHands = true;
-            //interactText.text = "Hands washed and disinfected!";
+            currentInteractionTimer = 0;
         }
+        else currentInteractionTimer = 0;
+
+        UpdateInteractionImg(waterInteractionDuration);
+    }
+    bool IncrementInteractionProggress(float requiredTime)
+    {
+        currentInteractionTimer += Time.deltaTime;
+        UpdateInteractionImg(requiredTime);
+
+        return currentInteractionTimer >= requiredTime;
+    }
+
+    void UpdateInteractionImg(float requiredTime)
+    {
+        float progressPcnt = currentInteractionTimer / requiredTime;
+        InteractionProgressImg.fillAmount = progressPcnt;
     }
 
     void ToggleParticles()
