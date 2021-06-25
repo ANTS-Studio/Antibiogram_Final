@@ -76,7 +76,7 @@ public class Interactable : MonoBehaviour
 
     public void InteractionFotelja()
     {
-        anim.SetTrigger(Animator.StringToHash("SitDown"));
+        //anim.SetTrigger(Animator.StringToHash("SitDown"));
     }
 
     public void InteractionVrata()
