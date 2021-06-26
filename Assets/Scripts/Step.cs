@@ -3,49 +3,55 @@
     public class Step
     {
         private int _id;
+
+        public int ID
+        {
+            get => _id;
+            set => _id = value;
+        }
+
+        public bool WronglyDone
+        {
+            get => _wronglyDone;
+            set => _wronglyDone = value;
+        }
+
         private string _name;
-        private int _nextStep;
-        private int _previousStep;
-        private bool _previousStepDone;
-        private bool _failed;
+        private bool _stepDone;
+        private bool _wronglyDone;
+        private string _hint;
+
+        public Step(int id, string name, bool stepDone, bool wronglyDone, string hint)
+        {
+            _id = id;
+            _name = name;
+            _stepDone = stepDone;
+            _wronglyDone = wronglyDone;
+            _hint = hint;
+        }
+
         public string Name
         {
             get => _name;
             set => _name = value;
         }
 
-        public int NextStep
+        public bool StepDone
         {
-            get => _nextStep;
-            set => _nextStep = value;
+            get => _stepDone;
+            set => _stepDone = value;
         }
 
-        public int PreviousStep
+        public bool StepFailed
         {
-            get => _previousStep;
-            set => _previousStep = value;
+            get => _wronglyDone;
+            set => _wronglyDone = value;
         }
 
-        public bool PreviousStepDone
+        public string Hint
         {
-            get => _previousStepDone;
-            set => _previousStepDone = value;
-        }
-
-        public bool Failed
-        {
-            get => _failed;
-            set => _failed = value;
-        }
-
-        public Step(int id, string name, int nextStep, int previousStep, bool previousStepDone, bool failed)
-        {
-            this._id = id;
-            this._name = name;
-            this._nextStep = nextStep;
-            this._previousStep = previousStep;
-            this._previousStepDone = previousStepDone;
-            this._failed = failed;
+            get => _hint;
+            set => _hint = value;
         }
     }
 }

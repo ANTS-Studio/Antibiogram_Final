@@ -101,7 +101,13 @@ public class InteractWithObjects : MonoBehaviour
 
             PlayerInventory inventory = gameObject.GetComponent<PlayerInventory>();
             inventory.cleanHands = true;
-            //controller.Steps[2].PreviousStepDone = true; -- test za controller
+            
+            controller.Steps[1].StepDone = true;
+            int lastStep = controller.GetLastStep();
+            Debug.Log(controller.Steps[lastStep].Name);
+            int nextStep = controller.GetNextStep();
+            Debug.Log("Sljedeci korak: " + controller.Steps[nextStep].Name);
+            
             currentInteractionTimer = 0;
         }
         else currentInteractionTimer = 0;
