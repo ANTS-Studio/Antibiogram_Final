@@ -13,6 +13,11 @@ TagManager:
   - Hladnjak
   - Vrata
   - Fotelja
+  - StressBar
+  - ConcentrationBar
+  - HintButton
+  - HintPanel
+  - BandH
   layers:
   - Default
   - TransparentFX
