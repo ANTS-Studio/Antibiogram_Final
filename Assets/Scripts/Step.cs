@@ -20,14 +20,22 @@
         private bool _stepDone;
         private bool _wronglyDone;
         private string _hint;
+        private string _tutorialText;
 
-        public Step(int id, string name, bool stepDone, bool wronglyDone, string hint)
+        public string TutorialText
+        {
+            get => _tutorialText;
+            set => _tutorialText = value;
+        }
+
+        public Step(int id, string name, bool stepDone, bool wronglyDone, string hint, string tutorialText)
         {
             _id = id;
             _name = name;
             _stepDone = stepDone;
             _wronglyDone = wronglyDone;
             _hint = hint;
+            _tutorialText = tutorialText;
         }
 
         public string Name
