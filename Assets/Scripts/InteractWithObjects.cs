@@ -21,9 +21,11 @@ public class InteractWithObjects : MonoBehaviour
     public float fireInteractionDuration = 4f;
     public float waterInteractionDuration = 4f;
 
+    public GameController controller;
     // Start is called before the first frame update
     void Start()
     {
+        controller = ScriptableObject.CreateInstance<GameController>();
         canDisinfectWithFire = new List<string> { "Eza" };
         canDisinfectWithWater = new List<string> { "" };
     }
@@ -99,6 +101,7 @@ public class InteractWithObjects : MonoBehaviour
 
             PlayerInventory inventory = gameObject.GetComponent<PlayerInventory>();
             inventory.cleanHands = true;
+            //controller.Steps[2].PreviousStepDone = true; -- test za controller
             currentInteractionTimer = 0;
         }
         else currentInteractionTimer = 0;

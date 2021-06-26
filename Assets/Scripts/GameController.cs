@@ -4,39 +4,51 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : ScriptableObject
 {
-    public int level;
-    public bool educationalMode = true;
-    public List<Step> steps;
-    
-    void Start(){
-        steps = new List<Step>();  
-        steps.Add(new Step(1, "Ulazak u prostoriju", 2, 0, true));
-        steps.Add(new Step(2, "Pranje ruku", 3, 1, false));
-        steps.Add(new Step(3, "Stavljanje rukavica", 4, 2, false));
-        steps.Add(new Step(4, "Uzimanje inventara", 5, 3, false));
-        steps.Add(new Step(5, "Postavljanje inventara", 6, 4, false));
-        steps.Add(new Step(6, "Uzimanje inventara", 7, 5, false));
-        steps.Add(new Step(7, "Uzimanje ušice", 8, 6, false));
-        steps.Add(new Step(8, "Sterilizacija ušice vatrom", 9, 7, false));
-        steps.Add(new Step(9, "Pikanje kulture", 10, 8, false));
-        steps.Add(new Step(10, "Sterilizacija vrha epruvete", 11, 9, false));
-        steps.Add(new Step(11, "Stavljanje kulture u epruvetu", 12, 10, false));
-        steps.Add(new Step(12, "Miješanje kulture u epruveti", 13, 11, false));
-        steps.Add(new Step(13, "Uzimanje petrijeve zdjelice", 14, 12, false));
-        steps.Add(new Step(14, "Šaranje podloge na petrijevoj zdjelici", 15, 13, false));
-        steps.Add(new Step(15, "Zatvaranje zdjelice", 16, 14, false));
-        steps.Add(new Step(16, "Uzimanje markera za crtanje", 17, 15, false));
-        steps.Add(new Step(17, "Crtanje sektora po zdjelici", 18, 16, false));
-        steps.Add(new Step(18, "Pravilno postavljanje zdjelice na radnu podlogu", 19, 17, false));
-        steps.Add(new Step(19, "Uzimanje pincete", 20, 18, false));
-        steps.Add(new Step(20, "Dezinfekcija pincete", 21, 19, false));
-        steps.Add(new Step(21, "Uzimanje antibiotika pincetom i postavljanje na sektore", 22, 20, false));
-        steps.Add(new Step(22, "Vraćanje pincete", 23, 21, false));
-        steps.Add(new Step(23, "Stavljanje zdjelice u inkubator", 24, 22, false)); 
+    private int level;
+    private bool educationalMode = true;
+
+    private List<Step> steps = new List<Step>
+    {
+        new Step(0, "Ulazak u prostoriju", 1, 0, true, false),
+        new Step(1, "Pranje ruku", 2, 0, false, false),
+        new Step(2, "Stavljanje rukavica", 3, 1, false, false),
+        new Step(3, "Uzimanje inventara", 4, 2, false, false),
+        new Step(4, "Postavljanje inventara", 5, 3, false, false),
+        new Step(5, "Uzimanje inventara", 6, 4, false, false),
+        new Step(6, "Uzimanje ušice", 7, 5, false, false),
+        new Step(7, "Sterilizacija ušice vatrom", 8, 6, false, false),
+        new Step(8, "Pikanje kulture", 9, 7, false, false),
+        new Step(9, "Sterilizacija vrha epruvete", 10, 8, false, false),
+        new Step(10, "Stavljanje kulture u epruvetu", 11, 9, false, false),
+        new Step(11, "Miješanje kulture u epruveti", 12, 10, false, false),
+        new Step(12, "Uzimanje petrijeve zdjelice", 13, 11, false, false),
+        new Step(13, "Šaranje podloge na petrijevoj zdjelici", 14, 12, false, false),
+        new Step(14, "Zatvaranje zdjelice", 15, 13, false, false),
+        new Step(15, "Uzimanje markera za crtanje", 16, 14, false, false),
+        new Step(16, "Crtanje sektora po zdjelici", 17, 15, false, false),
+        new Step(17, "Pravilno postavljanje zdjelice na radnu podlogu", 18, 16, false, false),
+        new Step(18, "Uzimanje pincete", 19, 17, false, false),
+        new Step(19, "Dezinfekcija pincete", 20, 18, false, false),
+        new Step(20, "Uzimanje antibiotika pincetom i postavljanje na sektore", 19, 20, false, false),
+        new Step(21, "Vraćanje pincete", 22, 20, false, false),
+        new Step(22, "Stavljanje zdjelice u inkubator", 23, 21, false, false)
         //...
-        
+    };
+
+    public List<Step> Steps
+    {
+        get => steps;
+        set => steps = value;
+    }
+
+    public GameController()
+    {
+    }
+
+    void Start()
+    {
         if (!educationalMode)
         {
             switch (level)
@@ -57,11 +69,11 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            
         }
     }
 
-    void Update(){
+    void Update()
+    {
         if (!educationalMode)
         {
             switch (level)
@@ -79,10 +91,9 @@ public class GameController : MonoBehaviour
                 case 5:
                     break;
             }
-        } else
+        }
+        else
         {
-            
         }
     }
 }
-
