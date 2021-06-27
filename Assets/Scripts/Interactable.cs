@@ -81,8 +81,14 @@ public class Interactable : MonoBehaviour
 
     public void InteractionVrata()
     {
-        Animator door = transform.GetComponent<Animator>();
+        Animator door = transform.GetComponent<Animator>(); 
         opened = !opened;
         door.SetBool("Opened", opened);
+        
+        GameController.Instance.Steps[0].StepDone = true;
+        int lastStep = GameController.Instance.GetLastStep();
+        Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
+        int nextStep = GameController.Instance.GetNextStep();
+        Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
     }
 }
