@@ -9,6 +9,48 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 1998fa949fe943841a5c863f6a11c426
   - enabled: 1
-    path: Assets/Scenes/antibiogram_simulator.unity
+    path: Assets/Scenes/Day0.unity
     guid: 05143fa8259d4374081d2889f3480be8
+  - enabled: 1
+    path: Assets/Scenes/Day1.unity
+    guid: 1b475d822230b51459a8e1e3665f8875
+  - enabled: 1
+    path: Assets/Scenes/Day2.unity
+    guid: 2926df8a080c2f846a42970a4ec8d641
+  - enabled: 1
+    path: Assets/Scenes/Day3.unity
+    guid: 04e4cccb3c61c4a40bda22da6e4be096
+  - enabled: 1
+    path: Assets/Scenes/Day4.unity
+    guid: 4be000e82d59e3a479b8d30e2e8af2da
+  - enabled: 1
+    path: Assets/Scenes/Day5.unity
+    guid: 6426f1e027c94fe45ad89d3a5738377d
+  - enabled: 1
+    path: Assets/Scenes/Day6.unity
+    guid: af95611c6d138cc4899429b0e369080b
+  - enabled: 1
+    path: Assets/Scenes/Educational.unity
+    guid: 6088a86a0d2224643a58514aa3c9887e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

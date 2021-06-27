@@ -78,7 +78,7 @@ public class InteractWithObjects : MonoBehaviour
     {
         DisinfectionScript disinfectionScript = selectedObject.GetComponent<DisinfectionScript>();
 
-        interactText.text = "Hold 'E' to disinfect item!";
+        interactText.text = "HOLD TO DISINFECT ITEM"; //Hold 'E' to disinfect item!
         if (Input.GetKey(KeyCode.E))
         {
             if (!IncrementInteractionProggress(fireInteractionDuration)) return;
@@ -93,7 +93,7 @@ public class InteractWithObjects : MonoBehaviour
 
     void DisinfectWithWater(GameObject selectedObject)
     {
-        interactText.text = "Hold 'E' to wash and disinfect hands!";
+        interactText.text = "HOLD TO WASH AND DISINFECT HANDS"; //Hold 'E' to wash and disinfect hands!
 
         if (Input.GetKey(KeyCode.E))
         {
@@ -133,7 +133,7 @@ public class InteractWithObjects : MonoBehaviour
         if (!particles) return;
 
         // Prikazi poruku playeru
-        interactText.text = "Press 'E' to interact";
+        interactText.text = "INTERACT";
 
         // Na pritisak 'E' pokreni/stopiraj dohvaceni particle system
         if (Input.GetKeyDown(KeyCode.E) && !particles.isPlaying) particles.Play();
