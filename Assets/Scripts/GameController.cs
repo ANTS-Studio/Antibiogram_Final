@@ -79,6 +79,16 @@ public class GameController : MonoBehaviour
         var lastStepId = GetLastStep();
         return ++lastStepId;
     }
+    
+    public bool CheckIfPreviousStepDone()
+    {
+        if (!Steps[GetLastStep()-1].StepDone)
+        {
+            Steps[GetLastStep()-1].WronglyDone = true;
+            return false;
+        }
+        else return true;
+    }
 
     public int GetNOfMistakes()
     { 

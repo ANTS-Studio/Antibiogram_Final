@@ -50,12 +50,6 @@
             set => _stepDone = value;
         }
 
-        public bool StepFailed
-        {
-            get => _wronglyDone;
-            set => _wronglyDone = value;
-        }
-
         public string Hint
         {
             get => _hint;

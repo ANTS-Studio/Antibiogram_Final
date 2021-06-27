@@ -96,7 +96,15 @@ public class PlayerInventory : MonoBehaviour
         {
             gloves.SetActive(false);
             hasGloves = true;
-
+            
+            Debug.Log(GameController.Instance.Steps);
+            GameController.Instance.Steps[2].StepDone = true;
+            GameController.Instance.CheckIfPreviousStepDone();
+            int lastStep = GameController.Instance.GetLastStep();
+            Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
+            int nextStep = GameController.Instance.GetNextStep();
+            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            
             if (!cleanHands) Debug.Log("+1 Mistake(player didnt was hands)");
         }
     }

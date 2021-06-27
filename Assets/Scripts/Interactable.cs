@@ -63,20 +63,12 @@ public class Interactable : MonoBehaviour
         Debug.Log("Interakcija s " + transform.tag);
         switch (interactionTransform.tag)
         {
-            case "Fotelja":
-                InteractionFotelja();
-                break;
             case "Vrata":
                 InteractionVrata();
                 break;
             default:
                 break;
         }
-    }
-
-    public void InteractionFotelja()
-    {
-        //anim.SetTrigger(Animator.StringToHash("SitDown"));
     }
 
     public void InteractionVrata()
