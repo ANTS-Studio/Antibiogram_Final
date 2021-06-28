@@ -71,6 +71,16 @@ public class PlayerInventory : MonoBehaviour
                 EquipGloves(hitItem);
                 return;
             }
+
+            if (hitItem.name == "Eza")
+            {
+                GameController.Instance.Steps[3].StepDone = true;
+                GameController.Instance.CheckIfPreviousStepDone();
+                int lastStep = GameController.Instance.GetCurrentStep();
+                Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
+                int nextStep = GameController.Instance.GetNextStep();
+                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            }
             // Prikazi poruku playeru i dohvati reference na pogodeni item
             SetText(0, "Press 'E' to pick up");
 
@@ -100,7 +110,7 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log(GameController.Instance.Steps);
             GameController.Instance.Steps[2].StepDone = true;
             GameController.Instance.CheckIfPreviousStepDone();
-            int lastStep = GameController.Instance.GetLastStep();
+            int lastStep = GameController.Instance.GetCurrentStep();
             Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
             int nextStep = GameController.Instance.GetNextStep();
             Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);

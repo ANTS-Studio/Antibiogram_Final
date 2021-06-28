@@ -101,7 +101,7 @@ public class InteractWithObjects : MonoBehaviour
             inventory.cleanHands = true;
             
             GameController.Instance.Steps[1].StepDone = true;
-            int lastStep = GameController.Instance.GetLastStep();
+            int lastStep = GameController.Instance.GetCurrentStep();
             Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
             int nextStep = GameController.Instance.GetNextStep();
             Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);

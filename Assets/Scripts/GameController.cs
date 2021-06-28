@@ -8,11 +8,22 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int level;
-    public bool educationalMode = false;
+    public bool educationalMode;
     public List<Step> Steps = new List<Step>();
     public int lastStepIndex;
+    public int currentStepIndex;
     public int nOfMistakes;
-    public bool doorTrigger;
+    private bool _doorTrigger;
+
+    public bool DoorTrigger
+    {
+        get => _doorTrigger;
+        set
+        {
+            _doorTrigger = value;
+            if(_doorTrigger) EndDay();
+        }
+    }
 
     public static GameController Instance { get; private set; }
 
@@ -33,7 +44,6 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        EndDay();
     }
 
     void AddSteps()
@@ -142,31 +152,33 @@ public class GameController : MonoBehaviour
 
     public void EndDay()
     {
-        if (lastStepIndex == GetLastStep() && doorTrigger);
+        if ((lastStepIndex == currentStepIndex) && _doorTrigger && currentStepIndex != 0)
         {
             nOfMistakes = GetNOfMistakes();
             ResetSteps();
+            Debug.Log("-- NEW DAY --");
             //start cutscene
         }
     }
     
-    public int GetLastStep()
+    public int GetCurrentStep()
     {
         var step = Steps.FindLast(x => x.StepDone == true);
-        return step != null ? step.ID : 0;
+        if (step != null) currentStepIndex = step.ID;
+        return currentStepIndex;
     }
 
     public int GetNextStep()
     {
-        var lastStepId = GetLastStep();
+        var lastStepId = GetCurrentStep();
         return ++lastStepId;
     }
 
     public bool CheckIfPreviousStepDone()
     {
-        if (!Steps[GetLastStep() - 1].StepDone)
+        if (!Steps[GetCurrentStep() - 1].StepDone)
         {
-            Steps[GetLastStep() - 1].WronglyDone = true;
+            Steps[GetCurrentStep() - 1].WronglyDone = true;
             return false;
         }
         else return true;
@@ -174,7 +186,7 @@ public class GameController : MonoBehaviour
 
     public int GetNOfMistakes()
     {
-        return Steps.Where(x => x.WronglyDone == true).Count();
+        return Steps.Count(x => x.WronglyDone == true);
     }
 
     void LogicByLevels()

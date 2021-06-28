@@ -78,7 +78,7 @@ public class Interactable : MonoBehaviour
         door.SetBool("Opened", opened);
         
         GameController.Instance.Steps[0].StepDone = true;
-        int lastStep = GameController.Instance.GetLastStep();
+        int lastStep = GameController.Instance.GetCurrentStep();
         Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
         int nextStep = GameController.Instance.GetNextStep();
         Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
