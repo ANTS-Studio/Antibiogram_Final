@@ -7,9 +7,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public int Level;
-    public bool EducationalMode = true;
+    public int level;
+    public bool educationalMode = false;
     public List<Step> Steps = new List<Step>();
+    public int lastStepIndex;
+    public int nOfMistakes;
+    public bool doorTrigger;
 
     public static GameController Instance { get; private set; }
 
@@ -30,6 +33,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        EndDay();
     }
 
     void AddSteps()
@@ -73,11 +77,13 @@ public class GameController : MonoBehaviour
             "Sada, uzimamo petrijevu zdjelicu..."));
         ++index;
 
-        Steps.Add(new Step(index, "Šaranje podloge na petrijevoj zdjelici", false, false, "Šaraj po podlozi sa ušicom.",
+        Steps.Add(new Step(index, "Šaranje podloge na petrijevoj zdjelici", false, false,
+            "Šaraj po podlozi sa ušicom.",
             "I šaramo po podlozi. Potrebno je išarati podlogu, okrenuti zdjelicu za 60° i ponovno šarati, te još jednom za 60° i šarati."));
         ++index;
 
-        Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Zatvori zdjelicu.", "Zatvaramo zdjelicu."));
+        Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Zatvori zdjelicu.",
+            "Zatvaramo zdjelicu."));
         ++index;
 
         Steps.Add(new Step(index, "Crtanje sektora po zdjelici", false, false, "Nacrtaj sektore po zdjelici.",
@@ -94,11 +100,13 @@ public class GameController : MonoBehaviour
             "Pincetom ćemo uzeti antibiotik i postaviti ga u centar sektora na zdjelici."));
         ++index;
 
-        Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false, "Stavi zdjelicu u inkubator.",
+        Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
+            "Stavi zdjelicu u inkubator.",
             "Zatim zdjelicu zatvaramo i stavljamo ju u inkubator na 37.5 stupnjeva."));
         ++index;
 
-        Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false, "Izvadi zdjelicu iz inkubatora.",
+        Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
+            "Izvadi zdjelicu iz inkubatora.",
             "Ostavili smo zdjelicu preko noći i sada ju možemo izvaditi te vidjeti naše rezultate."));
         ++index;
 
@@ -122,9 +130,26 @@ public class GameController : MonoBehaviour
 
         Steps.Add(new Step(index, "Izlazak iz laboratorija", false, false, "Vrati se u svoj ured.",
             "I gotovi smo s našim procesom!"));
+
+        lastStepIndex = Steps.Count() - 1;
     }
 
+    public void ResetSteps()
+    {
+        Steps.ForEach(x => x.StepDone = false);
+        Steps.ForEach(x => x.WronglyDone = false);
+    }
 
+    public void EndDay()
+    {
+        if (lastStepIndex == GetLastStep() && doorTrigger);
+        {
+            nOfMistakes = GetNOfMistakes();
+            ResetSteps();
+            //start cutscene
+        }
+    }
+    
     public int GetLastStep()
     {
         var step = Steps.FindLast(x => x.StepDone == true);
@@ -154,9 +179,9 @@ public class GameController : MonoBehaviour
 
     void LogicByLevels()
     {
-        if (!EducationalMode)
+        if (!educationalMode)
         {
-            switch (Level)
+            switch (level)
             {
                 case 0:
                     break;
