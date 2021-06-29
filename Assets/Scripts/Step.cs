@@ -19,7 +19,7 @@
         private string _name;
         private bool _stepDone;
         private bool _wronglyDone;
-        private string _hint;
+        private string _hintText;
         private string _tutorialText;
 
         public string TutorialText
@@ -28,13 +28,13 @@
             set => _tutorialText = value;
         }
 
-        public Step(int id, string name, bool stepDone, bool wronglyDone, string hint, string tutorialText)
+        public Step(int id, string name, bool stepDone, bool wronglyDone, string hintText, string tutorialText)
         {
             _id = id;
             _name = name;
             _stepDone = stepDone;
             _wronglyDone = wronglyDone;
-            _hint = hint;
+            _hintText = hintText;
             _tutorialText = tutorialText;
         }
 
@@ -52,8 +52,8 @@
 
         public string Hint
         {
-            get => _hint;
-            set => _hint = value;
+            get => _hintText;
+            set => _hintText = value;
         }
     }
 }

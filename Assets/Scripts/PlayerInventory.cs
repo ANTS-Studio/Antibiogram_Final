@@ -82,7 +82,7 @@ public class PlayerInventory : MonoBehaviour
                 {
                     var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Uzimanje ušice")); //3. korak
                     GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-                    GameController.Instance.CheckIfPreviousStepDone();
+                    GameController.Instance.CheckIfPreviousStepsDone();
                     int nextStep = GameController.Instance.GetNextStep();
                     Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
                 }
@@ -108,7 +108,7 @@ public class PlayerInventory : MonoBehaviour
             
             var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Stavljanje rukavica")); //2. korak
             GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepDone();
+            GameController.Instance.CheckIfPreviousStepsDone();
             int nextStep = GameController.Instance.GetNextStep();
             Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
             
@@ -126,7 +126,7 @@ public class PlayerInventory : MonoBehaviour
             cleanHands = false;
             var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje rukavica u otpad")); //5. korak (za sada)
             GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepDone();
+            GameController.Instance.CheckIfPreviousStepsDone();
             int nextStep = GameController.Instance.GetNextStep();
             Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
         }

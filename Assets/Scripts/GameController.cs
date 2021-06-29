@@ -21,11 +21,13 @@ public class GameController : MonoBehaviour
         get => _doorTrigger;
         set
         {
+            //u setter ubacujemo funkciju koja se onda triggera kada se vrijednost mijenja, dobivamo "watcher"
             _doorTrigger = value;
             if(_doorTrigger) EndDay();
         }
     }
 
+    //služi za pristupanje kontroleru od bilo kuda
     public static GameController Instance { get; private set; }
 
     void Awake()
@@ -33,6 +35,7 @@ public class GameController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            //inicijalno dodavanje stepova
             AddSteps();
         }
         else
@@ -49,7 +52,8 @@ public class GameController : MonoBehaviour
 
     void AddSteps()
     {
-        //stepovi ovisno o tome koji je level...
+        //dodavanje stepova, kasnije uvjeti ovisno o tome koji je dan
+        //index, name, stepDone, wronglyDone, hintText, tutorialText
         var index = 0;
         Steps.Add(new Step(index, "Ulazak u laboratorij", false, false, "Trebaš ući u laboratorij!",
             "Dobrodošli! U edukacijskom načinu naučit ćete proces izrade antibiograma."));
@@ -145,12 +149,14 @@ public class GameController : MonoBehaviour
         lastStepIndex = Steps.Count() - 1;
     }
 
+    //metoda za resetiranje stepova prije loadanja novog dana
     public void ResetSteps()
     {
         Steps.ForEach(x => x.StepDone = false);
         Steps.ForEach(x => x.WronglyDone = false);
     }
 
+    //funkcija za završavanje dana; ako su svi koraci završeni i ako se igrač vrati u svoj ured onda se izvršava
     public void EndDay()
     {
         if ((lastStepIndex == currentStepIndex) && _doorTrigger && currentStepIndex != 0)
@@ -175,28 +181,36 @@ public class GameController : MonoBehaviour
         return ++lastStepId;
     }
 
-    public bool CheckIfPreviousStepDone()
+    //ukoliko prethodni koraci nisu izvršeni, tj igrač ih je zaboravio, onda su to pogreške i to će se odražavati na ishod
+    public bool CheckIfPreviousStepsDone()
     {
-        if (!Steps[GetCurrentStep() - 1].StepDone)
+        int previousStepIndex = GetCurrentStep() - 1;
+        if (!Steps[previousStepIndex].StepDone)
         {
-            Steps[GetCurrentStep() - 1].WronglyDone = true;
+            Steps.ForEach(x =>
+            {
+                if (x.ID <= previousStepIndex && !x.StepDone) x.WronglyDone = true;
+            });
             return false;
         }
         else return true;
     }
 
+    //broj pogrešaka za taj dan
     public int GetCurrentNOfMistakes()
     {
         CalculateMistakes();
         return Steps.Count(x => x.WronglyDone == true);
     }
 
+    //ukupne pogreške u igri
     public int CalculateMistakes()
     {
         totalNOfMistakes += currentNOfMistakes;
         return totalNOfMistakes;
     }
 
+    //funkcija za ishod igre ovisno o ukupnom broju pogrešaka
     public int Ending()
     {
         if (totalNOfMistakes < 9)
@@ -205,6 +219,8 @@ public class GameController : MonoBehaviour
         }
         return 0; //bad ending cutscene
     }
+    
+    //placeholder
     void LogicByLevels()
     {
         if (!educationalMode)

@@ -18,7 +18,7 @@ public class DisinfectionScript : MonoBehaviour
         {
             var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Sterilizacija ušice")); //4. korak
             GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepDone();
+            GameController.Instance.CheckIfPreviousStepsDone();
             int nextStep = GameController.Instance.GetNextStep();
             Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
         }
