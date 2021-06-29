@@ -77,10 +77,17 @@ public class Interactable : MonoBehaviour
         opened = !opened;
         door.SetBool("Opened", opened);
         
-        GameController.Instance.Steps[0].StepDone = true;
-        int lastStep = GameController.Instance.GetCurrentStep();
-        Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
+        var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Ulazak u laboratorij")); //0. korak
+        GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
         int nextStep = GameController.Instance.GetNextStep();
         Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+        
+        if (GameController.Instance.Steps[nextStep].Name.Equals("Izlaz laboratorij"))
+        {
+            stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Izlaz laboratorij")); //6. korak (za sada)
+            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
+            // nextStep = GameController.Instance.GetNextStep();
+            // Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+        }
     }
 }

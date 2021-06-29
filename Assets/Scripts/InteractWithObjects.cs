@@ -100,11 +100,18 @@ public class InteractWithObjects : MonoBehaviour
             PlayerInventory inventory = gameObject.GetComponent<PlayerInventory>();
             inventory.cleanHands = true;
             
-            GameController.Instance.Steps[1].StepDone = true;
-            int lastStep = GameController.Instance.GetCurrentStep();
-            Debug.Log("Current: " + GameController.Instance.Steps[lastStep].Name);
+            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Pranje ruku ulaz")); //1. korak
+            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
             int nextStep = GameController.Instance.GetNextStep();
             Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            if (GameController.Instance.Steps[nextStep].Name.Equals("Pranje ruku izlaz"))
+            {
+                stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Pranje ruku izlaz")); //6. korak
+                GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
+                nextStep = GameController.Instance.GetNextStep();
+                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+
+            }
             
             currentInteractionTimer = 0;
         }
