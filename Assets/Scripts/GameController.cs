@@ -138,7 +138,12 @@ public class GameController : MonoBehaviour
             "Rukavice trebaš baciti u biološki otpad.",
             "Sada, naše rukavice trebamo odložiti u biološki otpad."));
         ++index;
-
+        
+        Steps.Add(new Step(index, "Odlaganje eze u otpad", false, false,
+            "Ezu trebaš baciti u biološki otpad.",
+            "I ezu."));
+        ++index;
+        
         Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Potraži slavinu i operi ruke.",
             "Još jednom peremo ruke..."));
         ++index;
@@ -159,7 +164,7 @@ public class GameController : MonoBehaviour
     //funkcija za završavanje dana; ako su svi koraci završeni i ako se igrač vrati u svoj ured onda se izvršava
     public void EndDay()
     {
-        if ((lastStepIndex == currentStepIndex) && _doorTrigger && currentStepIndex != 0)
+        if ((lastStepIndex == currentStepIndex) && _doorTrigger)
         {
             currentNOfMistakes = GetCurrentNOfMistakes();
             ResetSteps();
@@ -170,7 +175,7 @@ public class GameController : MonoBehaviour
     
     public int GetCurrentStep()
     {
-        var step = Steps.FindLast(x => x.StepDone == true);
+        var step = Steps.FindLast(x => x.StepDone == true || x.WronglyDone == true);
         if (step != null) currentStepIndex = step.ID;
         return currentStepIndex;
     }

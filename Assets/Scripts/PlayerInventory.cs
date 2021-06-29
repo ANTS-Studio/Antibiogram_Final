@@ -117,7 +117,19 @@ public class PlayerInventory : MonoBehaviour
     }
     void ThrowAwayGloves()
     {
-        if (!hasGloves) return;
+        if (!hasGloves)
+        {
+            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje rukavica u otpad")); //5. korak (za sada)
+            if (!GameController.Instance.Steps[stepToBeDone.ID].WronglyDone)
+            {
+                GameController.Instance.Steps[stepToBeDone.ID].WronglyDone = true;
+                GameController.Instance.CheckIfPreviousStepsDone();
+                int nextStep = GameController.Instance.GetNextStep();
+                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            }
+
+            return;
+        }
         SetText(1, "Press 'R' to throw away gloves!");
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -137,6 +149,14 @@ public class PlayerInventory : MonoBehaviour
         if (playerInventory.Count == 0)
         {
             SetText(0, "");
+            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje eze u otpad")); //6. korak (za sada)
+            if (!GameController.Instance.Steps[stepToBeDone.ID].WronglyDone)
+            {
+                GameController.Instance.Steps[stepToBeDone.ID].WronglyDone = true;
+                GameController.Instance.CheckIfPreviousStepsDone();
+                int nextStep = GameController.Instance.GetNextStep();
+                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            }
             return;
         }
 
@@ -148,6 +168,13 @@ public class PlayerInventory : MonoBehaviour
             playerInventory.RemoveAt(selectedInventorySlot);
 
             Destroy(item);
+            
+            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje eze u otpad")); //6. korak (za sada)
+            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
+            GameController.Instance.CheckIfPreviousStepsDone();
+            int nextStep = GameController.Instance.GetNextStep();
+            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            
             this.AdjustSelectedItemDisplay();
         }
     }
