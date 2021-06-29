@@ -18,6 +18,9 @@ TagManager:
   - HintButton
   - HintPanel
   - BandH
+  - SaveLoad
+  - SceneControl
+  - GameControl
   layers:
   - Default
   - TransparentFX
