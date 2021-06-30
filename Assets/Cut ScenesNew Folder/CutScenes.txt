@@ -1,0 +1,55 @@
+PreCut Scena 
+
+----------------------------
+
+Poštovani dr.Patrick Hook
+
+Javljamo Vam se povodom kolonizacije planete Mars.
+Upravo se vraćaju vaše kolege astronauti sa planete Marsa, te donose prikupljeni uzorak tla. Potrebno je napraviti analizu tla, te utvrditi da li postoji bakterija i izraditi antibiogram za istu. Mladi ste znanstvenik i puni želje za radom i motiviranošću, te smatramo da bi ste odlično odradili svoj prvi posao, koji je ujedno važan za cijelo čovječanstvo i kolonizaciju planete.
+
+S poštovanjem,
+
+SpaceAtlas
+
+
+----------------------------
+Cut Scena 1
+----------------------------
+
+Stigli su rezultati, upravo si saznao da su tvoje kolege zaraženi bakterijom sa Marsa. Pokušaj napraviti antibiogram i pokušaj spasiti svoje kolege. Požuri...prijatelji su ti u opasnosti.
+
+----------------------------
+Cut Scena 2
+----------------------------
+Nešto čudno se dešava, bakterija se razmnožava sve brže i brže. Pokušaj ponovno razviti antibiogram i otkriti antibiotik za uništenje bakterije.
+
+
+----------------------------
+Cut Scena 3
+----------------------------
+Odlično obavljeno, ubili smo bakteriju - prividno i zaustavili širenje zaraze, potrebno je provjeriti kako su astronauti. Ako su još izloženi opasnosti i stanje im se pogoršalo potrebno je izraditi antibiogram da im pomogneš preživjeti.
+
+
+----------------------------
+Cut Scena 4
+----------------------------
+Astronautima se zdravlje pogoršalo, antibiotik koji si napravio više ne djeluje. Moraš požuriti nemaš više vremena. Svaka sekunda je bitna.
+
+
+----------------------------
+Cut Scena 5 
+---------------------------
+Ohhh neee, antibiotik i dalje ne pomaže, vrijeme istječe i počinje nastupati panika. Prijtelji astronauti su ti i dalje u nevolji, a ti ne znaš šta da radiš. Imaš vrmena za još jedan anibiogram i bez sumnje pokušavaš naći rješenje za spas prijatelja.
+
+
+-----------------------------
+Cut Scena 6
+-----------------------------
+Antibiogram je uspješno napravljen, potrebna je obrada podataka kroz jedan dan, nadamo se da antibiotik djeluje protiv bakterije i da si spasio život svojim prijateljima astronautima.
+
+
+--------------------------------
+Cut SCena 7
+-------------------------------
+
+Tu bi trebao ici nekli video za kraj.
