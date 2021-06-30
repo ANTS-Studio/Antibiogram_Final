@@ -16,11 +16,15 @@ public class DisinfectionScript : MonoBehaviour
         pickupableObject.isClean = true;
         if (pickupableObject.name == "Eza")
         {
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Sterilizacija ušice")); //4. korak
-            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepsDone();
             int nextStep = GameController.Instance.GetNextStep();
-            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            int thisStep = GameController.Instance.GetStepIndexByName("Sterilizacija ušice"); //4. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
         }
     }
     public bool GetIsClean()

@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public List<Step> Steps = new List<Step>();
     public int lastStepIndex;
     public int currentStepIndex;
+    public int nextStepIndex;
     public int currentNOfMistakes;
     public int totalNOfMistakes;
     private bool _doorTrigger;
@@ -19,12 +20,7 @@ public class GameController : MonoBehaviour
     public bool DoorTrigger
     {
         get => _doorTrigger;
-        set
-        {
-            //u setter ubacujemo funkciju koja se onda triggera kada se vrijednost mijenja, dobivamo "watcher"
-            _doorTrigger = value;
-            if(_doorTrigger) EndDay();
-        }
+        set => _doorTrigger = value;
     }
 
     //služi za pristupanje kontroleru od bilo kuda
@@ -45,18 +41,14 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
-
-    void Update()
-    {
-    }
-
+    
     void AddSteps()
     {
         //dodavanje stepova, kasnije uvjeti ovisno o tome koji je dan
         //index, name, stepDone, wronglyDone, hintText, tutorialText
         var index = 0;
         Steps.Add(new Step(index, "Ulazak u laboratorij", false, false, "Trebaš ući u laboratorij!",
-            "Dobrodošli! U edukacijskom načinu naučit ćete proces izrade antibiograma."));
+            "Dobrodošli! U edukacijskom načinu naučit ćete proces izrade antibiograma. Za početak, uđimo u laboratorij."));
         ++index;
         Steps.Add(new Step(index, "Pranje ruku ulaz", false, false, "Potraži slavinu i operi ruke.",
             "Prvo što trebamo napraviti je oprati ruke."));
@@ -71,7 +63,7 @@ public class GameController : MonoBehaviour
         ++index;
 
         Steps.Add(new Step(index, "Sterilizacija ušice", false, false,
-            "Koristi plamenik kako bi sterilizirao ušicu.", "I steriliziramo ju pomoću plamena."));
+            "Koristi plamenik kako bi sterilizirao ušicu.", "...I steriliziramo ju pomoću plamena."));
         ++index;
 
         // Steps.Add(new Step(index, "Pikanje kulture", false, false,
@@ -138,18 +130,18 @@ public class GameController : MonoBehaviour
             "Rukavice trebaš baciti u biološki otpad.",
             "Sada, naše rukavice trebamo odložiti u biološki otpad."));
         ++index;
-        
+
         Steps.Add(new Step(index, "Odlaganje eze u otpad", false, false,
             "Ezu trebaš baciti u biološki otpad.",
             "I ezu."));
         ++index;
-        
+
         Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Potraži slavinu i operi ruke.",
             "Još jednom peremo ruke..."));
         ++index;
 
         Steps.Add(new Step(index, "Izlaz laboratorij", false, false, "Vrati se u svoj ured.",
-            "I gotovi smo s našim procesom!"));
+            "I gotovi smo s našim procesom! Možemo se vratiti u ured kako bi započeli novi dan."));
 
         lastStepIndex = Steps.Count() - 1;
     }
@@ -164,41 +156,48 @@ public class GameController : MonoBehaviour
     //funkcija za završavanje dana; ako su svi koraci završeni i ako se igrač vrati u svoj ured onda se izvršava
     public void EndDay()
     {
-        if ((lastStepIndex == currentStepIndex) && _doorTrigger)
+        if ((lastStepIndex == nextStepIndex) && _doorTrigger)
         {
             currentNOfMistakes = GetCurrentNOfMistakes();
-            ResetSteps();
+            //ResetSteps();
             Debug.Log("-- NEW DAY --");
             //start cutscene
         }
     }
-    
-    public int GetCurrentStep()
-    {
-        var step = Steps.FindLast(x => x.StepDone == true || x.WronglyDone == true);
-        if (step != null) currentStepIndex = step.ID;
-        return currentStepIndex;
-    }
 
+    public int GetStepIndexByName(string StepName)
+    {
+        var step = Steps.Find(x => x.Name == StepName);
+        return step.ID;
+    }
     public int GetNextStep()
     {
-        var lastStepId = GetCurrentStep();
-        return ++lastStepId;
+        var step = Steps.FindLast(x => x.StepDone == true || x.WronglyDone == true);
+        if (step != null)
+        {
+            currentStepIndex = step.ID;
+            nextStepIndex = currentStepIndex + 1;
+        }
+        return nextStepIndex;    
     }
 
-    //ukoliko prethodni koraci nisu izvršeni, tj igrač ih je zaboravio, onda su to pogreške i to će se odražavati na ishod
-    public bool CheckIfPreviousStepsDone()
+    public void SetStepAsDone(int stepId)
     {
-        int previousStepIndex = GetCurrentStep() - 1;
+        Steps[stepId].StepDone = true;
+        if(stepId != lastStepIndex) Debug.Log("Next: " + GameController.Instance.Steps[stepId+1].Name);
+        GetNextStep();
+    }
+    //ukoliko prethodni koraci nisu izvršeni, tj igrač ih je zaboravio, onda su to pogreške i to će se odražavati na ishod
+    public void CheckIfPreviousStepsDone(int thisStepId)
+    {
+        int previousStepIndex = thisStepId - 1;
         if (!Steps[previousStepIndex].StepDone)
         {
             Steps.ForEach(x =>
             {
                 if (x.ID <= previousStepIndex && !x.StepDone) x.WronglyDone = true;
             });
-            return false;
         }
-        else return true;
     }
 
     //broj pogrešaka za taj dan
@@ -222,9 +221,10 @@ public class GameController : MonoBehaviour
         {
             return 1; //good ending cutscene
         }
+
         return 0; //bad ending cutscene
     }
-    
+
     //placeholder
     void LogicByLevels()
     {
