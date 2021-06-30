@@ -8,7 +8,7 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        //scene = SceneManager.GetActiveScene();
+        scene = SceneManager.GetActiveScene();
         Debug.Log("Active Scene is " + GetCurrentScene());
         Debug.Log(IsCurrentSceneEducational());
     }
