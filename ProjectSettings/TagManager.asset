@@ -54,6 +54,8 @@ TagManager:
   - ToggleGroup7
   - ToggleGroup8
   - SendButton
+  - Laptop
+  - Interpretation
   layers:
   - Default
   - TransparentFX

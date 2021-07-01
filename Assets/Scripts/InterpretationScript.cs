@@ -21,7 +21,8 @@ public class InterpretationScript : MonoBehaviour
     {
         for (int i = 0; i < measureNameTags.Length; i++)
         {
-            GameObject.FindGameObjectWithTag(measureNameTags[i]).GetComponent<TMPro.TextMeshProUGUI>().text = inputValues[i].ToString();
+            if(panel.activeSelf)
+                GameObject.FindGameObjectWithTag(measureNameTags[i]).GetComponent<TMPro.TextMeshProUGUI>().text = inputValues[i].ToString();
         }
     }
 
@@ -87,6 +88,8 @@ public class InterpretationScript : MonoBehaviour
 
     public bool IsInterpretationCorrect()
     {
+        SetMeasurmentValues(temporaryValues);
+        SetResAndSensValues();
         List<bool> userInput = GetUsersInputValues();
         List<bool> correctValues = GetInterpretationCorrectness();
         for(int i = 0; i < userInput.Count; i++)
@@ -103,9 +106,9 @@ public class InterpretationScript : MonoBehaviour
 
     void Start()
     {
+        panel.SetActive(false);
         sendButton.onClick.AddListener(() => IsInterpretationCorrect());
         //Funkcija SetMeasurementValues(); se zapravo poziva iz druge skripte, dakle, ne smije biti u startu
-        SetMeasurmentValues(temporaryValues);
-        SetResAndSensValues();
+
     }
 }
