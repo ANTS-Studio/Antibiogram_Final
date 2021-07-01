@@ -12,15 +12,14 @@ public class GameController : MonoBehaviour
     public List<Step> Steps = new List<Step>();
     public int lastStepIndex;
     public int currentStepIndex;
-    public int nextStepIndex;
     public int currentNOfMistakes;
     public int totalNOfMistakes;
-    private bool _doorTrigger;
+    private bool _endDayTrigger;
 
-    public bool DoorTrigger
+    public bool EndDayTrigger
     {
-        get => _doorTrigger;
-        set => _doorTrigger = value;
+        get => _endDayTrigger;
+        set => _endDayTrigger = value;
     }
 
     //služi za pristupanje kontroleru od bilo kuda
@@ -156,7 +155,7 @@ public class GameController : MonoBehaviour
     //funkcija za završavanje dana; ako su svi koraci završeni i ako se igrač vrati u svoj ured onda se izvršava
     public void EndDay()
     {
-        if ((lastStepIndex == nextStepIndex) && _doorTrigger)
+        if (_endDayTrigger)
         {
             currentNOfMistakes = GetCurrentNOfMistakes();
             //ResetSteps();
@@ -172,20 +171,16 @@ public class GameController : MonoBehaviour
     }
     public int GetNextStep()
     {
-        var step = Steps.FindLast(x => x.StepDone == true || x.WronglyDone == true);
-        if (step != null)
-        {
-            currentStepIndex = step.ID;
-            nextStepIndex = currentStepIndex + 1;
-        }
-        return nextStepIndex;    
+        var step = Steps.Find(x => x.StepDone == false && x.WronglyDone == false);
+        if(step != null) return step.ID;
+        return 999;
     }
 
     public void SetStepAsDone(int stepId)
     {
         Steps[stepId].StepDone = true;
-        if(stepId != lastStepIndex) Debug.Log("Next: " + GameController.Instance.Steps[stepId+1].Name);
-        GetNextStep();
+        int nextStep = GetNextStep();
+        if(stepId != lastStepIndex) Debug.Log("Next: " + Steps[nextStep].Name);
     }
     //ukoliko prethodni koraci nisu izvršeni, tj igrač ih je zaboravio, onda su to pogreške i to će se odražavati na ishod
     public void CheckIfPreviousStepsDone(int thisStepId)
@@ -195,8 +190,22 @@ public class GameController : MonoBehaviour
         {
             Steps.ForEach(x =>
             {
-                if (x.ID <= previousStepIndex && !x.StepDone) x.WronglyDone = true;
+                if (x.ID <= previousStepIndex && !x.StepDone)
+                {
+                    x.WronglyDone = true;
+                    x.StepDone = true;
+                }
             });
+
+            //posebni slucajevi
+            int stavljanjeR = GetStepIndexByName("Stavljanje rukavica");
+            int odlaganjeR = GetStepIndexByName("Odlaganje rukavica u otpad");
+            if (Steps[stavljanjeR].WronglyDone)
+            {
+                Steps[odlaganjeR].WronglyDone = true;
+                Steps[odlaganjeR].StepDone = true;
+            }
+            //za ezu...
         }
     }
 

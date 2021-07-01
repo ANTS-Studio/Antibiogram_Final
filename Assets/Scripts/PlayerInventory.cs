@@ -127,17 +127,6 @@ public class PlayerInventory : MonoBehaviour
     {
         if (!hasGloves)
         {
-            // int nextStep = GameController.Instance.GetNextStep();
-            // if (GameController.Instance.Steps[nextStep].Name.Equals("Odlaganje rukavica u otpad"))
-            // {
-            //     if (!GameController.Instance.Steps[nextStep].WronglyDone)
-            //     {
-            //         GameController.Instance.Steps[nextStep].WronglyDone = true;
-            //         //GameController.Instance.CheckIfPreviousStepsDone("Odlaganje rukavica u otpad");
-            //         GameController.Instance.Steps[nextStep].StepDone = true; //5. korak
-            //         Debug.Log("Next: " + GameController.Instance.Steps[nextStep + 1].Name);
-            //     }
-            // }
             return;
         }
         SetText(1, "Press 'R' to throw away gloves!");
@@ -164,17 +153,6 @@ public class PlayerInventory : MonoBehaviour
         if (playerInventory.Count == 0)
         {
             SetText(0, "");
-            // int nextStep = GameController.Instance.GetNextStep();
-            // if (GameController.Instance.Steps[nextStep].Name.Equals("Odlaganje eze u otpad"))
-            // {
-            //     if (!GameController.Instance.Steps[nextStep].WronglyDone)
-            //     {
-            //         GameController.Instance.Steps[nextStep].WronglyDone = true;
-            //         //GameController.Instance.CheckIfPreviousStepsDone("Odlaganje eze u otpad");
-            //         GameController.Instance.Steps[nextStep].StepDone = true; //6. korak
-            //         Debug.Log("Next: " + GameController.Instance.Steps[nextStep + 1].Name);
-            //     }
-            // }
             return;
         }
 

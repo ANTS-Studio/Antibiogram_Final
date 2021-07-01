@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour
         Animator door = transform.GetComponent<Animator>();
         opened = !opened;
         door.SetBool("Opened", opened);
-        
+
         int nextStep = GameController.Instance.GetNextStep();
         int ulazLab = GameController.Instance.GetStepIndexByName("Ulazak u laboratorij"); //0. korak
         int izlazLab = GameController.Instance.GetStepIndexByName("Izlaz laboratorij"); //7. korak
@@ -87,16 +87,21 @@ public class Interactable : MonoBehaviour
         {
             GameController.Instance.CheckIfPreviousStepsDone(izlazLab);
             GameController.Instance.SetStepAsDone(izlazLab);
-                
+            GameController.Instance.EndDayTrigger = true;
+            GameController.Instance.EndDay();
         }
-        else if(nextStep == izlazLab) GameController.Instance.SetStepAsDone(izlazLab);
+        else if (nextStep == izlazLab)
+        {
+            GameController.Instance.SetStepAsDone(izlazLab);
+            GameController.Instance.EndDayTrigger = true;
+            GameController.Instance.EndDay();
+        }
+
 
         //ulaz u laboratorij
-        if(nextStep == ulazLab)
+        if (nextStep == ulazLab)
         {
             GameController.Instance.SetStepAsDone(ulazLab);
         }
-        
-
     }
 }
