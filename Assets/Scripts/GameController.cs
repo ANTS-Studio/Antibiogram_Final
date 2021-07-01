@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -158,9 +159,10 @@ public class GameController : MonoBehaviour
         if (_endDayTrigger)
         {
             currentNOfMistakes = GetCurrentNOfMistakes();
-            //ResetSteps();
+            ++level;
+            ResetSteps();
             Debug.Log("-- NEW DAY --");
-            //start cutscene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -182,6 +184,7 @@ public class GameController : MonoBehaviour
         int nextStep = GetNextStep();
         if(stepId != lastStepIndex) Debug.Log("Next: " + Steps[nextStep].Name);
     }
+    
     //ukoliko prethodni koraci nisu izvršeni, tj igrač ih je zaboravio, onda su to pogreške i to će se odražavati na ishod
     public void CheckIfPreviousStepsDone(int thisStepId)
     {
@@ -213,7 +216,7 @@ public class GameController : MonoBehaviour
     public int GetCurrentNOfMistakes()
     {
         CalculateMistakes();
-        return Steps.Count(x => x.WronglyDone == true);
+        return Steps.Count(x => x.WronglyDone);
     }
 
     //ukupne pogreške u igri
