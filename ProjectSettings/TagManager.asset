@@ -56,6 +56,7 @@ TagManager:
   - SendButton
   - Laptop
   - Interpretation
+  - CutSceneDay1
   layers:
   - Default
   - TransparentFX

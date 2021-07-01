@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class GameController : MonoBehaviour
 {
@@ -15,14 +18,15 @@ public class GameController : MonoBehaviour
     public int currentStepIndex;
     public int currentNOfMistakes;
     public int totalNOfMistakes;
-    private bool _endDayTrigger;
-
-    public bool EndDayTrigger
-    {
-        get => _endDayTrigger;
-        set => _endDayTrigger = value;
-    }
-
+    public bool EndDayTrigger;
+    private PlayableDirector director;
+    public GameObject CutSceneDay1;
+    public GameObject CutSceneDay2;
+    public GameObject CutSceneDay3;
+    public GameObject CutSceneDay4;
+    public GameObject CutSceneDay5_0;
+    public GameObject CutSceneDay5_1;
+    
     //služi za pristupanje kontroleru od bilo kuda
     public static GameController Instance { get; private set; }
 
@@ -156,13 +160,31 @@ public class GameController : MonoBehaviour
     //funkcija za završavanje dana; ako su svi koraci završeni i ako se igrač vrati u svoj ured onda se izvršava
     public void EndDay()
     {
-        if (_endDayTrigger)
+        if (EndDayTrigger)
         {
             currentNOfMistakes = GetCurrentNOfMistakes();
             ++level;
             ResetSteps();
-            Debug.Log("-- NEW DAY --");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("-- NEW DAY -- DAY:" + level);
+
+            switch (level)
+            {
+                case 1:
+                    LoadCutScene(CutSceneDay1);
+                    break;
+                case 2:
+                    LoadCutScene(CutSceneDay1);
+                    break;
+                case 3:
+                    LoadCutScene(CutSceneDay1);
+                    break;
+                case 4:
+                    LoadCutScene(CutSceneDay1);
+                    break;
+                case 5:
+                    LoadCutScene(CutSceneDay1);
+                    break;
+            }
         }
     }
 
@@ -237,29 +259,35 @@ public class GameController : MonoBehaviour
         return 0; //bad ending cutscene
     }
 
-    //placeholder
-    void LogicByLevels()
+    public void LoadCutScene(GameObject CutScene)
     {
-        if (!educationalMode)
-        {
-            switch (level)
-            {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-            }
-        }
-        else
-        {
-        }
+        director = CutScene.GetComponent<PlayableDirector>();
+        CutScene.SetActive(true);
+        director.Play();
     }
+    //placeholder
+    // void LogicByLevels()
+    // {
+    //     if (!educationalMode)
+    //     {
+    //         switch (level)
+    //         {
+    //             case 0:
+    //                 break;
+    //             case 1:
+    //                 break;
+    //             case 2:
+    //                 break;
+    //             case 3:
+    //                 break;
+    //             case 4:
+    //                 break;
+    //             case 5:
+    //                 break;
+    //         }
+    //     }
+    //     else
+    //     {
+    //     }
+    // }
 }
