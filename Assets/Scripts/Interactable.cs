@@ -19,6 +19,7 @@ public class Interactable : MonoBehaviour
 
     public void Start()
     {
+        PlayerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
         MouseLookScript = PlayerCamera.GetComponent<MouseLook>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         anim = playerObj.GetComponent<Animator>();
