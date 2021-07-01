@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -91,21 +92,34 @@ public class Interactable : MonoBehaviour
 
     public void InteractionVrata()
     {
-        Animator door = transform.GetComponent<Animator>(); 
+        Animator door = transform.GetComponent<Animator>();
         opened = !opened;
         door.SetBool("Opened", opened);
-        
-        var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Ulazak u laboratorij")); //0. korak
-        GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
+
         int nextStep = GameController.Instance.GetNextStep();
-        Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
-        
-        if (GameController.Instance.Steps[nextStep].Name.Equals("Izlaz laboratorij"))
+        int ulazLab = GameController.Instance.GetStepIndexByName("Ulazak u laboratorij"); //0. korak
+        int izlazLab = GameController.Instance.GetStepIndexByName("Izlaz laboratorij"); //7. korak
+
+        //izlaz iz laboratorija, iznad je zbog uvjeta
+        if (nextStep != izlazLab && GameController.Instance.Steps[ulazLab].StepDone)
         {
-            stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Izlaz laboratorij")); //6. korak (za sada)
-            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            // nextStep = GameController.Instance.GetNextStep();
-            // Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            GameController.Instance.CheckIfPreviousStepsDone(izlazLab);
+            GameController.Instance.SetStepAsDone(izlazLab);
+            GameController.Instance.EndDayTrigger = true;
+            GameController.Instance.EndDay();
+        }
+        else if (nextStep == izlazLab)
+        {
+            GameController.Instance.SetStepAsDone(izlazLab);
+            GameController.Instance.EndDayTrigger = true;
+            GameController.Instance.EndDay();
+        }
+
+
+        //ulaz u laboratorij
+        if (nextStep == ulazLab)
+        {
+            GameController.Instance.SetStepAsDone(ulazLab);
         }
     }
 }

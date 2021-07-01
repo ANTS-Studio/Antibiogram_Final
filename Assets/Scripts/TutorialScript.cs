@@ -12,29 +12,36 @@ public class TutorialScript : MonoBehaviour
 
     public void CheckIfTutorialIsNeeded()
     {
-        if(sceneController.IsCurrentSceneEducational())
+        if (sceneController.IsCurrentSceneEducational())
         {
             OpenTutorialPanel();
         }
         else
         {
-            if(gameController.level == 0)
+            if (gameController.level == 0)
             {
                 OpenTutorialPanel();
             }
-
         }
     }
 
     public string GetNextStepTutorialText()
     {
-        //Promijeniti logiku za to
-        int lastStepIndex = GameController.Instance.lastStepIndex;
-        int stepId = GameController.Instance.currentStepIndex + 1;
-        string tutorialText = GameController.Instance.Steps[stepId].TutorialText;
-        return tutorialText;
+        int stepId = GameController.Instance.GetNextStep();
+        string tutorialText;
+        if (stepId <= GameController.Instance.lastStepIndex)
+        {
+            tutorialText = GameController.Instance.Steps[stepId].TutorialText;
+        }
+        else
+        {
+            tutorialText = "";
+            Panel.SetActive(false);
+        }
 
+        return tutorialText;
     }
+
     public void SetTutorialText()
     {
         TutorialText.GetComponent<TMPro.TextMeshProUGUI>().text = GetNextStepTutorialText();

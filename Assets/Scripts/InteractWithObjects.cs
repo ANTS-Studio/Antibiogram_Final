@@ -100,18 +100,30 @@ public class InteractWithObjects : MonoBehaviour
             PlayerInventory inventory = gameObject.GetComponent<PlayerInventory>();
             inventory.cleanHands = true;
             
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Pranje ruku ulaz")); //1. korak
-            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
             int nextStep = GameController.Instance.GetNextStep();
-            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
-            if (GameController.Instance.Steps[nextStep].Name.Equals("Pranje ruku izlaz"))
-            {
-                stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Pranje ruku izlaz")); //6. korak
-                GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-                nextStep = GameController.Instance.GetNextStep();
-                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            int pranjeUlaz = GameController.Instance.GetStepIndexByName("Pranje ruku ulaz"); //1. korak
+            int pranjeIzlaz = GameController.Instance.GetStepIndexByName("Pranje ruku izlaz"); //6. korak
 
+            if (nextStep != pranjeIzlaz && (GameController.Instance.Steps[pranjeUlaz].StepDone || GameController.Instance.Steps[pranjeUlaz].WronglyDone))
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(pranjeIzlaz);
+                GameController.Instance.SetStepAsDone(pranjeIzlaz);
+                
             }
+            else if(nextStep == pranjeIzlaz) GameController.Instance.SetStepAsDone(pranjeIzlaz);
+            
+            if (nextStep != pranjeUlaz && !(GameController.Instance.Steps[pranjeUlaz].StepDone || GameController.Instance.Steps[pranjeUlaz].WronglyDone))
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(pranjeUlaz);
+                GameController.Instance.SetStepAsDone(pranjeUlaz);
+                
+            }
+            else if (nextStep == pranjeUlaz)
+            {
+                GameController.Instance.SetStepAsDone(pranjeUlaz);
+            }
+            
+
             
             currentInteractionTimer = 0;
         }

@@ -80,11 +80,15 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (hitItem.name == "Eza")
                 {
-                    var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Uzimanje ušice")); //3. korak
-                    GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-                    GameController.Instance.CheckIfPreviousStepsDone();
                     int nextStep = GameController.Instance.GetNextStep();
-                    Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+                    int thisStep = GameController.Instance.GetStepIndexByName("Uzimanje ušice"); //3. korak
+                    if (nextStep != thisStep)
+                    {
+                        GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                        GameController.Instance.SetStepAsDone(thisStep);
+                
+                    }
+                    else GameController.Instance.SetStepAsDone(thisStep);
                 }
                 hitItem.SetActive(false);
                 playerInventory.Add(hitItem);
@@ -106,12 +110,16 @@ public class PlayerInventory : MonoBehaviour
             gloves.SetActive(false);
             hasGloves = true;
             
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Stavljanje rukavica")); //2. korak
-            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepsDone();
             int nextStep = GameController.Instance.GetNextStep();
-            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
-            
+            int thisStep = GameController.Instance.GetStepIndexByName("Stavljanje rukavica"); //2. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
+
             if (!cleanHands) Debug.Log("+1 Mistake(player didnt was hands)");
         }
     }
@@ -119,15 +127,6 @@ public class PlayerInventory : MonoBehaviour
     {
         if (!hasGloves)
         {
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje rukavica u otpad")); //5. korak (za sada)
-            if (!GameController.Instance.Steps[stepToBeDone.ID].WronglyDone)
-            {
-                GameController.Instance.Steps[stepToBeDone.ID].WronglyDone = true;
-                GameController.Instance.CheckIfPreviousStepsDone();
-                int nextStep = GameController.Instance.GetNextStep();
-                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
-            }
-
             return;
         }
         SetText(1, "Press 'R' to throw away gloves!");
@@ -136,11 +135,16 @@ public class PlayerInventory : MonoBehaviour
         {
             hasGloves = false;
             cleanHands = false;
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje rukavica u otpad")); //5. korak (za sada)
-            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepsDone();
+            
             int nextStep = GameController.Instance.GetNextStep();
-            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
+            int thisStep = GameController.Instance.GetStepIndexByName("Odlaganje rukavica u otpad"); //5. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
         }
     }
 
@@ -149,14 +153,6 @@ public class PlayerInventory : MonoBehaviour
         if (playerInventory.Count == 0)
         {
             SetText(0, "");
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje eze u otpad")); //6. korak (za sada)
-            if (!GameController.Instance.Steps[stepToBeDone.ID].WronglyDone)
-            {
-                GameController.Instance.Steps[stepToBeDone.ID].WronglyDone = true;
-                GameController.Instance.CheckIfPreviousStepsDone();
-                int nextStep = GameController.Instance.GetNextStep();
-                Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
-            }
             return;
         }
 
@@ -169,12 +165,15 @@ public class PlayerInventory : MonoBehaviour
 
             Destroy(item);
             
-            var stepToBeDone = GameController.Instance.Steps.Find(x => x.Name.Equals("Odlaganje eze u otpad")); //6. korak (za sada)
-            GameController.Instance.Steps[stepToBeDone.ID].StepDone = true;
-            GameController.Instance.CheckIfPreviousStepsDone();
             int nextStep = GameController.Instance.GetNextStep();
-            Debug.Log("Next: " + GameController.Instance.Steps[nextStep].Name);
-            
+            int thisStep = GameController.Instance.GetStepIndexByName("Odlaganje eze u otpad"); //6. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
             this.AdjustSelectedItemDisplay();
         }
     }
