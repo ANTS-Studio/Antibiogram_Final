@@ -21,6 +21,39 @@ TagManager:
   - SaveLoad
   - SceneControl
   - GameControl
+  - Measure1
+  - Measure2
+  - Measure3
+  - Measure4
+  - Measure5
+  - Measure6
+  - Measure7
+  - Measure8
+  - Resistant1
+  - Resistant2
+  - Resistant3
+  - Resistant4
+  - Resistant5
+  - Resistant6
+  - Resistant7
+  - Resistant8
+  - Sensitive1
+  - Sensitive2
+  - Sensitive3
+  - Sensitive4
+  - Sensitive5
+  - Sensitive6
+  - Sensitive7
+  - Sensitive8
+  - ToggleGroup1
+  - ToggleGroup2
+  - ToggleGroup3
+  - ToggleGroup4
+  - ToggleGroup5
+  - ToggleGroup6
+  - ToggleGroup7
+  - ToggleGroup8
+  - SendButton
   layers:
   - Default
   - TransparentFX

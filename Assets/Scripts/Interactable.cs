@@ -6,14 +6,19 @@ public class Interactable : MonoBehaviour
     public float radius = 30f;
     public Transform interactionTransform;
     public GameObject obj;
+    public GameObject PlayerCamera;
+    public GameObject interpretationPanel;
     private bool isFocus = false;
     private bool hasInteracted = false;
+    public static bool IsPaused = false;
+    public MouseLook MouseLookScript;
     private Transform player;
     private Animator anim;
     private Boolean opened = false;
 
     public void Start()
     {
+        MouseLookScript = PlayerCamera.GetComponent<MouseLook>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         anim = playerObj.GetComponent<Animator>();
         if (gameObject.transform.Find("InteractionPoint") != null)
@@ -66,9 +71,22 @@ public class Interactable : MonoBehaviour
             case "Vrata":
                 InteractionVrata();
                 break;
+            case "Laptop":
+                InteractionLaptop();
+                break;
             default:
                 break;
         }
+    }
+    public void InteractionLaptop()
+    {
+        //Button u skripti InterpretationScript vraca je li interpretacija tocna ili netocna. Vraca bool
+        interpretationPanel.SetActive(true);
+        MouseLookScript.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0f;
+        IsPaused = true;
     }
 
     public void InteractionVrata()

@@ -29,12 +29,12 @@ public class SceneController : MonoBehaviour
         string sceneName = GetCurrentScene();
         if(sceneName == "Educational")
         {
-            Debug.Log("Trenutna scena je edukacijska");
+            //Debug.Log("Trenutna scena je edukacijska");
             return true;
         }
         else
         {
-            Debug.Log("Trenutna scena nije edukacijska");
+            //Debug.Log("Trenutna scena nije edukacijska");
             return false;
         }
     }

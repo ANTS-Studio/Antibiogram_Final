@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 //TODO
 //1. Dohvat broja pogresaka
 //2. Funkcija za dohvata levela
@@ -84,7 +83,6 @@ public class PlayerStatus : MonoBehaviour
         int currentStep = gameController.GetNextStep();
         string text = gameController.Steps[currentStep].Hint;
         Panel.SetActive(true);
-        string temporaryText = "Hint koji proizlazi iz nekog koraka u procesu.";
         HintText.GetComponent<TMPro.TextMeshProUGUI>().text = text;
         StartCoroutine(waitForHint());
     }
@@ -167,6 +165,8 @@ public class PlayerStatus : MonoBehaviour
 
     void Start()
     {
+
+
         //Ako je trenutna scena edukacijska disable UI
         if(sceneController.IsCurrentSceneEducational())
         {

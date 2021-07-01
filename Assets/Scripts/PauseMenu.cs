@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject PlayerCamera;
     public GameObject PauseMenuUI;
+    public GameObject PauseMenuEducational;
+    public SceneController sceneController;
     public static bool IsPaused = false;
     public MouseLook MouseLookScript;
     public Button Save, Load, Options, Menu;
@@ -19,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     {
         MouseLookScript = PlayerCamera.GetComponent<MouseLook>();
         PauseMenuUI.SetActive(false);
+        PauseMenuEducational.SetActive(false);
     }
 
     void Update()
@@ -73,9 +76,18 @@ public class PauseMenu : MonoBehaviour
         MouseLookScript.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         IsPaused = true;
+
+
+        if (sceneController.IsCurrentSceneEducational())
+        {
+            PauseMenuEducational.SetActive(true);
+        }
+        else
+        {
+            PauseMenuUI.SetActive(true);
+        }
     }
 
     public void GoToMenu()

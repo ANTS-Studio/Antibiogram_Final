@@ -28,6 +28,8 @@ public class TutorialScript : MonoBehaviour
 
     public string GetNextStepTutorialText()
     {
+        //Promijeniti logiku za to
+        int lastStepIndex = GameController.Instance.lastStepIndex;
         int stepId = GameController.Instance.currentStepIndex + 1;
         string tutorialText = GameController.Instance.Steps[stepId].TutorialText;
         return tutorialText;
