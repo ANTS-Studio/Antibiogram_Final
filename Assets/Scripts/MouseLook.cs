@@ -28,6 +28,8 @@ public class MouseLook : MonoBehaviour{
 
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        var barAndH =  GameObject.FindWithTag("BandH");
+        status = barAndH.GetComponent<PlayerStatus>();
         player = GameObject.FindWithTag("Player");
     }
 
@@ -49,7 +51,7 @@ public class MouseLook : MonoBehaviour{
 }
 
 
-//funkcija prima sekunde i kao argument stavlja u treönju
+//funkcija prima sekunde i kao argument stavlja u tre≈°nju
 
 
 //Story

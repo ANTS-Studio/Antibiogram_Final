@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour
             case 3:
             case 4:
             case 5:
+                var array = Steps.ToArray();
                 Steps.Add(new Step(index, "Ulazak u laboratorij", false, false, "Trebaš ući u laboratorij!",
                     "Dobrodošli! U edukacijskom načinu naučit ćete proces izrade antibiograma. Za početak, uđimo u laboratorij."));
                 ++index;
@@ -207,16 +208,16 @@ public class GameController : MonoBehaviour
                     LoadCutScene("CutSceneDay1");
                     break;
                 case 2:
-                    LoadCutScene("CutSceneDay1");
+                    LoadCutScene("CutSceneDay2");
                     break;
                 case 3:
-                    LoadCutScene("CutSceneDay1");
+                    LoadCutScene("CutSceneDay3");
                     break;
                 case 4:
-                    LoadCutScene("CutSceneDay1");
+                    LoadCutScene("CutSceneDay4");
                     break;
                 case 5:
-                    LoadCutScene("CutSceneDay1");
+                    LoadCutScene(Ending() == 1 ? "CutSceneDay5" : "CutSceneDay5B");
                     break;
             }
         }
