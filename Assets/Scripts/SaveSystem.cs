@@ -19,6 +19,7 @@ public static class SaveSystem
         //Debug.Log(playerData.position[0]);
         //Debug.Log(playerData.position[1]);
         //Debug.Log(playerData.position[2]);
+        //Debug.Log(playerData.steps);
         Debug.Log(playerData.numberOfMistakes);
         formatter.Serialize(stream, playerData);
         stream.Close();
@@ -34,6 +35,7 @@ public static class SaveSystem
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
             stream.Close();
             //Debug.Log("Ucitavanje podataka");
+            //Debug.Log(data.steps);
             //Debug.Log(data.concentration);
             //Debug.Log(data.stress);
             //Debug.Log(data.hints);
@@ -41,7 +43,7 @@ public static class SaveSystem
             //Debug.Log(data.position[0]);
             //Debug.Log(data.position[1]);
             //Debug.Log(data.position[2]);
-            Debug.Log(data.numberOfMistakes);
+            //Debug.Log(data.numberOfMistakes);
             return data;
         }
         else

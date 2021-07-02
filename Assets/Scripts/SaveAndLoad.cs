@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using DefaultNamespace;
 
 public class SaveAndLoad : MonoBehaviour
 {
@@ -19,13 +20,9 @@ public class SaveAndLoad : MonoBehaviour
     
     void Update()
     {
-        //var array = playerStatus.GetPlayerStatusData();
         concentration = playerStatus.currentConcentration;
         stress = playerStatus.currentStress;
         hints = playerStatus.numberOfHints;
-        //concentration = array[0];
-        //stress = array[1];
-        //hints = array[2];
 
         position = new float[3];
         position[0] = player.transform.position.x;
