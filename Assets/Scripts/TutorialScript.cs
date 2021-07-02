@@ -7,8 +7,6 @@ public class TutorialScript : MonoBehaviour
     public GameObject Panel;
     public GameObject TutorialText;
     public SceneController sceneController;
-    public GameController gameController;
-
 
     public void CheckIfTutorialIsNeeded()
     {
@@ -18,7 +16,7 @@ public class TutorialScript : MonoBehaviour
         }
         else
         {
-            if (gameController.level == 0)
+            if (GameController.Instance.level == 0)
             {
                 OpenTutorialPanel();
             }

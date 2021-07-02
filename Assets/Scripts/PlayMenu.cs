@@ -10,9 +10,15 @@ public class PlayMenu : MonoBehaviour
     public GameObject ControlPanel;
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Day0", LoadSceneMode.Single);
+        GameController.Instance.educationalMode = false;
     }
 
+    public void PlayEdu()
+    {
+        SceneManager.LoadScene("Educational", LoadSceneMode.Single);
+        GameController.Instance.educationalMode = true;
+    }
     private void Awake()
     {
         director = ControlPanel.GetComponent<PlayableDirector>();

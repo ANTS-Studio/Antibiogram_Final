@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class SaveAndLoad : MonoBehaviour
@@ -8,16 +9,14 @@ public class SaveAndLoad : MonoBehaviour
     public int concentration;
     public int stress;
     public int hints;
-
+    public List<Step> steps;
     public int currentLevel;
     public int currentStep;
     public int numberOfMistakes;
 
     public PlayerStatus playerStatus;
     public GameObject player;
-    public GameController gameController;
-
-
+    
     void Update()
     {
         //var array = playerStatus.GetPlayerStatusData();
@@ -33,8 +32,9 @@ public class SaveAndLoad : MonoBehaviour
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
 
-        currentLevel = gameController.level;
-        currentStep = gameController.currentStepIndex;
-        numberOfMistakes = gameController.currentNOfMistakes;      
+        steps = GameController.Instance.Steps;
+        currentLevel = GameController.Instance.level;
+        currentStep = GameController.Instance.currentStepIndex;
+        numberOfMistakes = GameController.Instance.currentNOfMistakes;      
     }
 }

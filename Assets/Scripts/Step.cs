@@ -1,5 +1,8 @@
-﻿namespace DefaultNamespace
+﻿using System;
+
+namespace DefaultNamespace
 {
+    [Serializable]
     public class Step
     {
         private int _id;

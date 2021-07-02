@@ -15,6 +15,7 @@ public static class SaveSystem
         //Debug.Log(playerData.concentration);
         //Debug.Log(playerData.stress);
         //Debug.Log(playerData.hints);
+        //Debug.Log(playerData.steps);
         //Debug.Log(playerData.position[0]);
         //Debug.Log(playerData.position[1]);
         //Debug.Log(playerData.position[2]);
@@ -36,6 +37,7 @@ public static class SaveSystem
             //Debug.Log(data.concentration);
             //Debug.Log(data.stress);
             //Debug.Log(data.hints);
+            //Debug.Log(data.steps);
             //Debug.Log(data.position[0]);
             //Debug.Log(data.position[1]);
             //Debug.Log(data.position[2]);

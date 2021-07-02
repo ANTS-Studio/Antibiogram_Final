@@ -83,101 +83,100 @@ public class GameController : MonoBehaviour
             case 4:
             case 5:
                 var array = Steps.ToArray();
-                Steps.Add(new Step(index, "Ulazak u laboratorij", false, false, "Trebaš ući u laboratorij!",
-                    "Dobrodošli! U edukacijskom načinu naučit ćete proces izrade antibiograma. Za početak, uđimo u laboratorij."));
+                Steps.Add(new Step(index, "Ulazak u laboratorij", false, false, "You need to enter the laboratory.",
+                    "Welcome! In the educational mode you will go through the process of creating and interpreting an antibiogram. For starters, let's enter the laboratory."));
                 ++index;
-                Steps.Add(new Step(index, "Pranje ruku ulaz", false, false, "Potraži slavinu i operi ruke.",
-                    "Prvo što trebamo napraviti je oprati ruke."));
-                ++index;
-
-                Steps.Add(new Step(index, "Stavljanje rukavica", false, false, "Pronađi rukavice i stavi ih.",
-                    "Zatim, stavljamo rukavice."));
+                Steps.Add(new Step(index, "Pranje ruku ulaz", false, false, "Look for a sink and wash your hands.",
+                    "First, we need to wash our hands."));
                 ++index;
 
-                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Uzmi metalnu ušicu.",
-                    "Onda uzimamo metalnu ušicu, tj. ezu..."));
+                Steps.Add(new Step(index, "Stavljanje rukavica", false, false, "Find gloves and put them on.",
+                    "Then, we put on glaves."));
+                ++index;
+
+                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the swab stick.",
+                    "Now, we take the swab stick."));
                 ++index;
 
                 Steps.Add(new Step(index, "Sterilizacija ušice", false, false,
-                    "Koristi plamenik kako bi sterilizirao ušicu.", "...I steriliziramo ju pomoću plamena."));
+                    "Use the bunsen burner to sterilize it.", "...And we sterilize it using flame."));
                 ++index;
 
                 // Steps.Add(new Step(index, "Pikanje kulture", false, false,
-                //     "Pronađi petrijevu zdjelicu s kulturom i pikaj kulturu.",
-                //     "Nakon toga, spremni smo za pikanje kulture. Pronađi petrijevu zdjelicu i pikaj kulturu."));
+                //     "Find the petri dish and take a sample of the bacterial culture.",
+                //     "After that, we are ready to take a sample of the bacterial culture. Find the petri dish with the bacterial culture and take a sample of it."));
                 // ++index;
-                //
-                // Steps.Add(new Step(index, "Sterilizacija vrha epruvete", false, false, "Koristi epruvetu s plamenikom.",
-                //     "Nakon pikanja, uzimamo epruvetu i steriliziramo ju pomoću plamena."));
+                // Steps.Add(new Step(index, "Sterilizacija vrha epruvete", false, false, "Sterilize the test tube with flame.",
+                //     "Let's take the test tube and sterilize it with flame."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
-                //     "Ušicu stavi u epruvetu i promiješaj.",
-                //     "Onda pikanu kulturu stavljamo u epruvetu i miješamo."));
+                //     "Put the swab stick in the test tube and mix.",
+                //     "We then put our swab stick in the test tube and mix."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Uzimanje petrijeve zdjelice", false, false, "Uzmi petrijevu zdjelicu.",
-                //     "Sada, uzimamo petrijevu zdjelicu..."));
+                // Steps.Add(new Step(index, "Uzimanje petrijeve zdjelice", false, false, "Take the petri dish.",
+                //     "Let's take the petri dish."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Šaranje podloge na petrijevoj zdjelici", false, false,
-                //     "Šaraj po podlozi sa ušicom.",
-                //     "I šaramo po podlozi. Potrebno je išarati podlogu, okrenuti zdjelicu za 60° i ponovno šarati, te još jednom za 60° i šarati."));
+                //     "Use the swab stick to go over the petri dish.",
+                //     "And now we go over the whole surface of the petri dish using the swab stick. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Zatvori zdjelicu.",
-                //     "Zatvaramo zdjelicu."));
+                // Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
+                //     "We close the petri dish."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Crtanje sektora po zdjelici", false, false, "Nacrtaj sektore po zdjelici.",
-                //     "Crtamo sektore po zdjelici! Moramo se pobrinuti da ima dovoljno mjesta za antibiotike i njihovo djeleovanje, stoga nacrtajmo 4 sektora."));
+                // Steps.Add(new Step(index, "Crtanje sektora po zdjelici", false, false, "Take the marker and draw sectors over the petri dish.",
+                //     "It's time to draw sectors over the petri dish. We need to make sure that there is enough space for each antibiotic. Let's do eight."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Uzimanje i sterilizacija pincete", false, false,
-                //     "Uzmi pincetu i steriliziraj ju na vatri.",
-                //     "Uzmimo pincetu i sterilizirajmo ju na vatri."));
+                //     "Take the forceps and sterilize it using flame.",
+                //     "Then, we take the forceps and sterilize it using flame."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Uzimanje antibiotika pincetom i postavljanje na sektore", false, false,
-                //     "Uzmi antibiotik pomoću pincete i postavi ih u zdjelicu.",
-                //     "Pincetom ćemo uzeti antibiotik i postaviti ga u centar sektora na zdjelici."));
+                //     "Take the antibiotics and put them on the petri dish.",
+                //     "Using the forceps we will take antibiotics and put them in the middle of each sector in the petri dish."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
-                //     "Stavi zdjelicu u inkubator.",
-                //     "Zatim zdjelicu zatvaramo i stavljamo ju u inkubator na 37.5 stupnjeva."));
+                //     "Put the petri dish in the incubator.",
+                //     "We then close the petri dish and put it in the incubator, setting the temperature to 37.5 degrees Celsius."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
-                //     "Izvadi zdjelicu iz inkubatora.",
-                //     "Ostavili smo zdjelicu preko noći i sada ju možemo izvaditi te vidjeti naše rezultate."));
+                //     "Take the petri dish out of the incubator.",
+                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish now available for interpretation, our colleagues left it for us."));
                 // ++index;
                 //
                 // Steps.Add(new Step(index, "Postavljanje zdjelice na stol i mjerenje zona inhibicije", false, false,
-                //     "Stavi zdjelicu na stol i uzmi ravnalo kako bi izmjerio zone inhibicije.",
-                //     "Stavljamo zdjelicu na stol i mjerimo zone inhibicije pomoću ravnala."));
+                //     "Put the petri dish on the table and take the ruler to measure the inhibition zones.",
+                //     "Then, we put the petri dish on the table and measure the inhibition zones using the ruler."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Protumači antibiogram.",
-                //     "Vrijeme je za tumačenje naših rezultata. Bla bla bla bla."));
+                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Interpret the antibiogram.",
+                //     "It's time to interpret our antibiogram. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
                 // ++index;
 
                 Steps.Add(new Step(index, "Odlaganje rukavica u otpad", false, false,
-                    "Rukavice trebaš baciti u biološki otpad.",
-                    "Sada, naše rukavice trebamo odložiti u biološki otpad."));
+                    "You need to put the gloves in the biohazardous waste.",
+                    "Almost done. Our gloves need to go into biohazardous waste."));
                 ++index;
 
                 Steps.Add(new Step(index, "Odlaganje eze u otpad", false, false,
-                    "Ezu trebaš baciti u biološki otpad.",
-                    "I ezu."));
+                    "You need to throw the swab stick into biohazardous waste.",
+                    "And the swab stick too."));
                 ++index;
 
-                Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Potraži slavinu i operi ruke.",
-                    "Još jednom peremo ruke..."));
+                Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Wash your hands in the sink.",
+                    "We wash our hands one more time."));
                 ++index;
 
-                Steps.Add(new Step(index, "Izlaz laboratorij", false, false, "Vrati se u svoj ured.",
-                    "I gotovi smo s našim procesom! Možemo se vratiti u ured kako bi započeli novi dan."));
+                Steps.Add(new Step(index, "Izlaz laboratorij", false, false, "Go back to your office.",
+                    "And we are done with our process. Congratulations, you've made it!"));
 
                 lastStepIndex = Steps.Count() - 1;
                 break;
