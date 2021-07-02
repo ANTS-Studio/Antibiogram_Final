@@ -210,54 +210,44 @@ public class PlayerStatus : MonoBehaviour
         float calculation = 2 * concentration - stress;
         Debug.Log(calculation);
 
-        if(calculation == 197f) //182
+        if(calculation == 182f) //182
         {
-            return 1f;
-            Debug.Log("Pao je ispod 182f");
+            return 0.3f;
         }
         else if(calculation == 164f)
         {
-            Debug.Log("Pao je ispod 164f");
-            return 1.5f;
+            return 0.7f;
         }
         else if (calculation == 137f)
         {
-            Debug.Log("Pao je ispod 137f");
-            return 2f;
+            return 1.1f;
         }
         else if (calculation == 116f)
         {
-            Debug.Log("Pao je ispod 116f");
-            return 2.2f;
+            return 1.4f;
         }
         else if (calculation == 98f)
         {
-            Debug.Log("Pao je ispod 98f");
-            return 2.4f;
+            return 1.7f;
         }
         else if (calculation == 68f)
         {
-            Debug.Log("Pao je ispod 68f");
-            return 3f;
+            return 1.9f;
         }
         else if (calculation == 41f)
         {
-            Debug.Log("Pao je ispod 41f");
-            return 3.5f;
+            return 2.1f;
         }
         else if (calculation == 26f)
         {
-            Debug.Log("Pao je ispod 26f");
-            return 3.6f;
+            return 2.4f;
         }
         else if (calculation == 11f)
         {
-            Debug.Log("Pao je ispod 11f");
-            return 3.7f;
+            return 3f;
         }
         else if(calculation < 0)
         {
-            Debug.Log("Pao je ispod 0");
             calculation = 200f;
         }
         return 0f;
