@@ -2889,7 +2889,7 @@ PlayableDirector:
   m_GameObject: {fileID: 795585353}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: e8d2a92588fa816408968aa284f6bdad, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: fee81507123ac404c894b56421e73e8b, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -7414,6 +7414,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: baf9f97bb8ae43c4e8dda15c29a2b348, type: 2}
+  optionsMenu: {fileID: 0}
+  backButton: {fileID: 0}
+  sceneController: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  eduPauseMenu: {fileID: 0}
 --- !u!1 &2126391005
 GameObject:
   m_ObjectHideFlags: 0
