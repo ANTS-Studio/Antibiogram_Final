@@ -37504,12 +37504,7 @@ MonoBehaviour:
   currentNOfMistakes: 0
   totalNOfMistakes: 0
   EndDayTrigger: 0
-  CutSceneDay1: {fileID: 1100432290}
-  CutSceneDay2: {fileID: 0}
-  CutSceneDay3: {fileID: 0}
-  CutSceneDay4: {fileID: 0}
-  CutSceneDay5_0: {fileID: 0}
-  CutSceneDay5_1: {fileID: 0}
+  entryFlag: 0
 --- !u!4 &595830301
 Transform:
   m_ObjectHideFlags: 0
@@ -71378,7 +71373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1100432291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71478,7 +71473,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100432290}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
