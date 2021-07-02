@@ -6,7 +6,6 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public string steps;
     public float[] position;
     public int concentration;
     public int stress;
