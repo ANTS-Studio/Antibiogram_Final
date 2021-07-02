@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    public string steps;
     public float[] position;
     public int concentration;
     public int stress;
@@ -25,6 +26,9 @@ public class PlayerData
         currentScene = saveAndLoad.currentLevel;
         currentStep = saveAndLoad.currentStep;
         numberOfMistakes = saveAndLoad.numberOfMistakes;
+        //steps = saveAndLoad.listKoraka;
+        //nesto = saveAndLoad.step;
+
     }
 }
 

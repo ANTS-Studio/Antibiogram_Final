@@ -208,7 +208,7 @@ public class PlayerStatus : MonoBehaviour
         float concentration = currentConcentration;
         float stress = currentStress;
         float calculation = 2 * concentration - stress;
-        Debug.Log(calculation);
+        //Debug.Log(calculation);
 
         if(calculation == 182f) //182
         {

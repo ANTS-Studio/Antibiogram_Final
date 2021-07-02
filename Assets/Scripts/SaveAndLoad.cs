@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DefaultNamespace;
 
 public class SaveAndLoad : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class SaveAndLoad : MonoBehaviour
     public int concentration;
     public int stress;
     public int hints;
+    //public List<Step> koraci = new List<Step>();
+    public string listaKoraka;
 
     public int currentLevel;
     public int currentStep;
@@ -15,26 +18,22 @@ public class SaveAndLoad : MonoBehaviour
 
     public PlayerStatus playerStatus;
     public GameObject player;
-    public GameController gameController;
-
 
     void Update()
     {
-        //var array = playerStatus.GetPlayerStatusData();
         concentration = playerStatus.currentConcentration;
         stress = playerStatus.currentStress;
         hints = playerStatus.numberOfHints;
-        //concentration = array[0];
-        //stress = array[1];
-        //hints = array[2];
 
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
-
-        currentLevel = gameController.level;
-        currentStep = gameController.currentStepIndex;
-        numberOfMistakes = gameController.currentNOfMistakes;      
+        //step = koraci.ToArray();
+        //koraci = GameController.Instance.Steps;
+        //listaKoraka = koraci.//.ToString();
+        currentLevel = GameController.Instance.level;
+        currentStep = GameController.Instance.currentStepIndex;
+        numberOfMistakes = GameController.Instance.currentNOfMistakes;      
     }
 }
