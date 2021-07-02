@@ -12352,7 +12352,6 @@ MonoBehaviour:
   Save: {fileID: 0}
   Load: {fileID: 0}
   Options: {fileID: 0}
-  Menu: {fileID: 0}
 --- !u!1 &162609239
 GameObject:
   m_ObjectHideFlags: 0
@@ -26062,7 +26061,6 @@ MonoBehaviour:
   Save: {fileID: 0}
   Load: {fileID: 0}
   Options: {fileID: 542654829}
-  Menu: {fileID: 0}
 --- !u!114 &388567578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54043,8 +54041,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278979791
+  m_fontColor: {r: 0.8117648, g: 0.04705883, b: 0.04705883, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -60366,13 +60364,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 1056162341}
   PauseMenuUI: {fileID: 925537955}
-  PauseMenuEducational: {fileID: 0}
-  sceneController: {fileID: 0}
+  PauseMenuEducational: {fileID: 388567574}
+  sceneController: {fileID: 1845754662}
   MouseLookScript: {fileID: 0}
   Save: {fileID: 1060754321}
   Load: {fileID: 1807776380}
   Options: {fileID: 2067598521}
-  Menu: {fileID: 0}
 --- !u!114 &925537960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108105,6 +108102,7 @@ MonoBehaviour:
   currentConcentration: 0
   currentStress: 0
   numberOfHints: 0
+  mouseLook: {fileID: 1056162343}
   stressSlider: {fileID: 797993547}
   concentrationSlider: {fileID: 321413836}
   Panel: {fileID: 994713212}
@@ -127268,8 +127266,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -55, y: -40}
-  m_SizeDelta: {x: 50, y: 20}
+  m_AnchoredPosition: {x: -48, y: -37.5}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016211507
 MonoBehaviour:
@@ -127348,7 +127346,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -127623,11 +127621,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: baf9f97bb8ae43c4e8dda15c29a2b348, type: 2}
-  optionsMenu: {fileID: 0}
-  backButton: {fileID: 0}
-  sceneController: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  eduPauseMenu: {fileID: 0}
+  optionsMenu: {fileID: 2018902153}
+  backButton: {fileID: 1439633332}
+  sceneController: {fileID: 1845754662}
+  pauseMenu: {fileID: 925537955}
+  eduPauseMenu: {fileID: 388567574}
 --- !u!224 &2018902155
 RectTransform:
   m_ObjectHideFlags: 0

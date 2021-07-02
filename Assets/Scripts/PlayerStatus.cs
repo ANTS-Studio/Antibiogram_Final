@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//TODO
-//1. Dohvat broja pogresaka
-//2. Funkcija za dohvata levela
-//3. 
-//0. U edukacijskom modeu i Day0 nema hintova!!! Treba promijeniti logiku
-//0.1 Izmijeniti defaultne vrijednosti
-//0.2 Dodati funkciju koja provjerava je li edu ili day0
-//0.3 Dodati funkciju koja sprjecava otvaranje panela
 
+//Educational
+//Dayn - Izrada (Da) - Interpretacija (Da) - Tutorial Mode - Prikaz StoryUI(Ne) - Prikaz TutorialUI(Da) 
+
+//Story
+//Day0 - Izrada (Da) - Interpretacija (Da) - Tutorial Mode - Prikaz StoryUI(Ne) - Prikaz TutorialUI(Da) 
+//Day1 - Izrada (Da) - Interpretacija (Ne) - Prikaz StoryUI(Da) - Prikaz TutorialUI(Ne) 
+//Day2 - Izrada (Ne) - Interpretacija (Da) - Prikaz StoryUI(Ne) - Prikaz TutorialUI(Ne) 
+//Day3 - Izrada (Da) - Interpretacija (Ne) - Prikaz StoryUI(Ne) - Prikaz TutorialUI(Ne) 
+//Day4 - Izrada (Da) - Interpretacija (Da) - Prikaz StoryUI(Ne) - Prikaz TutorialUI(Ne) 
+//Day5 - Izrada (Ne) - Interpretacija (Da) - Prikaz StoryUI(Ne) - Prikaz TutorialUI(Ne) 
 
 public class PlayerStatus : MonoBehaviour
 {
     int minConcentration = 0;
     int maxStress = 100;
+    float elapsed = 0f;
+
     public int currentConcentration = 0;
     public int currentStress = 0;
     public int numberOfHints = 0;
 
+    public MouseLook mouseLook;
     public Slider stressSlider, concentrationSlider;
     public GameObject Panel;
     public GameObject HintText;
     public SceneController sceneController;
-    public GameController gameController;
     public GameObject bandh;
 
     //Dohvati broj iz Hinta
@@ -57,19 +61,6 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    //Iteratori za stres i koncentraciju
-    public void changeStressAndConcetration()
-    {
-        if (currentStress < maxStress) { 
-            currentStress += 1;
-            stressSlider.value = currentStress;
-        }
-        if (currentConcentration > minConcentration) {
-            currentConcentration -= 1;
-            concentrationSlider.value = currentConcentration;
-        }
-    }
-
     //Async za zatvaranje panela nakon prikazanog hinta
     IEnumerator waitForHint()
     {
@@ -80,80 +71,56 @@ public class PlayerStatus : MonoBehaviour
     //Funkcija s logikom za otvaranje panela, dohvatom hinta, prikazom hinta i zatvaranjem
     public void OpenPanel()
     {
-        int currentStep = gameController.GetNextStep();
-        string text = gameController.Steps[currentStep].Hint;
+        int currentStep = GameController.Instance.GetNextStep();
+        string text = GameController.Instance.Steps[currentStep].Hint;
         Panel.SetActive(true);
         HintText.GetComponent<TMPro.TextMeshProUGUI>().text = text;
         StartCoroutine(waitForHint());
     }
 
     //Funkcija koja postavlja pocetne vrijednosti na pocetku scene
-    public void setDefaultValues()
+    public void SetDefaultValues()
     {
-        string scene = sceneController.GetCurrentScene();
+        int day = GameController.Instance.level;
+        bool educational = GameController.Instance.educationalMode;
 
-        switch(scene)
+        if (!educational)
         {
-            case "Educational":
-                //Jos cemo vidjeti
-                break;
-            case "Day0":
-                currentConcentration = 100;
-                currentStress = 0;
-                numberOfHints = 5;
-                break;
-            case "Day1":
-                currentConcentration = 95;
-                currentStress = 3;
-                numberOfHints = 5;
-                break;
-            case "Day2":
-                currentConcentration = 90;
-                currentStress = 6;
-                numberOfHints = 4;
-                break;
-            case "Day3":
-                currentConcentration = 85;
-                currentStress = 9;
-                numberOfHints = 4;
-                break;
-            case "Day4":
-                currentConcentration = 80;
-                currentStress = 12;
-                numberOfHints = 3;
-                break;
-            case "Day5":
-                currentConcentration = 75;
-                currentStress = 15;
-                numberOfHints = 3;
-                break;
-            case "Day6":
-                currentConcentration = 100;
-                currentStress = 0;
-                numberOfHints = 5;
-                break;
+            switch (day)
+            {
+                //Tutorial Mode
+                case 0:
+                    currentConcentration = 100;
+                    currentStress = 0;
+                    numberOfHints = 5;
+                    break;
+                case 1:
+                    currentConcentration = 100;
+                    currentStress = 0;
+                    numberOfHints = 5;
+                    break;
+                case 2:
+                    currentConcentration = 70;
+                    currentStress = 30;
+                    numberOfHints = 4;
+                    break;
+                case 3:
+                    currentConcentration = 80;
+                    currentStress = 25;
+                    numberOfHints = 3;
+                    break;
+                case 4:
+                    currentConcentration = 80;
+                    currentStress = 25;
+                    numberOfHints = 2;
+                    break;
+                case 5:
+                    currentConcentration = 75;
+                    currentStress = 60;
+                    numberOfHints = 0;
+                    break;
+            }
         }
-
-        ////Dohvati broj pogresaka iz GameControllera - integer
-        //int numberOfMistakes = 0; //=function call
-        
-        //if(numberOfMistakes == 2)
-        //{
-        //    currentConcentration -= 10;
-        //    currentStress += 10;
-        //    numberOfHints -= 1;
-        //}   
-        //else if(numberOfMistakes == 1)
-        //{
-        //    currentConcentration -= 5;
-        //    currentStress += 5;
-        //}
-        //else
-        //{
-        //    if(currentConcentration <= 90) currentConcentration += 10;
-        //    if (currentStress >= 3) currentStress -= 3;
-        //    numberOfHints += 2;
-        //}
 
         stressSlider = GameObject.FindGameObjectWithTag("StressBar").GetComponent<Slider>();
         stressSlider.value = currentStress;
@@ -163,31 +130,98 @@ public class PlayerStatus : MonoBehaviour
 
     }
 
+    //Funkcija za korekciju vrijednosti
+    public void CorrectValuesBasedOnMistakes()
+    {
+        int mistakes = GameController.Instance.currentNOfMistakes;
+        if(mistakes >= 3)
+        {
+            currentConcentration -= 5;
+            currentStress += 5;
+            numberOfHints -= 1;
+        }
+        else if(mistakes == 2)
+        {
+            currentConcentration -= 5;
+            currentStress += 0;
+            numberOfHints += 0;
+        }
+        else if(mistakes == 1)
+        {
+            currentConcentration += 0;
+            currentStress -= 5;
+            numberOfHints += 1;
+        }
+        else
+        {
+            currentConcentration += 0;
+            currentStress -= 5;
+            numberOfHints += 2;
+        }
+
+    }
+
+    //Iteratori za stres i koncentraciju
+    public void changeStressAndConcetration()
+    {
+        if (currentStress < maxStress)
+        {
+            currentStress += 1;
+            stressSlider.value = currentStress;
+        }
+        if (currentConcentration > minConcentration)
+        {
+            currentConcentration -= 1;
+            concentrationSlider.value = currentConcentration;
+        }
+    }
+
     void Start()
     {
-
+        bandh.SetActive(true);
+        SetDefaultValues();
+        if(GameController.Instance.level > 1)
+        {
+            CorrectValuesBasedOnMistakes();
+        }
 
         //Ako je trenutna scena edukacijska disable UI
-        if(sceneController.IsCurrentSceneEducational())
+        if (GameController.Instance.educationalMode)
         {
             bandh.SetActive(false);
         }
-        Panel.SetActive(false);
-        setDefaultValues();
+        //Ako je trenutni level = 0 disable Hints, show StoryUI, TutorialScript upravlja prikazom TutorialUI-ja
+        else if (GameController.Instance.level == 0)
+        {
+            Panel.SetActive(false);
+        }
+        //Inace prikazi StoryUI
+        else
+        {
+            bandh.SetActive(true);
+        }
     }
+    public void ShakeController()
+    {
+        float concentration = currentConcentration;
+        float stress = currentStress;
+        float calculation = 2 * concentration - stress;
+        
+    }
+
 
     void Update()
     {
-        float elapsed = 0f;
         elapsed += Time.deltaTime;
-
-        if (elapsed >= 10f)
+        if (elapsed > 8f)
         {
             elapsed = elapsed % 1;
             changeStressAndConcetration();
+
+            //poziv funkcije controllera tresnje 
         }
         //Ako nije nulti dan, omoguci hintove
-        if (gameController.level != 0) { 
+        if (GameController.Instance.level != 0) { 
             if (Input.GetKeyDown("h"))
             {
                 onKeyPressedRemoveHintAndShow();

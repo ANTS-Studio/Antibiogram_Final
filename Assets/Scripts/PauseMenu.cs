@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     public SceneController sceneController;
     public static bool IsPaused = false;
     public MouseLook MouseLookScript;
-    public Button Save, Load, Options, Menu;
+    public Button Save, Load, Options;
 
     // Start is called before the first frame update
     void Start()
