@@ -40,18 +40,3 @@ public class SceneController : MonoBehaviour
     }
 }
 
-//TODO
-//STATIC PROPS
-//0. sceneCount
-//STATIC METHODS
-//1. GetSceneAt
-//2. GetSceneByBuildIndex
-//3. GetSceneByName
-//4. LoadScene
-//5. LoadSceneAsync
-//6. SetActiveScene
-//7. UnloadSceneAsync
-//EVENTS
-//8. activeSceneChanged
-//9. sceneLoaded
-//10. SceneUnloaded

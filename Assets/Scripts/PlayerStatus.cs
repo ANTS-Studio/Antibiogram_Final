@@ -105,17 +105,17 @@ public class PlayerStatus : MonoBehaviour
                     numberOfHints = 4;
                     break;
                 case 3:
-                    currentConcentration = 80;
+                    currentConcentration = 81;
                     currentStress = 25;
                     numberOfHints = 3;
                     break;
                 case 4:
-                    currentConcentration = 80;
+                    currentConcentration = 81;
                     currentStress = 25;
                     numberOfHints = 2;
                     break;
                 case 5:
-                    currentConcentration = 75;
+                    currentConcentration = 76;
                     currentStress = 60;
                     numberOfHints = 0;
                     break;
@@ -201,12 +201,66 @@ public class PlayerStatus : MonoBehaviour
             bandh.SetActive(true);
         }
     }
-    public void ShakeController()
+
+    //vraca sekunde u mouse look
+    public float ShakeController()
     {
         float concentration = currentConcentration;
         float stress = currentStress;
         float calculation = 2 * concentration - stress;
-        
+        Debug.Log(calculation);
+
+        if(calculation == 197f) //182
+        {
+            return 1f;
+            Debug.Log("Pao je ispod 182f");
+        }
+        else if(calculation == 164f)
+        {
+            Debug.Log("Pao je ispod 164f");
+            return 1.5f;
+        }
+        else if (calculation == 137f)
+        {
+            Debug.Log("Pao je ispod 137f");
+            return 2f;
+        }
+        else if (calculation == 116f)
+        {
+            Debug.Log("Pao je ispod 116f");
+            return 2.2f;
+        }
+        else if (calculation == 98f)
+        {
+            Debug.Log("Pao je ispod 98f");
+            return 2.4f;
+        }
+        else if (calculation == 68f)
+        {
+            Debug.Log("Pao je ispod 68f");
+            return 3f;
+        }
+        else if (calculation == 41f)
+        {
+            Debug.Log("Pao je ispod 41f");
+            return 3.5f;
+        }
+        else if (calculation == 26f)
+        {
+            Debug.Log("Pao je ispod 26f");
+            return 3.6f;
+        }
+        else if (calculation == 11f)
+        {
+            Debug.Log("Pao je ispod 11f");
+            return 3.7f;
+        }
+        else if(calculation < 0)
+        {
+            Debug.Log("Pao je ispod 0");
+            calculation = 200f;
+        }
+        return 0f;
     }
 
 
@@ -217,7 +271,7 @@ public class PlayerStatus : MonoBehaviour
         {
             elapsed = elapsed % 1;
             changeStressAndConcetration();
-
+            ShakeController();
             //poziv funkcije controllera tresnje 
         }
         //Ako nije nulti dan, omoguci hintove
