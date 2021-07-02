@@ -1,0 +1,65 @@
+DAY 0 [step 0 - last]
+Dear Patrick,
+we wish you a warm welcome to SpaceAtlas. 
+
+As you know, our mission is to colonize planet Mars as soon as possible and we believe that you can help us.
+
+Before beginning your regular duties, we urgently need your help. We have a big problem! Our astronauts returned from a mission and are sick - they are experiencing nausea, vomiting and chronic fatigue. 
+
+They brought a sample from Mars which might give us a clue what it is that is making them sick. 
+
+The sample contains a bacteria we think is causing the infections, one that has been talked about before but never encountered - Burkholderia pseudomallei.
+
+We want you to create an antibiogram for it. Since this is your first day, we will guide you through it.
+
+END OF DAY 0
+*Alarm blares*
+The bacteria has not been contained properly and therefore all employees that were exposed must remain in office until further notice.
+
+---------------
+
+DAY 1 [step 0 - do stavljanja u inkubator]
+Bacteria has spread and has started to flow out of the petri dish and incubator. 
+
+Some colleagues are showing the same symptoms as the astronauts. The situation is definitely not looking good.
+
+You are unable to do the interpretation of your antibiogram, so it's best to create a new one. Good luck. We are counting on you.
+
+---------------
+
+DAY 2 [step inkubator - last]
+We are sorry to inform you that the astronauts have passed away due to their critical condition.
+Your duty today is to interpret the antibiogram and hope that we are close to finding an antibiotic which will help us all since more colleagues of yours are starting to show the same symptoms.
+
+---------------
+
+DAY 3 [step 0 - do stavljanja u inkubator]
+So... it seems that the antibiotics don't help at all. 
+
+Please try again, here's eight new antibiotics which we hope can get this bacteria under control.
+
+---------------
+
+DAY 4 [interpretacija - last, step 0 - inkubator]
+Crossing our fingers for today! We are all counting on you. Good luck, Patrick. Make us proud.
+*Patrick očitava rezultate, rezultati su dobri*
+*Patrick ponovno radi antibiogram, kako bi potvrdio rezultate. Ako je dobar kraj, dobri rezultati će biti potvrđeni sljedećeg dana. Ako ne, bakterija je i dalje van kontrole*
+
+---------------
+
+DAY 5 [vađenje iz inkubatora i interpretacija]
+*GOOD*
+Congratulations! 
+
+Yesterday's excellent results have been confirmed and antibiotic 1 works against the bacteria. 
+
+We will get to work and supply antibiotics to all in need and successfully shut this chaos down.
+
+Thank you Patrick. Your country will forever be indebted to you.
+
+*BAD*
+I'm afraid that we don't have good news.
+.... jos toga
+
+
+
