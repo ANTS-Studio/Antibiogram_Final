@@ -9,6 +9,8 @@ public class DisinfectionScript : MonoBehaviour
     private void Start()
     {
         pickupableObject.isClean = false;
+        pickupableObject.bacteriaPercentage = 0;
+        pickupableObject.wasInFlask = false;
     }
 
     public void DisinfectItem()
@@ -25,6 +27,14 @@ public class DisinfectionScript : MonoBehaviour
                 
             }
             else GameController.Instance.SetStepAsDone(thisStep);
+        }
+        else if(pickupableObject.name == "Epruveta")
+        {
+            GameObject player = GameObject.Find("Player");
+            PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+
+            GameObject flask = inventory.GetItemByName("Metal flask");
+            flask.layer = 6;
         }
     }
     public bool GetIsClean()
@@ -44,5 +54,15 @@ public class DisinfectionScript : MonoBehaviour
     public float GetEzaBacteriaPercentage()
     {
         return pickupableObject.bacteriaPercentage;
+    }
+
+    public void SetWasInFlask(bool value)
+    {
+        pickupableObject.wasInFlask = value;
+    }
+
+    public bool GetWasInFlask()
+    {
+        return pickupableObject.wasInFlask;
     }
 }
