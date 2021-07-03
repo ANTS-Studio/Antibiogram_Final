@@ -70,7 +70,7 @@ TagManager:
   - ConcentrationResult
   - HintsResult
   - Dropoff
-  - EndResultLightPanel
+  - EndDayResults
   layers:
   - Default
   - TransparentFX
