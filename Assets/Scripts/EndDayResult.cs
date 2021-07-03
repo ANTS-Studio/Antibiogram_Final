@@ -69,4 +69,8 @@ public class EndDayResult : MonoBehaviour
         GameObject.FindGameObjectWithTag("StressResult").GetComponent<TMPro.TextMeshProUGUI>().text = "STRESS " + stress;
         GameObject.FindGameObjectWithTag("HintsResult").GetComponent<TMPro.TextMeshProUGUI>().text = "HINTS " + hints;
     }
+    private void Start()
+    {
+        panel.SetActive(false);
+    }
 }
