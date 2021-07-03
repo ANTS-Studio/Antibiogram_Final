@@ -46,6 +46,18 @@ public class DisinfectionScript : MonoBehaviour
             }
             else GameController.Instance.SetStepAsDone(thisStep);
         }
+        else if(pickupableObject.name == "Pinceta")
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Uzimanje i sterilizacija pincete"); //11. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
+        }
     }
     public bool GetIsClean()
     {

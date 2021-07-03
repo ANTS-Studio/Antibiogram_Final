@@ -34,6 +34,16 @@ public class IncubatorTemperature : MonoBehaviour
 
         GameObject incubator = GameObject.Find("LabCentrifuga");
         incubator.GetComponent<IncubatorScript>().Interaction();
+        
+        int nextStep = GameController.Instance.GetNextStep();
+        int thisStep = GameController.Instance.GetStepIndexByName("Stavljanje zdjelice u inkubator"); //13. korak
+        if (nextStep != thisStep)
+        {
+            GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+            GameController.Instance.SetStepAsDone(thisStep);
+                
+        }
+        else GameController.Instance.SetStepAsDone(thisStep);
     }
 
     public void DeleteLastInput()
@@ -70,12 +80,12 @@ public class IncubatorTemperature : MonoBehaviour
 
     private string GetSelectedValue()
     {
-        return output.text.Split('°')[0];
+        return output.text.Split('ï¿½')[0];
     }
 
     private void SetOutput(string selectedValue)
     {
-        output.text = selectedValue + "°C ";
+        output.text = selectedValue + "ï¿½C ";
     }
 
     // ########################################################### //

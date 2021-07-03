@@ -128,27 +128,21 @@ public class GameController : MonoBehaviour
                     "It's time to draw sectors over the petri dish using a marker. We need to make sure that there is enough space for each antibiotic. Let's do eight."));
                 ++index;
                 
-                Steps.Add(new Step(index, "Uzimanje pincete", false, false,
-                    "Take the forceps.",
-                    "Then, we take the forceps."));
+                Steps.Add(new Step(index, "Uzimanje i sterilizacija pincete", false, false,
+                    "Take the forceps and sterilize it using flame.",
+                    "Then, we take the forceps and sterilize it using flame."));
                 ++index;
                 
+                Steps.Add(new Step(index, "Uzimanje antibiotika pincetom i postavljanje na sektore", false, false,
+                    "Take the antibiotics and put them on the petri dish.",
+                    "Using the forceps we will take antibiotics and put them in the middle of each sector in the petri dish."));
+                ++index;
                 
-                // Steps.Add(new Step(index, "Sterilizacija pincete", false, false,
-                //     "Sterilize the forceps using flame.",
-                //     "Sterilize it using flame!"));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Uzimanje antibiotika pincetom i postavljanje na sektore", false, false,
-                //     "Take the antibiotics and put them on the petri dish.",
-                //     "Using the forceps we will take antibiotics and put them in the middle of each sector in the petri dish."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
-                //     "Put the petri dish in the incubator.",
-                //     "We then close the petri dish and put it in the incubator, setting the temperature to 37.5 degrees Celsius."));
-                // ++index;
-                //
+                Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
+                    "Put the petri dish in the incubator.",
+                    "We then close the petri dish and put it in the incubator, setting the temperature to 37 degrees Celsius."));
+                ++index;
+                
                 // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
                 //     "Take the petri dish out of the incubator.",
                 //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish now available for interpretation, our colleagues left it for us."));
