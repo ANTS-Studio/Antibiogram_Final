@@ -12,6 +12,9 @@ public class IncubatorTemperature : MonoBehaviour
 
     private void Start()
     {
+        GameObject soundSource = GameObject.Find("LabCentrifuga");
+        buttonPressSound = soundSource.GetComponent<AudioSource>();
+
         SetOutput("0");
     }
 
@@ -25,10 +28,10 @@ public class IncubatorTemperature : MonoBehaviour
     public void OnOKPress()
     {
         ButtonPressSoundPlay();
-        Debug.Log(1);
+
         if (IsCooldownActive()) return;
         coolDownTimer = 0;
-        Debug.Log(2);
+
         GameObject incubator = GameObject.Find("LabCentrifuga");
         incubator.GetComponent<IncubatorScript>().Interaction();
     }

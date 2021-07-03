@@ -238,6 +238,7 @@ public class PlayerInventory : MonoBehaviour
 
         // Postavi display tekst imena odabranog item-a
         string itemName = getSelectedItem() ? getSelectedItem().name : "";
+        Debug.Log(itemName == "EmptyPetrieDish");
         selectedSlotDisplay.text = itemName == "EmptyPetrieDish" ? "Antibiogram" : itemName;
     }
     

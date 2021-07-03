@@ -29,10 +29,10 @@ public class InteractWithObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canDisinfectWithFire = new List<string> { "Eza", "Pinceta" };
+        canDisinfectWithFire = new List<string> { "Eza", "Pinceta", "Metal flask" };
         canDisinfectWithWater = new List<string> { "" };
 
-        interactableItems = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "LabCentrifuga" };
+        interactableItems = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "LabCentrifuga", "Metal flask" };
         secondaryInteractions = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "Poklopac" };
     }
 
@@ -40,7 +40,7 @@ public class InteractWithObjects : MonoBehaviour
     void Update()
     {
         Ray ray = mainCam.ViewportPointToRay(Vector3.one / 2f);
-        Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
+        //Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
 
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
@@ -96,6 +96,9 @@ public class InteractWithObjects : MonoBehaviour
                     break;
                 case "DrawablePetrieDish":
                     hitItem.gameObject.GetComponent<EnableDrawing>().Interaction();
+                    break;
+                case "Metal flask":
+                    hitItem.gameObject.GetComponent<MetalFlaskScript>().Interaction();
                     break;
             }
         }
@@ -221,7 +224,7 @@ public class InteractWithObjects : MonoBehaviour
     {
         DisinfectionScript disinfectionScript = selectedObject.GetComponent<DisinfectionScript>();
 
-        interactText.text = "HOLD TO DISINFECT ITEM"; //Hold 'E' to disinfect item!
+        interactText.text = "HOLD E TO DISINFECT ITEM"; //Hold 'E' to disinfect item!
         if (Input.GetKey(KeyCode.E))
         {
             if (!IncrementInteractionProggress(fireInteractionDuration)) return;
@@ -233,10 +236,9 @@ public class InteractWithObjects : MonoBehaviour
         UpdateInteractionImg(fireInteractionDuration);
     }
 
-
     void DisinfectWithWater(GameObject selectedObject)
     {
-        interactText.text = "HOLD TO WASH AND DISINFECT HANDS"; //Hold 'E' to wash and disinfect hands!
+        interactText.text = "HOLD E TO WASH AND DISINFECT HANDS"; //Hold 'E' to wash and disinfect hands!
 
         if (Input.GetKey(KeyCode.E))
         {
