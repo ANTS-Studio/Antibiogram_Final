@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class DisinfectionScript : MonoBehaviour
@@ -35,6 +36,27 @@ public class DisinfectionScript : MonoBehaviour
 
             GameObject flask = inventory.GetItemByName("Metal flask");
             flask.layer = 6;
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Sterilizacija epruvete"); //6. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
+        }
+        else if(pickupableObject.name == "Pinceta")
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Uzimanje i sterilizacija pincete"); //11. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                
+            }
+            else GameController.Instance.SetStepAsDone(thisStep);
         }
     }
     public bool GetIsClean()

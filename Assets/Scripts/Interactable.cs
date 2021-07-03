@@ -67,7 +67,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        Debug.Log("Interakcija s " + transform.tag);
         switch (interactionTransform.tag)
         {
             case "Vrata":

@@ -62,7 +62,7 @@ public class GenerateBacteria : MonoBehaviour
     public void Interaction()
     {
         TogglePetrieDishBackground();
-        ToggleCancleButton();
+        ToggleCancelButton();
         ToggleCursor();
         TogglePlayerMovement();
         ToggleBacteria();
@@ -72,17 +72,31 @@ public class GenerateBacteria : MonoBehaviour
     {
         Transform parent = parentObject.transform.parent;
 
-        foreach(Transform child in parent)
+        foreach (Transform child in parent)
         {
             if (child.name != "PetrieDishBackground") continue;
             child.gameObject.SetActive(!child.gameObject.activeSelf);
-        }   
+        }
     }
 
-    private void ToggleCancleButton()
+    private void ToggleCancelButton()
     {
         bool isActive = closeButton.gameObject.activeSelf;
         closeButton.gameObject.SetActive(!isActive);
+        if (isActive)
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Pikanje kulture"); //5. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+        }
     }
 
     private void ToggleBacteria()
@@ -105,7 +119,7 @@ public class GenerateBacteria : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         PlayerController movementScript = player.GetComponent<PlayerController>();
         movementScript.ToggleMovement();
-        
+
 
         MouseLook cameraMovementScript = GameObject.FindWithTag("PlayerCamera").GetComponent<MouseLook>();
         cameraMovementScript.ToggleMovement();
@@ -123,7 +137,7 @@ public class GenerateBacteria : MonoBehaviour
     private void ToggleDishLid()
     {
         Transform parent = gameObject.transform.parent;
-        foreach(Transform child in parent)
+        foreach (Transform child in parent)
         {
             if (child.name != "Poklopac") continue;
             child.gameObject.SetActive(true);

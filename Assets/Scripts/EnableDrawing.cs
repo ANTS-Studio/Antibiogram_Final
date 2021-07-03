@@ -9,6 +9,8 @@ public class EnableDrawing : MonoBehaviour
     public GameObject teleportPosition;
     public Text interactionText;
     private Transform PetrieDishBackground;
+    private PlayerInventory inventory;
+    private string selectedItemName;
 
     private void Start()
     {
@@ -25,10 +27,10 @@ public class EnableDrawing : MonoBehaviour
     private bool IsItemSelected()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+        inventory = player.GetComponent<PlayerInventory>();
 
-        List<string> allowedItem = new List<string> { "Marker", "Eza", "Pinceta" };
-        string selectedItemName = inventory.getSelectedItem().name;
+        List<string> allowedItem = new List<string> {"Marker", "Eza", "Pinceta"};
+        selectedItemName = inventory.getSelectedItem().name;
 
         if (selectedItemName == "Pinceta") ShowAntibioticTray();
         Debug.Log(selectedItemName + " " + allowedItem.Contains(selectedItemName));
@@ -39,7 +41,7 @@ public class EnableDrawing : MonoBehaviour
     {
         Transform itemDropOff = GameObject.Find("ItemDropOff").transform;
 
-        foreach(Transform child in itemDropOff)
+        foreach (Transform child in itemDropOff)
         {
             if (child.name == "Tray") child.gameObject.SetActive(true);
         }
@@ -51,7 +53,7 @@ public class EnableDrawing : MonoBehaviour
 
         ToggleCursor();
         TogglePetrieDishBackground();
-        ToggleCancleButton();
+        ToggleCancelButton();
         TogglePlayerMovement();
     }
 
@@ -60,10 +62,53 @@ public class EnableDrawing : MonoBehaviour
         PetrieDishBackground.gameObject.SetActive(!PetrieDishBackground.gameObject.activeSelf);
     }
 
-    private void ToggleCancleButton()
+    private void ToggleCancelButton()
     {
         bool isActive = closeButton.gameObject.activeSelf;
         closeButton.gameObject.SetActive(!isActive);
+
+        if (isActive && selectedItemName == "Eza")
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Šaranje podloge"); //8. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+        }
+        else if (isActive && selectedItemName == "Marker")
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Crtanje sektora po zdjelici"); //10. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+        }
+        else if (isActive && selectedItemName == "Pinceta")
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Uzimanje antibiotika pincetom i postavljanje na sektore"); //12. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+        }
     }
 
     private void ToggleCursor()
@@ -73,7 +118,7 @@ public class EnableDrawing : MonoBehaviour
         else
             Cursor.lockState = CursorLockMode.Confined;
 
-        Cursor.visible = Cursor.lockState == CursorLockMode.Confined? true: false;
+        Cursor.visible = Cursor.lockState == CursorLockMode.Confined ? true : false;
     }
 
     private void TogglePlayerMovement()
@@ -81,7 +126,7 @@ public class EnableDrawing : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         PlayerController movementScript = player.GetComponent<PlayerController>();
         movementScript.ToggleMovement();
-        
+
 
         MouseLook cameraMovementScript = GameObject.FindWithTag("PlayerCamera").GetComponent<MouseLook>();
         cameraMovementScript.ToggleMovement();
@@ -105,6 +150,17 @@ public class EnableDrawing : MonoBehaviour
         {
             if (child.name != "Poklopac") continue;
             child.gameObject.SetActive(true);
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Zatvaranje zdjelice"); //9. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
         }
 
         interactionText.text = "";
@@ -123,7 +179,7 @@ public class EnableDrawing : MonoBehaviour
     {
         Transform parent = gameObject.transform.parent;
 
-        
+
         return true;
     }
 
