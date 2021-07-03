@@ -29,9 +29,7 @@ public class EndDayResult : MonoBehaviour
     public void SetText()
     {
         numberOfMistakes = GameController.Instance.currentNOfMistakes;
-        numberOfSteps = GameController.Instance.lastStepIndex;
-        numberOfMistakes = 3;
-        numberOfSteps = 22;
+        numberOfSteps = GameController.Instance.lastStepIndex + 1;
 
         int numberOfCorrectAnswers = numberOfSteps - numberOfMistakes;
         endDayText = numberOfCorrectAnswers.ToString() + "/" + numberOfSteps.ToString();
