@@ -176,32 +176,6 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        bandh.SetActive(true);
-        SetDefaultValues();
-        if(GameController.Instance.level > 1)
-        {
-            CorrectValuesBasedOnMistakes();
-        }
-
-        //Ako je trenutna scena edukacijska disable UI
-        if (GameController.Instance.educationalMode)
-        {
-            bandh.SetActive(false);
-        }
-        //Ako je trenutni level = 0 disable Hints, show StoryUI, TutorialScript upravlja prikazom TutorialUI-ja
-        else if (GameController.Instance.level == 0)
-        {
-            Panel.SetActive(false);
-        }
-        //Inace prikazi StoryUI
-        else
-        {
-            bandh.SetActive(true);
-        }
-    }
-
     //vraca sekunde u mouse look
     public float ShakeController()
     {
@@ -210,11 +184,11 @@ public class PlayerStatus : MonoBehaviour
         float calculation = 2 * concentration - stress;
         //Debug.Log(calculation);
 
-        if(calculation == 182f) //182
+        if (calculation == 182f) //182
         {
             return 0.3f;
         }
-        else if(calculation == 164f)
+        else if (calculation == 164f)
         {
             return 0.7f;
         }
@@ -246,26 +220,49 @@ public class PlayerStatus : MonoBehaviour
         {
             return 3f;
         }
-        else if(calculation < 0)
+        else if (calculation < 0)
         {
             calculation = 200f;
         }
         return 0f;
     }
 
+    void Start()
+    {
+        bandh.SetActive(true);
+        SetDefaultValues();
+        if(GameController.Instance.level > 1)
+        {
+            CorrectValuesBasedOnMistakes();
+        }
+
+        //Ako je trenutna scena edukacijska disable UI
+        if (GameController.Instance.educationalMode)
+        {
+            bandh.SetActive(false);
+        }
+        //Ako je trenutni level = 0 disable Hints, show StoryUI, TutorialScript upravlja prikazom TutorialUI-ja
+        else if (GameController.Instance.level == 0)
+        {
+            Panel.SetActive(false);
+        }
+        //Inace prikazi StoryUI
+        else
+        {
+            bandh.SetActive(true);
+        }
+    }
 
     void Update()
     {
-        elapsed += Time.deltaTime;
-        if (elapsed > 8f)
-        {
-            elapsed = elapsed % 1;
-            changeStressAndConcetration();
-            ShakeController();
-            //poziv funkcije controllera tresnje 
-        }
-        //Ako nije nulti dan, omoguci hintove
-        if (GameController.Instance.level != 0) { 
+        if (GameController.Instance.level != 0 || GameController.Instance.educationalMode == true) { 
+            elapsed += Time.deltaTime;
+            if (elapsed > 8f)
+            {
+                elapsed = elapsed % 1;
+                changeStressAndConcetration();
+                ShakeController();
+            }
             if (Input.GetKeyDown("h"))
             {
                 onKeyPressedRemoveHintAndShow();
