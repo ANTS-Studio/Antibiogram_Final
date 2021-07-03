@@ -29,9 +29,6 @@ public class PlayerData
         currentScene = saveAndLoad.currentLevel;
         currentStep = saveAndLoad.currentStep;
         numberOfMistakes = saveAndLoad.numberOfMistakes;
-        //steps = saveAndLoad.listKoraka;
-        //nesto = saveAndLoad.step;
-
     }
 }
 

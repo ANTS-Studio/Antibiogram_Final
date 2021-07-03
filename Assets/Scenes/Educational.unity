@@ -19702,6 +19702,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   interactText: {fileID: 1693482592}
+  secondaryInteractText: {fileID: 0}
   maxDistance: 70
   InteractionProgressImg: {fileID: 144193115}
   fireInteractionDuration: 4
@@ -19721,6 +19722,7 @@ MonoBehaviour:
   anim: {fileID: 277415016}
   cam: {fileID: 1056162345}
   focus: {fileID: 0}
+  canMove: 1
 --- !u!95 &277415016
 Animator:
   serializedVersion: 3
@@ -68068,6 +68070,7 @@ MonoBehaviour:
   MouseRotateSpeed: 120
   status: {fileID: 0}
   player: {fileID: 1317664534}
+  canMove: 1
 --- !u!81 &1056162344
 AudioListener:
   m_ObjectHideFlags: 0
@@ -82743,7 +82746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01875366
+      value: 0.038
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -82751,7 +82754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2178271
+      value: -0.219
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7681fab4222a4dd44a988d987a18ce2b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -110274,7 +110277,6 @@ MonoBehaviour:
   Panel: {fileID: 1747892341}
   TutorialText: {fileID: 1256050634}
   sceneController: {fileID: 1845754662}
-  gameController: {fileID: 595830300}
 --- !u!114 &1747892344
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class CollectBacteria : MonoBehaviour
     private Text feedbackMsg;
     private Image InteractionProgressImg;
     private float currentInteractionTimer = 0;
-
+    private bool entryFlag = false;
     private PlayerInventory inventory;
 
     private void Start()
@@ -78,5 +78,25 @@ public class CollectBacteria : MonoBehaviour
         DisinfectionScript ezascript = GetEzaScript();
         if (!ezascript) return;
         ezascript.SetBacteriaCount(bacteriaCount);
+        
+        int nextStep = GameController.Instance.GetNextStep();
+        int thisStep = GameController.Instance.GetStepIndexByName("Pikanje kulture");
+        //za sada se koristi entryFlag jer nema varijable koja kaže da je dovoljno bakterija pikano
+        if (!entryFlag)
+        {
+            if (nextStep != thisStep)
+            {
+                entryFlag = true;
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+
+            }
+            else
+            {
+                entryFlag = true;
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+        }
+
     }
 }

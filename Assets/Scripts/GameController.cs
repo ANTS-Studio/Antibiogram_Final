@@ -102,10 +102,10 @@ public class GameController : MonoBehaviour
                     "Use the bunsen burner to sterilize it.", "...And we sterilize it using flame."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Pikanje kulture", false, false,
-                //     "Find the petri dish and take a sample of the bacterial culture.",
-                //     "After that, we are ready to take a sample of the bacterial culture. Find the petri dish with the bacterial culture and take a sample of it."));
-                // ++index;
+                Steps.Add(new Step(index, "Pikanje kulture", false, false,
+                    "Find the petri dish, open it and take a sample of the bacterial culture.",
+                    "After that, we are ready to take a sample of the bacterial culture. Find the petri dish with the bacterial culture and take a sample of it."));
+                ++index;
                 // Steps.Add(new Step(index, "Sterilizacija vrha epruvete", false, false, "Sterilize the test tube with flame.",
                 //     "Let's take the test tube and sterilize it with flame."));
                 // ++index;
@@ -115,15 +115,11 @@ public class GameController : MonoBehaviour
                 //     "We then put our swab stick in the test tube and mix."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Uzimanje petrijeve zdjelice", false, false, "Take the petri dish.",
-                //     "Let's take the petri dish."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Šaranje podloge na petrijevoj zdjelici", false, false,
-                //     "Use the swab stick to go over the petri dish.",
-                //     "And now we go over the whole surface of the petri dish using the swab stick. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
-                // ++index;
-                //
+                Steps.Add(new Step(index, "Šaranje podloge", false, false,
+                    "Use the swab stick to go over the petri dish.",
+                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the swab stick. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
+                ++index;
+                
                 // Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
                 //     "We close the petri dish."));
                 // ++index;

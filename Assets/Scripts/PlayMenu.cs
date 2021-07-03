@@ -13,7 +13,8 @@ public class PlayMenu : MonoBehaviour
         SceneManager.LoadScene("Day0", LoadSceneMode.Single);
         GameController.Instance.educationalMode = false;
     }
-
+    
+    
     public void PlayEdu()
     {
         SceneManager.LoadScene("Educational", LoadSceneMode.Single);
