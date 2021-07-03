@@ -16,6 +16,10 @@ public class InterpretationScript : MonoBehaviour
     public int[] temporaryValues = { 23, 27, 14, 13, 8, 12, 37, 18 };
     public int[] resistantAndSensitiveValues = { 14, 18, 20, 15, 7, 16, 38, 22};
 
+    //1. 
+    //2. 
+
+
     //Nehardkodirani dio
     public void SetMeasurmentValues(int[] inputValues)
     {
@@ -106,6 +110,8 @@ public class InterpretationScript : MonoBehaviour
 
     void Start()
     {
+        SetMeasurmentValues(temporaryValues);
+        SetResAndSensValues();
         panel.SetActive(false);
         sendButton.onClick.AddListener(() => IsInterpretationCorrect());
         //Funkcija SetMeasurementValues(); se zapravo poziva iz druge skripte, dakle, ne smije biti u startu

@@ -229,7 +229,6 @@ public class PlayerStatus : MonoBehaviour
 
     void Start()
     {
-        bandh.SetActive(true);
         SetDefaultValues();
         if(GameController.Instance.level > 1)
         {
@@ -250,6 +249,7 @@ public class PlayerStatus : MonoBehaviour
         else
         {
             bandh.SetActive(true);
+            Panel.SetActive(false);
         }
     }
 
