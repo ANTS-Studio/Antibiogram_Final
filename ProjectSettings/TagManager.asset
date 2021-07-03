@@ -69,6 +69,8 @@ TagManager:
   - StressResult
   - ConcentrationResult
   - HintsResult
+  - Dropoff
+  - EndResultLightPanel
   layers:
   - Default
   - TransparentFX

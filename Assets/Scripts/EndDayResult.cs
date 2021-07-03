@@ -11,19 +11,19 @@ public class EndDayResult : MonoBehaviour
     private string concentration;
     private string stress;
     private string hints;
-    public GameObject panel;
+    public Canvas canvas;
 
     public void DisplayEndResults()
     {
-        panel.SetActive(true);
+        canvas.enabled = true;
         StartCoroutine(TimerFunction());
     }
 
     IEnumerator TimerFunction()
     {
         SetText();
-        yield return new WaitForSeconds(5);
-        panel.SetActive(false);
+        yield return new WaitForSeconds(10);
+        canvas.enabled = false;
     }
 
     public void SetText()
@@ -71,6 +71,7 @@ public class EndDayResult : MonoBehaviour
     }
     private void Start()
     {
-        panel.SetActive(false);
+        canvas = GameObject.FindGameObjectWithTag("EndDayResults").GetComponent<Canvas>();
+        canvas.enabled = false;
     }
 }
