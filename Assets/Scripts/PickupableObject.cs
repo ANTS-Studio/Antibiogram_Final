@@ -6,4 +6,5 @@ using UnityEngine;
 public class PickupableObject : ScriptableObject
 {
     public bool isClean = false;
+    public float bacteriaPercentage = 0;
 }

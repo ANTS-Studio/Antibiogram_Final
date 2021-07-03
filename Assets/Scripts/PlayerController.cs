@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public Camera cam;
     public Interactable focus;
+    public bool canMove = true;
 
     private void Start()
     {
@@ -16,8 +17,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
-        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        if (canMove)
+        {
+            anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
+            anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -35,6 +39,11 @@ public class PlayerController : MonoBehaviour
         {
             RemoveFocus();
         }
+    }
+
+    public void ToggleMovement()
+    {
+        canMove = !canMove;
     }
 
     void SetFocus(Interactable newFocus)

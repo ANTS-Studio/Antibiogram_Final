@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour{
 
     public PlayerStatus status;
     public GameObject player;
+    public bool canMove = true;
 
     IEnumerator ShakeThatCamera(float time)
     {
@@ -26,6 +27,12 @@ public class MouseLook : MonoBehaviour{
 
     }
 
+    public void ToggleMovement()
+    {
+        canMove = !canMove;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         var barAndH =  GameObject.FindWithTag("BandH");
@@ -34,6 +41,8 @@ public class MouseLook : MonoBehaviour{
     }
 
     void Update(){
+        if (!canMove) return;
+
         float mouseX = Input.GetAxis("Mouse X") * MouseRotateSpeed * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * MouseRotateSpeed * Time.deltaTime;
 

@@ -35,4 +35,14 @@ public class DisinfectionScript : MonoBehaviour
     {
         pickupableObject.isClean = false;
     }
+
+    public void SetBacteriaCount(float bacteriaPercentage)
+    {
+        pickupableObject.bacteriaPercentage = bacteriaPercentage;
+    }
+
+    public float GetEzaBacteriaPercentage()
+    {
+        return pickupableObject.bacteriaPercentage;
+    }
 }

@@ -91,8 +91,7 @@ public class PlayerInventory : MonoBehaviour
                     else GameController.Instance.SetStepAsDone(thisStep);
                 }
                 hitItem.SetActive(false);
-                playerInventory.Add(hitItem);
-                this.AdjustSelectedItemDisplay();
+                AddItemToInventory(hitItem);
             }
         }
         else
@@ -156,11 +155,13 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
 
+        GameObject item = getSelectedItem();
+        if (item.name == "EmptyPetrieDish") return;
+
         SetText(0, "Press 'E' to throw item away");
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            GameObject item = getSelectedItem();
             playerInventory.RemoveAt(selectedInventorySlot);
 
             Destroy(item);
@@ -187,6 +188,8 @@ public class PlayerInventory : MonoBehaviour
         {
             // Ukloni item iz inventory-a
             GameObject item = playerInventory[selectedInventorySlot];
+            if (item.name == "EmptyPetrieDish") return;
+
             playerInventory.RemoveAt(selectedInventorySlot);
 
             // Postavi poziciju itema ispred playera i ukljuci item
@@ -203,22 +206,13 @@ public class PlayerInventory : MonoBehaviour
         int itemsInInventory = playerInventory.Count;
 
         // Ako nema item-a u inventory, izbrisi display tekst i postavi selectedSlot na -1
-        if (itemsInInventory == 0)
-        {
-            selectedInventorySlot = -1;
-        }
+        if (itemsInInventory == 0) selectedInventorySlot = -1;
 
         // Ako je dodan prvi item u inventory, postavi selectedSlot na njega
-        else if (selectedInventorySlot == -1)
-        {
-            selectedInventorySlot = 0;
-        }
+        else if (selectedInventorySlot == -1) selectedInventorySlot = 0;
 
         // Ako je iz inventory-a izbacen posljednji item, postavi selectedSlot na prvi slobodni ili na -1
-        else if (selectedInventorySlot > itemsInInventory - 1)
-        {
-            selectedInventorySlot = itemsInInventory - 1;
-        }
+        else if (selectedInventorySlot > itemsInInventory - 1) selectedInventorySlot = itemsInInventory - 1;
 
         // Postavi/Ukloni ime item-a
         selectedSlotDisplay.text = selectedInventorySlot != -1 ? getSelectedItem().name : "";
@@ -243,6 +237,48 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // Postavi display tekst imena odabranog item-a
-        selectedSlotDisplay.text = getSelectedItem() ? getSelectedItem().name : "";
+        string itemName = getSelectedItem() ? getSelectedItem().name : "";
+        selectedSlotDisplay.text = itemName == "EmptyPetrieDish" ? "Antibiogram" : itemName;
+    }
+    
+    public void AddItemToInventory(GameObject newItem)
+    {
+        playerInventory.Add(newItem);
+        this.AdjustSelectedItemDisplay();
+    }
+    public void RemoveItemByName(string itemName)
+    {
+        for (int index = 0; index < playerInventory.Count; index++)
+        {
+            GameObject item = playerInventory[index];
+            if (item.name != itemName) continue;
+
+            playerInventory.RemoveAt(index);
+
+            AdjustSelectedItemDisplay();
+            break;
+        }
+    }
+    public GameObject GetItemByName(string itemName)
+    {
+        foreach (GameObject item in playerInventory)
+        {
+            if (item.name == itemName) return item;
+        }
+        return null;
+    }
+    public bool IsInInventory(string itemName)
+    {
+        bool result = false;
+
+        foreach (GameObject item in playerInventory)
+        {
+            if (item.name != itemName) continue;
+
+            result = true;
+            break;
+        }
+
+        return result;
     }
 }
