@@ -301,7 +301,7 @@ public class InteractWithObjects : MonoBehaviour
         if (!particles) return;
 
         // Prikazi poruku playeru
-        interactText.text = "PRESS E TO TOGGLE PARTICLES";
+        interactText.text = "PRESS E TO INTERACT";
 
         // Na pritisak 'E' pokreni/stopiraj dohvaceni particle system
         if (Input.GetKeyDown(KeyCode.E) && !particles.isPlaying)

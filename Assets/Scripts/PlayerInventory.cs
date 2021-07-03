@@ -73,7 +73,7 @@ public class PlayerInventory : MonoBehaviour
             }
             
             // Prikazi poruku playeru i dohvati reference na pogodeni item
-            SetText(0, "Press 'E' to pick up");
+            SetText(0, "PRESS E TO INTERACT");
 
             // Ako player pritisne 'E' i ima mjesta u inventory, dodaj item
             if (Input.GetKeyDown(KeyCode.E) && playerInventory.Count <= inventorySize)
@@ -102,7 +102,7 @@ public class PlayerInventory : MonoBehaviour
 
     void EquipGloves(GameObject gloves)
     {
-        SetText(0, "Press 'E' to put on gloves!");
+        SetText(0, "PRESS E TO INTERACT");
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -119,7 +119,7 @@ public class PlayerInventory : MonoBehaviour
             }
             else GameController.Instance.SetStepAsDone(thisStep);
 
-            if (!cleanHands) Debug.Log("+1 Mistake(player didnt was hands)");
+            if (!cleanHands) Debug.Log("+1 Mistake(player didnt wash hands)");
         }
     }
     void ThrowAwayGloves()
@@ -128,7 +128,7 @@ public class PlayerInventory : MonoBehaviour
         {
             return;
         }
-        SetText(1, "Press 'R' to throw away gloves!");
+        SetText(1, "PRESS R TO INTERACT");
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -158,7 +158,7 @@ public class PlayerInventory : MonoBehaviour
         GameObject item = getSelectedItem();
         if (item.name == "EmptyPetrieDish") return;
 
-        SetText(0, "Press 'E' to throw item away");
+        SetText(0, "PRESS E TO INTERACT");
 
         if (Input.GetKeyDown(KeyCode.E))
         {
