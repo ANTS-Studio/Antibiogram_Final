@@ -284,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &18761773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1961,7 +1961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &517950910
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7639,9 +7639,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: baf9f97bb8ae43c4e8dda15c29a2b348, type: 2}
-  optionsMenu: {fileID: 0}
-  backButton: {fileID: 0}
-  sceneController: {fileID: 0}
+  optionsMenu: {fileID: 2029036723}
+  backButton: {fileID: 764799099}
+  sceneController: {fileID: 2994809001161313737, guid: 6d779bd0dcddc464c9caf13e7cc2ff3c, type: 3}
   pauseMenu: {fileID: 0}
   eduPauseMenu: {fileID: 0}
 --- !u!1 &2126391005
