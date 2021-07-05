@@ -8,6 +8,10 @@ public class InteractWithObjects : MonoBehaviour
     public LayerMask layerMask;
     public Text interactText;
     public Text secondaryInteractText;
+    public Text genericFeedbackText;
+    public GameObject panel;
+    public GameObject panel2;
+    public GameObject primaryTest;
 
     public float maxDistance = 70f;
 
@@ -32,6 +36,9 @@ public class InteractWithObjects : MonoBehaviour
         canDisinfectWithFire = new List<string> { "Eza", "Pinceta", "Test tube" };
         HoldButtonInteractionObjects = new List<string> { "Test tube" };
 
+        panel = GameObject.FindGameObjectWithTag("PanelForRaycast");
+        panel2 = GameObject.FindGameObjectWithTag("PanelForRaycast2");
+
         interactableItems = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "LabCentrifuga", "TestTubeBase" };
         secondaryInteractions = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "Poklopac" };
     }
@@ -41,32 +48,53 @@ public class InteractWithObjects : MonoBehaviour
     {
         Ray ray = mainCam.ViewportPointToRay(Vector3.one / 2f);
         //Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
-
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
         {
 
             particles = hitInfo.collider.gameObject.GetComponentInChildren<ParticleSystem>();
-
             GameObject selectedObject = GetSelectedItem();
             string hitItemName = hitInfo.collider.gameObject.name;
 
             if (CanInteract(hitItemName))
-                GenericInteraction(hitInfo.collider.gameObject);
-            else if (HoldButtonInteractionObjects.Contains(hitItemName))
-                HoldButtonInteraction(hitInfo.collider.gameObject);
-            else if (hitItemName == "bunsen_burner" && CanDisinfectFire(selectedObject))
-                this.DisinfectWithFire(selectedObject);
-            else if (hitItemName == "ID309" && canDisinfectWater())
-                this.DisinfectWithWater(selectedObject);
-            else
-                ToggleParticles(hitInfo.collider.gameObject);
+            {
+                if (genericFeedbackText.text.Equals("") && interactText.text.Equals(""))
+                {
+                    panel.SetActive(false);
+                    GenericInteraction(hitInfo.collider.gameObject);
+                }
+                else
+                {
 
+                    panel.SetActive(true);
+                    GenericInteraction(hitInfo.collider.gameObject);
+                }
+            }
+            else if (HoldButtonInteractionObjects.Contains(hitItemName))
+            { 
+                HoldButtonInteraction(hitInfo.collider.gameObject);
+            }
+            else if (hitItemName == "bunsen_burner" && CanDisinfectFire(selectedObject))
+            {
+                this.DisinfectWithFire(selectedObject);
+                panel.SetActive(true);
+            }
+            else if (hitItemName == "ID309" && canDisinfectWater())
+            {
+                this.DisinfectWithWater(selectedObject);
+            }
+            else
+            {
+                ToggleParticles(hitInfo.collider.gameObject);
+                panel.SetActive(true);
+            }
         }
         else
         {
             interactText.text = "";
             secondaryInteractText.text = "";
+            panel.SetActive(false);
+            panel2.SetActive(false);
         }
     }
 
@@ -106,19 +134,28 @@ public class InteractWithObjects : MonoBehaviour
             {
                 case "LabCentrifuga":
                     hitItem.gameObject.GetComponent<IncubatorScript>().Interaction();
+                    panel.SetActive(true);
                     break;
                 case "PetrijevaZdjelicaBakterije":
                     hitItem.gameObject.GetComponent<GenerateBacteria>().Interaction();
+                    panel.SetActive(true);
+                    //primaryTest.SetActive(false);
                     break;
                 case "DrawablePetrieDish":
                     hitItem.gameObject.GetComponent<EnableDrawing>().Interaction();
+                    panel.SetActive(true);
                     break;
                 case "TestTubeBase":
                     hitItem.gameObject.GetComponent<TestTubeBase>().Interaction();
                     break;
+                case "Metal flask":
+                    hitItem.gameObject.GetComponent<MetalFlaskScript>().Interaction();
+                    panel.SetActive(true);
+                    break;
             }
         }
     }
+   
 
     private void SecondaryInteraction(GameObject hitItem)
     {
@@ -133,12 +170,15 @@ public class InteractWithObjects : MonoBehaviour
         {
             case "PetrijevaZdjelicaBakterije":
                 hitItem.gameObject.GetComponent<GenerateBacteria>().SecondaryInteraction();
+                panel2.SetActive(true);
                 break;
             case "DrawablePetrieDish":
                 hitItem.gameObject.GetComponent<EnableDrawing>().SecondaryInteraction();
+                panel2.SetActive(true);
                 break;
             case "Poklopac":
                 hitItem.gameObject.GetComponent<PetrieDishLid>().Interaction();
+                panel2.SetActive(true);
                 break;
         }
     }
@@ -165,6 +205,14 @@ public class InteractWithObjects : MonoBehaviour
     }
 
     // ########################################################### //
+    private bool CheckInteractionField()
+    {
+        GameObject primaryInteractionText = GameObject.Find("PrimaryPickupText");
+        string text = primaryInteractionText.GetComponent<Text>().text;
+
+        return text.Length > 0;
+    }
+
 
     private string GetFeedbackMsg(string hitItemName)
     {
@@ -176,33 +224,40 @@ public class InteractWithObjects : MonoBehaviour
             switch (selectedItemName)
             {
                 case "Pinceta":
-                    feedbackMsg = "place antibiotics";
+                    feedbackMsg = "PLACE ANTIBIOTICS";
+                    panel2.SetActive(true);
                     break;
                 case "Marker":
-                    feedbackMsg = "draw on the petrie dish";
+                    feedbackMsg = "DRAW ON THE PETRI DISH";
+                    panel2.SetActive(true);
                     break;
                 case "Eza":
-                    feedbackMsg = "spread bacteria in the dish";
+                    feedbackMsg = "SPREAD BACTERIA ON THE DISH";
+                    panel2.SetActive(true);
                     break;
             }
         }
         else if (hitItemName == "PetrijevaZdjelicaBakterije")
         {
-            feedbackMsg = "collect bacteria";
+            feedbackMsg = "COLLECT BACTERIA";
+            panel2.SetActive(true);
         }
         else if (hitItemName == "LabCentrifuga")
         {
             bool antibiogramInside = GameObject.Find("LabCentrifuga").GetComponent<IncubatorScript>().antibiogramInside;
             
-            if(antibiogramInside) feedbackMsg = "measure the inhibition zones";
-            else feedbackMsg = "put the antibiogram in and select temperature";
+            if(antibiogramInside) feedbackMsg = "measure the inhibition zones MEASURE THE INHIBITION ZONES";
+            else feedbackMsg = "PUT THE ANTIBIOGRAM IN AND SELECT THE TEMPERATURE";
+            
+            panel2.SetActive(true);
         }
         else if(hitItemName == "TestTubeBase")
         {
             feedbackMsg = "place down the test tube";
         }
+        if (CheckInteractionField()) return "";
 
-        return "Press 'E' to " + (feedbackMsg == "" ? " interact" : feedbackMsg);
+        return "PRESS E TO " + (feedbackMsg == "" ? " INTERACT" : feedbackMsg);
     }
     private string GetSecondaryFeedbackMsg(string hitItemName)
     {
@@ -210,18 +265,25 @@ public class InteractWithObjects : MonoBehaviour
 
         if (hitItemName == "DrawablePetrieDish")
         {
-            feedbackMsg = "put the lid on";
+            feedbackMsg = "PUT THE LID ON";
+            panel2.SetActive(true);
         }
         else if (hitItemName == "Poklopac")
         {
-            feedbackMsg = "take the lid off";
+            feedbackMsg = "TAKE THE LID OFF";
+            panel2.SetActive(true);
         }
         else if (hitItemName == "PetrijevaZdjelicaBakterije")
         {
-            feedbackMsg = "put the lid on";
+            feedbackMsg = "PUT THE LID ON";
+            panel2.SetActive(true);
+        }
+        else
+        {
+            panel2.SetActive(false);
         }
 
-        return "Press 'R' to " + (feedbackMsg == "" ? " interact" : feedbackMsg);
+        return "PRESS R TO " + (feedbackMsg == "" ? " INTERACT" : feedbackMsg);
     }
 
     // ########################################################### //
@@ -248,6 +310,7 @@ public class InteractWithObjects : MonoBehaviour
         DisinfectionScript disinfectionScript = selectedObject.GetComponent<DisinfectionScript>();
 
         interactText.text = "HOLD E TO DISINFECT ITEM"; //Hold 'E' to disinfect item!
+        panel.SetActive(true);
         if (Input.GetKey(KeyCode.E))
         {
             if (!IncrementInteractionProggress(fireInteractionDuration)) return;
@@ -262,6 +325,7 @@ public class InteractWithObjects : MonoBehaviour
     void DisinfectWithWater(GameObject selectedObject)
     {
         interactText.text = "HOLD E TO WASH AND DISINFECT HANDS"; //Hold 'E' to wash and disinfect hands!
+        panel.SetActive(true);
 
         if (Input.GetKey(KeyCode.E))
         {
@@ -323,6 +387,7 @@ public class InteractWithObjects : MonoBehaviour
 
         // Prikazi poruku playeru
         interactText.text = "PRESS E TO INTERACT";
+        panel.SetActive(true);
 
         // Na pritisak 'E' pokreni/stopiraj dohvaceni particle system
         if (Input.GetKeyDown(KeyCode.E) && !particles.isPlaying)

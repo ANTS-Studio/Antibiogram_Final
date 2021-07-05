@@ -14,6 +14,7 @@ public class PlayerInventory : MonoBehaviour
 
     public Text selectedSlotDisplay;
     public List<Text> interactText;
+    public GameObject panel;
 
     public float maxDistance = 60f;
 
@@ -30,6 +31,8 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        panel = GameObject.FindGameObjectWithTag("PanelForRaycast");
+        panel.SetActive(false);
         fallBackObject = new GameObject("emptyList");
     }
 
@@ -37,13 +40,13 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         this.SelectInventorySlot();
-
         this.DropItem();
         this.AddItemToInventory();
     }
 
     void SetText(int fieldIndex, string text)
     {
+        //if interactable false - pokazi ovo
         fieldIndex = fieldIndex > interactText.Count ? fieldIndex : 0;
         interactText[fieldIndex].text = text;
     }
@@ -63,6 +66,7 @@ public class PlayerInventory : MonoBehaviour
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
         {
+
             GameObject hitItem = hitInfo.collider.gameObject;
             if (hitItem.name == "LabOpasniOtpad")
             {
@@ -78,6 +82,7 @@ public class PlayerInventory : MonoBehaviour
             
             // Prikazi poruku playeru i dohvati reference na pogodeni item
             SetText(0, "PRESS E TO INTERACT");
+            panel.SetActive(true);
 
             // Ako player pritisne 'E' i ima mjesta u inventory, dodaj item
             if (Input.GetKeyDown(KeyCode.E) && playerInventory.Count <= inventorySize)
@@ -107,6 +112,7 @@ public class PlayerInventory : MonoBehaviour
     void EquipGloves(GameObject gloves)
     {
         SetText(0, "PRESS E TO INTERACT");
+        panel.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -133,6 +139,7 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
         SetText(1, "PRESS R TO INTERACT");
+        panel.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -163,6 +170,7 @@ public class PlayerInventory : MonoBehaviour
         if (item.name == "EmptyPetrieDish") return;
 
         SetText(0, "PRESS E TO INTERACT");
+        panel.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
