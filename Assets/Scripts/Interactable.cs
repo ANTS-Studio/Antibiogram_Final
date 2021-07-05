@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour
     private Transform player;
     private Animator anim;
     private Boolean opened = false;
+    public InterpretationScript interpretation;
 
     public void Start()
     {
@@ -83,6 +84,7 @@ public class Interactable : MonoBehaviour
     {
         //Button u skripti InterpretationScript vraca je li interpretacija tocna ili netocna. Vraca bool
         interpretationPanel.SetActive(true);
+        interpretation.SetMeasurmentValues(interpretation.collectedValues);
         MouseLookScript.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class InterpretationScript : MonoBehaviour
 
     public int[] temporaryValues = { 23, 27, 14, 13, 8, 12, 37, 18 };
     public int[] resistantAndSensitiveValues = { 14, 18, 20, 15, 7, 16, 38, 22};
-
+    public int index = 1;
     public int[] collectedValues = new int[8];
 
     //1. 
@@ -125,10 +126,9 @@ public class InterpretationScript : MonoBehaviour
         for(int i = 0; i < 8; i++)
         {
             if (collectedValues[i] != 0) continue;
-
             collectedValues[i] = newMesurement;
+            index = index + 1;
             break;
         }
-        SetMeasurmentValues(collectedValues);
     }
 }
