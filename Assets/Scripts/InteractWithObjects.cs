@@ -14,7 +14,7 @@ public class InteractWithObjects : MonoBehaviour
     private RaycastHit hitInfo;
     private ParticleSystem particles;
     private List<string> canDisinfectWithFire;
-    private List<string> canDisinfectWithWater;
+    private List<string> HoldButtonInteractionObjects;
     private List<string> interactableItems;
     private List<string> secondaryInteractions;
 
@@ -29,10 +29,10 @@ public class InteractWithObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canDisinfectWithFire = new List<string> { "Eza", "Pinceta", "Metal flask" };
-        canDisinfectWithWater = new List<string> { "" };
+        canDisinfectWithFire = new List<string> { "Eza", "Pinceta", "Test tube" };
+        HoldButtonInteractionObjects = new List<string> { "Test tube" };
 
-        interactableItems = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "LabCentrifuga", "Metal flask" };
+        interactableItems = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "LabCentrifuga", "TestTubeBase" };
         secondaryInteractions = new List<string> { "PetrijevaZdjelicaBakterije", "DrawablePetrieDish", "Poklopac" };
     }
 
@@ -45,6 +45,7 @@ public class InteractWithObjects : MonoBehaviour
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
         {
+
             particles = hitInfo.collider.gameObject.GetComponentInChildren<ParticleSystem>();
 
             GameObject selectedObject = GetSelectedItem();
@@ -52,17 +53,32 @@ public class InteractWithObjects : MonoBehaviour
 
             if (CanInteract(hitItemName))
                 GenericInteraction(hitInfo.collider.gameObject);
+            else if (HoldButtonInteractionObjects.Contains(hitItemName))
+                HoldButtonInteraction(hitInfo.collider.gameObject);
             else if (hitItemName == "bunsen_burner" && CanDisinfectFire(selectedObject))
                 this.DisinfectWithFire(selectedObject);
             else if (hitItemName == "ID309" && canDisinfectWater())
                 this.DisinfectWithWater(selectedObject);
             else
-                ToggleParticles();
+                ToggleParticles(hitInfo.collider.gameObject);
+
         }
         else
         {
             interactText.text = "";
             secondaryInteractText.text = "";
+        }
+    }
+
+    private void HoldButtonInteraction(GameObject hitItem)
+    {
+        interactText.text = "Press 'E' to interact";
+
+        switch (hitItem.name)
+        {
+            case "Test tube":
+                hitItem.gameObject.GetComponent<MetalFlaskScript>().Interaction();
+                break;
         }
     }
 
@@ -97,8 +113,8 @@ public class InteractWithObjects : MonoBehaviour
                 case "DrawablePetrieDish":
                     hitItem.gameObject.GetComponent<EnableDrawing>().Interaction();
                     break;
-                case "Metal flask":
-                    hitItem.gameObject.GetComponent<MetalFlaskScript>().Interaction();
+                case "TestTubeBase":
+                    hitItem.gameObject.GetComponent<TestTubeBase>().Interaction();
                     break;
             }
         }
@@ -177,6 +193,10 @@ public class InteractWithObjects : MonoBehaviour
         else if (hitItemName == "LabCentrifuga")
         {
             feedbackMsg = "put the antibiogram in and select temperature";
+        }
+        else if(hitItemName == "TestTubeBase")
+        {
+            feedbackMsg = "place down the test tube";
         }
 
         return "Press 'E' to " + (feedbackMsg == "" ? " interact" : feedbackMsg);
@@ -270,8 +290,6 @@ public class InteractWithObjects : MonoBehaviour
                 GameController.Instance.SetStepAsDone(pranjeUlaz);
             }
             
-
-            
             currentInteractionTimer = 0;
         }
         else currentInteractionTimer = 0;
@@ -296,7 +314,7 @@ public class InteractWithObjects : MonoBehaviour
     }
 
     // ########################################################### //
-    void ToggleParticles()
+    void ToggleParticles(GameObject hitObject)
     {
         if (!particles) return;
 
@@ -307,10 +325,21 @@ public class InteractWithObjects : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !particles.isPlaying)
         {
             particles.Play();
+            ToggleParticleSounds(hitObject, false);
         }
         else if (Input.GetKeyDown(KeyCode.E) && particles.isPlaying)
         {
             particles.Stop();
+            ToggleParticleSounds(hitObject, true);
         }
+
+        
+    }
+
+    private void ToggleParticleSounds(GameObject hitObject, bool muteSound)
+    {
+        AudioSource audio = hitObject.GetComponent<AudioSource>();
+        if (!audio) return;
+        audio.mute = muteSound;
     }
 }

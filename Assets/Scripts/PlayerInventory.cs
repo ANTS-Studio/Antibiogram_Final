@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,6 +58,8 @@ public class PlayerInventory : MonoBehaviour
 
         RaycastHit hitInfo;
 
+        
+
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
         {
@@ -86,10 +90,10 @@ public class PlayerInventory : MonoBehaviour
                     {
                         GameController.Instance.CheckIfPreviousStepsDone(thisStep);
                         GameController.Instance.SetStepAsDone(thisStep);
-                
                     }
                     else GameController.Instance.SetStepAsDone(thisStep);
                 }
+
                 hitItem.SetActive(false);
                 AddItemToInventory(hitItem);
             }
@@ -244,6 +248,7 @@ public class PlayerInventory : MonoBehaviour
     
     public void AddItemToInventory(GameObject newItem)
     {
+        gameObject.GetComponent<AudioSource>().Play();
         playerInventory.Add(newItem);
         this.AdjustSelectedItemDisplay();
     }

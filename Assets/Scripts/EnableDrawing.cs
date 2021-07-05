@@ -187,7 +187,6 @@ public class EnableDrawing : MonoBehaviour
     {
         GameObject parent = gameObject.transform.parent.gameObject;
         BoxCollider parentColider = parent.GetComponent<BoxCollider>();
-
         parentColider.enabled = true;
     }
 }

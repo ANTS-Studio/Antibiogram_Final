@@ -95,6 +95,7 @@ public class Interactable : MonoBehaviour
         Animator door = transform.GetComponent<Animator>();
         opened = !opened;
         door.SetBool("Opened", opened);
+        PlayDoorSound();
 
         int nextStep = GameController.Instance.GetNextStep();
         int ulazLab = GameController.Instance.GetStepIndexByName("Ulazak u laboratorij"); //0. korak
@@ -121,5 +122,10 @@ public class Interactable : MonoBehaviour
         {
             GameController.Instance.SetStepAsDone(ulazLab);
         }
+    }
+    private void PlayDoorSound()
+    {
+        GameObject door = GameObject.Find("OfficeLabVrata");
+        door.GetComponent<AudioSource>().Play();
     }
 }

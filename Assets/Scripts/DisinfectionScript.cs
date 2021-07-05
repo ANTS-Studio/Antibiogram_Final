@@ -34,7 +34,7 @@ public class DisinfectionScript : MonoBehaviour
             GameObject player = GameObject.Find("Player");
             PlayerInventory inventory = player.GetComponent<PlayerInventory>();
 
-            GameObject flask = inventory.GetItemByName("Metal flask");
+            GameObject flask = inventory.GetItemByName("Test tube");
             flask.layer = 6;
             int nextStep = GameController.Instance.GetNextStep();
             int thisStep = GameController.Instance.GetStepIndexByName("Sterilizacija epruvete"); //6. korak

@@ -21,6 +21,7 @@ public class CloseButtonHandler : MonoBehaviour
         InteractionProgressImg.fillAmount = 0;
 
         HideAntibioticTray();
+        CloseResults();
 
         genericFeedback.text = "";
     }
@@ -32,6 +33,16 @@ public class CloseButtonHandler : MonoBehaviour
         foreach (Transform child in itemDropOff)
         {
             if (child.name == "Tray") child.gameObject.SetActive(false);
+        }
+    }
+
+    private void CloseResults()
+    {
+        Transform itemDropOff = GameObject.Find("ItemDropOff").transform;
+
+        foreach (Transform child in itemDropOff)
+        {
+            if (child.name == "Results") child.gameObject.SetActive(false);
         }
     }
 }
