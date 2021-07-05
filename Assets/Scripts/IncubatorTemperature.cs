@@ -80,12 +80,12 @@ public class IncubatorTemperature : MonoBehaviour
 
     private string GetSelectedValue()
     {
-        return output.text.Split('�')[0];
+        return output.text.Split('C')[0];
     }
 
     private void SetOutput(string selectedValue)
     {
-        output.text = selectedValue + "�C ";
+        output.text = selectedValue + "C ";
     }
 
     // ########################################################### //

@@ -15,6 +15,7 @@ public class PlayerInventory : MonoBehaviour
     public Text selectedSlotDisplay;
     public List<Text> interactText;
     public GameObject panel;
+    public GameObject panel2;
 
     public float maxDistance = 60f;
 
@@ -33,15 +34,30 @@ public class PlayerInventory : MonoBehaviour
     {
         panel = GameObject.FindGameObjectWithTag("PanelForRaycast");
         panel.SetActive(false);
+        panel2 = GameObject.FindGameObjectWithTag("PanelForInventory");
+        panel2.SetActive(false);
         fallBackObject = new GameObject("emptyList");
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetList();
         this.SelectInventorySlot();
         this.DropItem();
         this.AddItemToInventory();
+    }
+
+    public void GetList()
+    {
+        if(playerInventory.Count == 0)
+        {
+            panel2.SetActive(false);
+        }
+        else
+        {
+            panel2.SetActive(true);
+        }
     }
 
     void SetText(int fieldIndex, string text)
@@ -227,7 +243,9 @@ public class PlayerInventory : MonoBehaviour
         else if (selectedInventorySlot > itemsInInventory - 1) selectedInventorySlot = itemsInInventory - 1;
 
         // Postavi/Ukloni ime item-a
-        selectedSlotDisplay.text = selectedInventorySlot != -1 ? getSelectedItem().name : "";
+        selectedSlotDisplay.text = selectedInventorySlot != -1 ? getSelectedItem().name.ToUpper() : "";
+
+        //panel2.SetActive(true);
     }
     void SelectInventorySlot()
     {
@@ -251,7 +269,7 @@ public class PlayerInventory : MonoBehaviour
         // Postavi display tekst imena odabranog item-a
         string itemName = getSelectedItem() ? getSelectedItem().name : "";
         Debug.Log(itemName == "EmptyPetrieDish");
-        selectedSlotDisplay.text = itemName == "EmptyPetrieDish" ? "Antibiogram" : itemName;
+        selectedSlotDisplay.text = itemName.ToUpper() == "EmptyPetrieDish" ? "Antibiogram" : itemName.ToUpper();
     }
     
     public void AddItemToInventory(GameObject newItem)

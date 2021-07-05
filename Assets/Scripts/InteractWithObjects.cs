@@ -101,7 +101,7 @@ public class InteractWithObjects : MonoBehaviour
 
     private void HoldButtonInteraction(GameObject hitItem)
     {
-        interactText.text = "Press 'E' to interact";
+        interactText.text = "PRESS E TO INTERACT";
 
         switch (hitItem.name)
         {
