@@ -9,6 +9,7 @@ public class InteractWithObjects : MonoBehaviour
     public Text interactText;
     public Text secondaryInteractText;
     public Text genericFeedbackText;
+    public Text primaryPickupText;
     public GameObject panel;
     public GameObject panel2;
     public GameObject primaryTest;
@@ -207,8 +208,7 @@ public class InteractWithObjects : MonoBehaviour
     // ########################################################### //
     private bool CheckInteractionField()
     {
-        GameObject primaryInteractionText = GameObject.Find("PrimaryPickupText");
-        string text = primaryInteractionText.GetComponent<Text>().text;
+        string text = primaryPickupText.GetComponent<Text>().text;
 
         return text.Length > 0;
     }
