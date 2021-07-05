@@ -4,7 +4,9 @@ we wish you a warm welcome to SpaceAtlas.
 
 As you know, our mission is to colonize planet Mars as soon as possible and we believe that you can help us.
 
-Before beginning your regular duties, we urgently need your help. We have a big problem. Our astronauts returned from a mission and are ill - they are experiencing nausea, vomiting and chronic fatigue. 
+Before beginning your regular duties, we urgently need your help. We have a big problem. 
+
+Our astronauts returned from a mission and are ill - they are experiencing nausea, vomiting and chronic fatigue. 
 
 They brought a sample from Mars which might give us a clue what it is that is making them ill. 
 
@@ -48,7 +50,7 @@ Today is the big day! Let's hope that the new antibiotics work. Good luck, Patri
 
 ---------------
 
-DAY 5 [vađenje iz inkubatora i interpretacija]
+DAY 5
 *GOOD*
 Congratulations! 
 

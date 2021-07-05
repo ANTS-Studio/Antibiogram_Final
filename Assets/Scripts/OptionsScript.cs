@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsScript : MonoBehaviour
@@ -12,7 +14,7 @@ public class OptionsScript : MonoBehaviour
     public SceneController sceneController;
     public GameObject pauseMenu;
     public GameObject eduPauseMenu;
-
+    public GameObject optionsPanel;
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
@@ -43,23 +45,27 @@ public class OptionsScript : MonoBehaviour
 
     public void goBack()
     {
-        if(sceneController.IsCurrentSceneEducational())
-        {
-            optionsMenu.SetActive(false);
-            pauseMenu.SetActive(false);
-            eduPauseMenu.SetActive(true);
-        }
+        if(SceneManager.GetActiveScene().name.Equals("Menu")) optionsMenu.SetActive(false);
         else
         {
-            optionsMenu.SetActive(false);
-            pauseMenu.SetActive(true);
-            eduPauseMenu.SetActive(false);
+            if (sceneController.IsCurrentSceneEducational())
+            {
+                optionsPanel.SetActive(false);
+                pauseMenu.SetActive(false);
+                eduPauseMenu.SetActive(true);
+            }
+            else
+            {
+                optionsPanel.SetActive(false);
+                pauseMenu.SetActive(true);
+                eduPauseMenu.SetActive(false);
+            }
         }
     }
 
     void Start()
     {
-        optionsMenu.SetActive(false);
+        //optionsMenu.SetActive(false);
         backButton.onClick.AddListener(() => goBack());
     }
 }
