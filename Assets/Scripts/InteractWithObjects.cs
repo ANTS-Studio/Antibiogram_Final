@@ -8,6 +8,7 @@ public class InteractWithObjects : MonoBehaviour
     public LayerMask layerMask;
     public Text interactText;
     public Text secondaryInteractText;
+    public Text genericFeedbackText;
     public GameObject panel;
     public GameObject panel2;
     public GameObject primaryTest;
@@ -47,7 +48,6 @@ public class InteractWithObjects : MonoBehaviour
     {
         Ray ray = mainCam.ViewportPointToRay(Vector3.one / 2f);
         //Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
-
         // Trazi item koji se nalaze na odredenom layeru
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
         {
@@ -58,8 +58,17 @@ public class InteractWithObjects : MonoBehaviour
 
             if (CanInteract(hitItemName))
             {
-                panel.SetActive(true);
-                GenericInteraction(hitInfo.collider.gameObject);
+                if (genericFeedbackText.text.Equals("") && interactText.text.Equals(""))
+                {
+                    panel.SetActive(false);
+                    GenericInteraction(hitInfo.collider.gameObject);
+                }
+                else
+                {
+
+                    panel.SetActive(true);
+                    GenericInteraction(hitInfo.collider.gameObject);
+                }
             }
             else if (HoldButtonInteractionObjects.Contains(hitItemName))
             { 
