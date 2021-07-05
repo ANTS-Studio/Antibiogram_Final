@@ -71,6 +71,9 @@ TagManager:
   - HintsResult
   - Dropoff
   - EndDayResults
+  - PanelForRaycast
+  - PanelForRaycast2
+  - PrimaryTextTEST
   layers:
   - Default
   - TransparentFX
