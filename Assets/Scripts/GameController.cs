@@ -138,18 +138,13 @@ public class GameController : MonoBehaviour
                     "We then close the petri dish and put it in the incubator, setting the temperature to 37 degrees Celsius."));
                 ++index;    
 
-                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
-                //     "Take the petri dish out of the incubator.",
-                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish now available for interpretation, our colleagues left it for us."));
+                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
+                //     "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
+                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Postavljanje zdjelice na stol i mjerenje zona inhibicije", false, false,
-                //     "Put the petri dish on the table and take the ruler to measure the inhibition zones.",
-                //     "Then, we put the petri dish on the table and measure the inhibition zones using the ruler."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Interpret the antibiogram.",
-                //     "It's time to interpret our antibiogram. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
+                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
+                //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
                 // ++index;
 
                 Steps.Add(new Step(index, "Odlaganje rukavica u otpad", false, false,
@@ -261,18 +256,13 @@ public class GameController : MonoBehaviour
                     "Then, we put on glaves."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
-                //     "Take the petri dish out of the incubator.",
-                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish now available for interpretation, our colleagues left it for us."));
+                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
+                //     "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
+                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Postavljanje zdjelice na stol i mjerenje zona inhibicije", false, false,
-                //     "Put the petri dish on the table and take the ruler to measure the inhibition zones.",
-                //     "Then, we put the petri dish on the table and measure the inhibition zones using the ruler."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Interpret the antibiogram.",
-                //     "It's time to interpret our antibiogram. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
+                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
+                //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
                 // ++index;
 
                 Steps.Add(new Step(index, "Odlaganje rukavica u otpad", false, false,
@@ -299,18 +289,13 @@ public class GameController : MonoBehaviour
                     "Then, we put on glaves."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
-                //     "Take the petri dish out of the incubator.",
-                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish now available for interpretation, our colleagues left it for us."));
+                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
+                //     "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
+                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Postavljanje zdjelice na stol i mjerenje zona inhibicije", false, false,
-                //     "Put the petri dish on the table and take the ruler to measure the inhibition zones.",
-                //     "Then, we put the petri dish on the table and measure the inhibition zones using the ruler."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Interpret the antibiogram.",
-                //     "It's time to interpret our antibiogram. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
+                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
+                //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
                 // ++index;
 
                 Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the swab stick.",
@@ -390,6 +375,7 @@ public class GameController : MonoBehaviour
     {
         Steps.Clear();
     }
+
 
     //funkcija za završavanje dana; ako su svi koraci završeni i ako se igrač vrati u svoj ured onda se izvršava
     public void EndDay()
