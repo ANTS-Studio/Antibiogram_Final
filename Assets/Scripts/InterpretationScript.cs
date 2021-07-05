@@ -8,6 +8,7 @@ using System.Linq;
 public class InterpretationScript : MonoBehaviour
 {
     public Button sendButton;
+    public MouseLook MouseLookScript;
     public GameObject panel;
     public string[] measureNameTags = { "Measure1", "Measure2", "Measure3", "Measure4", "Measure5", "Measure6", "Measure7", "Measure8" };
     public string[] sensitiveNameTags = { "Sensitive1", "Sensitive2", "Sensitive3", "Sensitive4", "Sensitive5", "Sensitive6", "Sensitive7", "Sensitive8" };
@@ -102,10 +103,18 @@ public class InterpretationScript : MonoBehaviour
         {
             if (userInput[i] != correctValues[i])
             {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1f;
+                MouseLookScript.enabled = true;
                 panel.SetActive(false);
                 return false;
             }
         }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        MouseLookScript.enabled = true;
         panel.SetActive(false);
         return true;
     }

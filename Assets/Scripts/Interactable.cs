@@ -84,12 +84,13 @@ public class Interactable : MonoBehaviour
     {
         //Button u skripti InterpretationScript vraca je li interpretacija tocna ili netocna. Vraca bool
         interpretationPanel.SetActive(true);
-        interpretation.SetMeasurmentValues(interpretation.collectedValues);
         MouseLookScript.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;
         IsPaused = true;
+        interpretation.SetMeasurmentValues(interpretation.collectedValues);
+
     }
 
     public void InteractionVrata()
