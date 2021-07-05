@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenerateResults : MonoBehaviour
 {
     public Transform resultCircle;
+    public GameObject resultPreset;
 
     private List<Vector3> positions;
     private bool isGenerated = false;
@@ -15,7 +16,8 @@ public class GenerateResults : MonoBehaviour
         isGenerated = true;
 
         ClearAntibiogram();
-        GenerateResultCircles();
+        if (GameController.Instance.educationalMode) GenerateResultCircles();
+        else GetResults();
     }
 
     private void ClearAntibiogram()
@@ -43,9 +45,23 @@ public class GenerateResults : MonoBehaviour
         return positions;
     }
 
-    private int GetResultValue()
+    private int GetResultValue(int curLevel = -1)
     {
-        return Random.Range(5, 15);
+        int result = 10;
+        switch (curLevel)
+        {
+            case -1: // Edukaciski
+                result = Random.Range(5, 15);
+                break;
+            case 2: //  Lose
+                result = Random.Range(5, 15);
+                break;
+            case 4: // Dobro
+                result = Random.Range(15, 50);
+                break;
+        }
+
+        return result;
     }
 
     private void GenerateResultCircles()
@@ -55,18 +71,38 @@ public class GenerateResults : MonoBehaviour
         resultParent.name = "Results";
         resultParent.transform.SetParent(parentContainer.transform, false);
 
+
         foreach (Vector3 position in positions)
         {
-            int circleSize = Random.Range(5, 5);
+            int circleSize = Random.Range(2, 5);
             resultCircle.localScale = new Vector3(1 * circleSize, 0.125f, 1 * circleSize);
 
             GameObject newGameobj = Instantiate(resultCircle, position, Quaternion.identity).gameObject;
 
             newGameobj.GetComponent<GetResults>().resultValue = GetResultValue();
-            newGameobj.transform.rotation *= Quaternion.Euler(0.0f, -35.0f, 90.0f);
+            newGameobj.transform.rotation *= Quaternion.Euler(0.0f, 90f, 90.0f);
             newGameobj.transform.parent = resultParent.transform;
         }
 
         resultParent.SetActive(false);
+    }
+
+    private void GetResults()
+    {
+        int curLevel = 2;//TESTING
+        //int curLevel = GameController.Instance.level;
+        if (!(curLevel == 2 || curLevel == 4)) return;
+
+        Transform parent = GameObject.Find("ItemDropOff").transform;
+
+        GameObject results = Instantiate(resultPreset, parent.position + new Vector3(0, 0, 3.5f), parent.rotation, parent);
+        results.transform.SetParent(parent);
+
+        foreach (Transform child in resultPreset.transform)
+        {
+            child.GetComponent<GetResults>().resultValue = GetResultValue(curLevel);
+        }
+
+        results.SetActive(false);
     }
 }

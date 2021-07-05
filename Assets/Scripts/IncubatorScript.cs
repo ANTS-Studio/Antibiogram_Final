@@ -8,6 +8,7 @@ public class IncubatorScript : MonoBehaviour
     public GameObject GUIParent;
     public Button closeButton;
     public bool antibiogramInside = false;
+    public bool overwrite = false;
     private bool isGUIOpen = false;
     
     // Start is called before the first frame update
@@ -15,11 +16,14 @@ public class IncubatorScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        int curLevel = GameController.Instance.level;
+        if (curLevel == 2 || curLevel == 4) overwrite = true;
     }
 
     public void Interaction()
     {
-        if (antibiogramInside && !isGUIOpen) OpenInterpretationGUI();
+        if ((antibiogramInside && !isGUIOpen) || overwrite) OpenInterpretationGUI();
         if (!IsAntibiogramSelected() && !isGUIOpen) return;
 
         isGUIOpen = !isGUIOpen;
@@ -100,6 +104,7 @@ public class IncubatorScript : MonoBehaviour
         foreach (Transform child in parentContainer)
         {
             if (child.name == "DrawablePetrieDishBackground" || child.name == "Results") child.gameObject.SetActive(true);
+            else if (child.name == "Results 1(Clone)" && overwrite) child.gameObject.SetActive(true);
         }
     }
 }

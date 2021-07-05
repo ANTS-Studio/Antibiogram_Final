@@ -21,7 +21,7 @@ public class MetalFlaskScript : MonoBehaviour
     // Start is called before the first frame update
     public void Interaction()
     {
-        if (!IsEzaSelected())
+        if (!IsEzaSelected() || GetWasInFlask())
         {
             currentInteractionTimer = 0;
             return;
@@ -33,7 +33,11 @@ public class MetalFlaskScript : MonoBehaviour
             SetWasInFlask(true);
 
             currentInteractionTimer = 0;
+            InteractionProgressImg.fillAmount = 0;
         }
+        else currentInteractionTimer = 0;
+
+        UpdateInteractionImg(4f);
     }
 
     private bool IsEzaSelected()
@@ -48,6 +52,12 @@ public class MetalFlaskScript : MonoBehaviour
         if (gameObject.GetComponent<DisinfectionScript>().GetWasInFlask()) return false;
 
         return true;
+    }
+
+    private bool GetWasInFlask()
+    {
+        GameObject selectedItem = inventory.getSelectedItem();
+        return selectedItem.GetComponent<DisinfectionScript>().GetWasInFlask();
     }
 
     private void SetWasInFlask(bool value)

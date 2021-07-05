@@ -33,7 +33,6 @@ public class EnableDrawing : MonoBehaviour
         selectedItemName = inventory.getSelectedItem().name;
 
         if (selectedItemName == "Pinceta") ShowAntibioticTray();
-        Debug.Log(selectedItemName + " " + allowedItem.Contains(selectedItemName));
         return allowedItem.Contains(selectedItemName);
     }
 

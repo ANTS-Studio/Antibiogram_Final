@@ -227,7 +227,8 @@ public class PlayerInventory : MonoBehaviour
         else if (selectedInventorySlot > itemsInInventory - 1) selectedInventorySlot = itemsInInventory - 1;
 
         // Postavi/Ukloni ime item-a
-        selectedSlotDisplay.text = selectedInventorySlot != -1 ? getSelectedItem().name : "";
+        string itemName = getSelectedItem().name;
+        selectedSlotDisplay.text = selectedInventorySlot != -1 ? GetCorrectItemName(itemName) : "";
     }
     void SelectInventorySlot()
     {
@@ -250,10 +251,29 @@ public class PlayerInventory : MonoBehaviour
 
         // Postavi display tekst imena odabranog item-a
         string itemName = getSelectedItem() ? getSelectedItem().name : "";
-        Debug.Log(itemName == "EmptyPetrieDish");
-        selectedSlotDisplay.text = itemName == "EmptyPetrieDish" ? "Antibiogram" : itemName;
+        selectedSlotDisplay.text = GetCorrectItemName(itemName);
     }
     
+    private string GetCorrectItemName(string itemName)
+    {
+        string result = itemName;
+        switch (itemName)
+        {
+            case "Pinceta":
+                result = "Tweezers";
+                break;
+
+            case "EmptyPetrieDish":
+                result = "Antibiogram";
+                break;
+
+            case "Eza":
+                result = "Microstreaker";
+                break;
+        }
+        return result;
+    }
+
     public void AddItemToInventory(GameObject newItem)
     {
         gameObject.GetComponent<AudioSource>().Play();

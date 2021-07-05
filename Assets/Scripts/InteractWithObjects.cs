@@ -65,7 +65,6 @@ public class InteractWithObjects : MonoBehaviour
                 }
                 else
                 {
-
                     panel.SetActive(true);
                     GenericInteraction(hitInfo.collider.gameObject);
                 }
@@ -100,11 +99,12 @@ public class InteractWithObjects : MonoBehaviour
 
     private void HoldButtonInteraction(GameObject hitItem)
     {
-        interactText.text = "Press 'E' to interact";
-
         switch (hitItem.name)
         {
             case "Test tube":
+                interactText.text = "HOLD E TO STIR"; //Hold 'E' to disinfect item!
+                panel.SetActive(true);
+
                 hitItem.gameObject.GetComponent<MetalFlaskScript>().Interaction();
                 break;
         }
@@ -156,7 +156,6 @@ public class InteractWithObjects : MonoBehaviour
         }
     }
    
-
     private void SecondaryInteraction(GameObject hitItem)
     {
         secondaryInteractText.text = GetSecondaryFeedbackMsg(hitItem.name);
@@ -213,7 +212,6 @@ public class InteractWithObjects : MonoBehaviour
         return text.Length > 0;
     }
 
-
     private string GetFeedbackMsg(string hitItemName)
     {
         string selectedItemName = GetSelectedItem().name;
@@ -244,9 +242,9 @@ public class InteractWithObjects : MonoBehaviour
         }
         else if (hitItemName == "LabCentrifuga")
         {
-            bool antibiogramInside = GameObject.Find("LabCentrifuga").GetComponent<IncubatorScript>().antibiogramInside;
-            
-            if(antibiogramInside) feedbackMsg = "measure the inhibition zones MEASURE THE INHIBITION ZONES";
+            IncubatorScript incubator = GameObject.Find("LabCentrifuga").GetComponent<IncubatorScript>();
+
+            if(incubator.antibiogramInside || incubator.overwrite) feedbackMsg = "MEASURE THE INHIBITION ZONES";
             else feedbackMsg = "PUT THE ANTIBIOGRAM IN AND SELECT THE TEMPERATURE";
             
             panel2.SetActive(true);

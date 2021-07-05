@@ -20,29 +20,20 @@ public class CloseButtonHandler : MonoBehaviour
         Image InteractionProgressImg = GameObject.Find("proggressIndicator").GetComponent<Image>();
         InteractionProgressImg.fillAmount = 0;
 
-        HideAntibioticTray();
-        CloseResults();
+        Transform itemDropOff = GameObject.Find("ItemDropOff").transform;
+
+        foreach (Transform child in itemDropOff)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().canMove = true;
+        GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<MouseLook>().canMove = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         genericFeedback.text = "";
-    }
-
-    private void HideAntibioticTray()
-    {
-        Transform itemDropOff = GameObject.Find("ItemDropOff").transform;
-
-        foreach (Transform child in itemDropOff)
-        {
-            if (child.name == "Tray") child.gameObject.SetActive(false);
-        }
-    }
-
-    private void CloseResults()
-    {
-        Transform itemDropOff = GameObject.Find("ItemDropOff").transform;
-
-        foreach (Transform child in itemDropOff)
-        {
-            if (child.name == "Results") child.gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 }
