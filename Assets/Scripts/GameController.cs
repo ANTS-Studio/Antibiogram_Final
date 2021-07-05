@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
 
                 Steps.Add(new Step(index, "Šaranje podloge", false, false,
                     "Use the swab stick to go over the petri dish.",
-                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the swab stick. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
+                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the swab stick."));
                 ++index;
 
                 Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour
                 Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
                     "Put the petri dish in the incubator.",
                     "We then close the petri dish and put it in the incubator, setting the temperature to 37 degrees Celsius."));
-                ++index;
+                ++index;    
 
                 // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora", false, false,
                 //     "Take the petri dish out of the incubator.",
