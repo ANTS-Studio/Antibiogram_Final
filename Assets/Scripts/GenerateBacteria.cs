@@ -56,7 +56,7 @@ public class GenerateBacteria : MonoBehaviour
             break;
         }
 
-        parentObject.transform.rotation = Quaternion.Euler(90, 0, -95);
+        parentObject.transform.rotation = Quaternion.Euler(90, 0, 26.43300f);
     }
 
     public void Interaction()
