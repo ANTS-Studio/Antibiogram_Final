@@ -14,13 +14,11 @@ public class TutorialScript : MonoBehaviour
         {
             OpenTutorialPanel();
         }
-        else
+        else if (GameController.Instance.level == 0)
         {
-            if (GameController.Instance.level == 0)
-            {
-                OpenTutorialPanel();
-            }
+            OpenTutorialPanel();
         }
+        else Panel.SetActive(false);
     }
 
     public string GetNextStepTutorialText()

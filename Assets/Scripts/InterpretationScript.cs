@@ -27,8 +27,7 @@ public class InterpretationScript : MonoBehaviour
     {
         for (int i = 0; i < measureNameTags.Length; i++)
         {
-            Debug.Log(1);
-            GameObject.FindGameObjectWithTag(measureNameTags[i]).GetComponent<TMPro.TextMeshProUGUI>().text = inputValues[i].ToString();
+            if(panel.activeSelf) GameObject.FindGameObjectWithTag(measureNameTags[i]).GetComponent<TMPro.TextMeshProUGUI>().text = inputValues[i].ToString();
         }
     }
 

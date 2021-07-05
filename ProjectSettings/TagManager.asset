@@ -74,6 +74,7 @@ TagManager:
   - PanelForRaycast
   - PanelForRaycast2
   - PrimaryTextTEST
+  - PanelForInventory
   layers:
   - Default
   - TransparentFX
