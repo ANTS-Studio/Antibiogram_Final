@@ -43,6 +43,11 @@ public class GenerateResults : MonoBehaviour
         return positions;
     }
 
+    private int GetResultValue()
+    {
+        return Random.Range(5, 15);
+    }
+
     private void GenerateResultCircles()
     {
         GameObject parentContainer = GameObject.Find("ItemDropOff");
@@ -52,12 +57,13 @@ public class GenerateResults : MonoBehaviour
 
         foreach (Vector3 position in positions)
         {
-            int circleSize = Random.Range(1, 5);
+            int circleSize = Random.Range(5, 5);
             resultCircle.localScale = new Vector3(1 * circleSize, 0.125f, 1 * circleSize);
 
-            var newGameobj = Instantiate(resultCircle, position, Quaternion.identity);
+            GameObject newGameobj = Instantiate(resultCircle, position, Quaternion.identity).gameObject;
 
-            newGameobj.transform.rotation *= Quaternion.Euler(0.0f, -15.0f, 90.0f);
+            newGameobj.GetComponent<GetResults>().resultValue = GetResultValue();
+            newGameobj.transform.rotation *= Quaternion.Euler(0.0f, -35.0f, 90.0f);
             newGameobj.transform.parent = resultParent.transform;
         }
 

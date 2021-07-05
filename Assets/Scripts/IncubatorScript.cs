@@ -70,9 +70,12 @@ public class IncubatorScript : MonoBehaviour
         PlayerController movementScript = player.GetComponent<PlayerController>();
         movementScript.ToggleMovement();
 
-
         MouseLook cameraMovementScript = GameObject.FindWithTag("PlayerCamera").GetComponent<MouseLook>();
         cameraMovementScript.ToggleMovement();
+
+        GameObject teleportPosition = GameObject.Find("TeleportPosition");
+        player.transform.position = teleportPosition.transform.position;
+        player.transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 
 

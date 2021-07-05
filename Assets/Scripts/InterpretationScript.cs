@@ -16,6 +16,8 @@ public class InterpretationScript : MonoBehaviour
     public int[] temporaryValues = { 23, 27, 14, 13, 8, 12, 37, 18 };
     public int[] resistantAndSensitiveValues = { 14, 18, 20, 15, 7, 16, 38, 22};
 
+    public int[] collectedValues = new int[8];
+
     //1. 
     //2. 
 
@@ -25,8 +27,8 @@ public class InterpretationScript : MonoBehaviour
     {
         for (int i = 0; i < measureNameTags.Length; i++)
         {
-            if(panel.activeSelf)
-                GameObject.FindGameObjectWithTag(measureNameTags[i]).GetComponent<TMPro.TextMeshProUGUI>().text = inputValues[i].ToString();
+            Debug.Log(1);
+            GameObject.FindGameObjectWithTag(measureNameTags[i]).GetComponent<TMPro.TextMeshProUGUI>().text = inputValues[i].ToString();
         }
     }
 
@@ -92,7 +94,7 @@ public class InterpretationScript : MonoBehaviour
 
     public bool IsInterpretationCorrect()
     {
-        SetMeasurmentValues(temporaryValues);
+        SetMeasurmentValues(collectedValues);
         SetResAndSensValues();
         List<bool> userInput = GetUsersInputValues();
         List<bool> correctValues = GetInterpretationCorrectness();
@@ -110,11 +112,24 @@ public class InterpretationScript : MonoBehaviour
 
     void Start()
     {
-        SetMeasurmentValues(temporaryValues);
+        //SetMeasurmentValues(temporaryValues);
+        //AddMesuredValue(1);
         SetResAndSensValues();
         panel.SetActive(false);
         sendButton.onClick.AddListener(() => IsInterpretationCorrect());
         //Funkcija SetMeasurementValues(); se zapravo poziva iz druge skripte, dakle, ne smije biti u startu
 
+    }
+
+    public void AddMesuredValue(int newMesurement)
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            if (collectedValues[i] != 0) continue;
+
+            collectedValues[i] = newMesurement;
+            break;
+        }
+        SetMeasurmentValues(collectedValues);
     }
 }

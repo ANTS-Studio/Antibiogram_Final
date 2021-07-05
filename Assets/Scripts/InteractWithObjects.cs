@@ -192,7 +192,10 @@ public class InteractWithObjects : MonoBehaviour
         }
         else if (hitItemName == "LabCentrifuga")
         {
-            feedbackMsg = "put the antibiogram in and select temperature";
+            bool antibiogramInside = GameObject.Find("LabCentrifuga").GetComponent<IncubatorScript>().antibiogramInside;
+            
+            if(antibiogramInside) feedbackMsg = "measure the inhibition zones";
+            else feedbackMsg = "put the antibiogram in and select temperature";
         }
         else if(hitItemName == "TestTubeBase")
         {
