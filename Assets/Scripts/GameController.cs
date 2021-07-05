@@ -261,7 +261,7 @@ public class GameController : MonoBehaviour
                 //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
                 // ++index;
                 //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
+                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective.",
                 //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
                 // ++index;
 
