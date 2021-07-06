@@ -355,6 +355,11 @@ public class GameController : MonoBehaviour
     {
         if (EndDayTrigger)
         {
+            if (educationalMode)
+            {
+                SceneManager.LoadScene("Menu"); 
+                return;
+            }
             currentNOfMistakes = GetCurrentNOfMistakes();
             CalculateMistakes();
             ++level;
