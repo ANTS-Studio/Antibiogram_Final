@@ -357,7 +357,13 @@ public class GameController : MonoBehaviour
         {
             if (educationalMode)
             {
+                entryFlag = false;
+                educationalMode = false;
+                ResetSteps();
+                AddSteps(0);
                 SceneManager.LoadScene("Menu"); 
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 return;
             }
             currentNOfMistakes = GetCurrentNOfMistakes();
