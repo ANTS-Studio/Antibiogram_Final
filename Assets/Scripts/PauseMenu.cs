@@ -66,7 +66,10 @@ public class PauseMenu : MonoBehaviour
     {
         MouseLookScript.enabled = true;
         Cursor.visible = false;
+        if (sceneController.IsCurrentSceneEducational()) PauseMenuEducational.SetActive(false);
+        else { 
         PauseMenuUI.SetActive(false);
+        }
         Time.timeScale = 1f;
         IsPaused = false;
     }

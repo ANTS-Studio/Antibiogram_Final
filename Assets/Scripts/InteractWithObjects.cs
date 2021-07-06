@@ -267,7 +267,7 @@ public class InteractWithObjects : MonoBehaviour
         }
         else if(hitItemName == "TestTubeBase")
         {
-            feedbackMsg = "place down the test tube";
+            feedbackMsg = "PLACE DOWN THE TEST TUBE";
         }
         if (CheckInteractionField()) return "";
 
