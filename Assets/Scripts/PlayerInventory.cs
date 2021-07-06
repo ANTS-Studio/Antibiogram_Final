@@ -284,6 +284,10 @@ public class PlayerInventory : MonoBehaviour
             case "EmptyPetrieDish":
                 result = "Antibiogram";
                 break;
+            
+            case "Poklopac":
+                result = "Lid";
+                break;
 
             case "Eza":
                 result = "Microstreaker";
