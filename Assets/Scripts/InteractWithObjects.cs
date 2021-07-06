@@ -247,7 +247,7 @@ public class InteractWithObjects : MonoBehaviour
             if(incubator.antibiogramInside || incubator.overwrite) feedbackMsg = "MEASURE THE INHIBITION ZONES";
             else feedbackMsg = "PUT THE ANTIBIOGRAM IN AND SELECT THE TEMPERATURE";
             
-            panel2.SetActive(true);
+            //panel2.SetActive(true);
         }
         else if(hitItemName == "TestTubeBase")
         {
