@@ -43,7 +43,6 @@ public class Paintable : MonoBehaviour
     {
         string selectedItemName = inventory.getSelectedItem().name;
 
-
         switch (selectedItemName)
         {
             case "Marker":
@@ -65,7 +64,15 @@ public class Paintable : MonoBehaviour
 
     private void DrawBacteria(Vector3 hitPoint)
     {
+        if (!CanDrawBacteria()) return;
+
         var go = Instantiate(BacteriaTrail, hitPoint + Vector3.left * 0.1f, transform.rotation, transform);
         go.transform.localScale = Vector3.one * BacteriaSize;
+    }
+
+    private bool CanDrawBacteria()
+    {
+        float bacteria = inventory.getSelectedItem().GetComponent<DisinfectionScript>().GetEzaBacteriaPercentage();
+        return bacteria >= 1;
     }
 }

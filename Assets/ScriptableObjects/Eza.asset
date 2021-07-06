@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e126ace2a813047a293f311c4f1acb, type: 3}
   m_Name: Eza
   m_EditorClassIdentifier: 
-  isClean: 0
+  isClean: 1
+  bacteriaPercentage: 1.0772088
+  wasInFlask: 1
