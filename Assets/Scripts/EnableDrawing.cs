@@ -149,17 +149,6 @@ public class EnableDrawing : MonoBehaviour
         {
             if (child.name != "Poklopac") continue;
             child.gameObject.SetActive(true);
-            int nextStep = GameController.Instance.GetNextStep();
-            int thisStep = GameController.Instance.GetStepIndexByName("Zatvaranje zdjelice"); //9. korak
-            if (nextStep != thisStep)
-            {
-                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
-                GameController.Instance.SetStepAsDone(thisStep);
-            }
-            else
-            {
-                GameController.Instance.SetStepAsDone(thisStep);
-            }
         }
 
         interactionText.text = "";
