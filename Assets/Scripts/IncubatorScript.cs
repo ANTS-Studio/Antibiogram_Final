@@ -98,6 +98,21 @@ public class IncubatorScript : MonoBehaviour
     {
         bool isActive = closeButton.gameObject.activeSelf;
         closeButton.gameObject.SetActive(!isActive);
+        
+        if (!isActive)
+        {
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Vađenje zdjelice iz inkubatora i mjerenje"); //12. korak
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+            }
+        }
     }
 
     private void ActivateResults()
