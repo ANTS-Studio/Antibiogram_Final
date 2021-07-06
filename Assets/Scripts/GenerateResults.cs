@@ -47,11 +47,11 @@ public class GenerateResults : MonoBehaviour
 
     private int GetResultValue(int curLevel = -1)
     {
-        int result = 10;
+        int result = Random.Range(10, 30); ;
         switch (curLevel)
         {
             case -1: // Edukaciski
-                result = Random.Range(5, 15);
+                result = Random.Range(10, 30);
                 break;
             case 2: //  Lose
                 result = Random.Range(5, 15);
@@ -71,7 +71,6 @@ public class GenerateResults : MonoBehaviour
         resultParent.name = "Results";
         resultParent.transform.SetParent(parentContainer.transform, false);
 
-
         foreach (Vector3 position in positions)
         {
             int circleSize = Random.Range(2, 5);
@@ -89,14 +88,14 @@ public class GenerateResults : MonoBehaviour
 
     private void GetResults()
     {
-        int curLevel = 2;//TESTING
-        //int curLevel = GameController.Instance.level;
-        if (!(curLevel == 2 || curLevel == 4)) return;
+        int curLevel = GameController.Instance.level;
+        if (GameController.Instance.educationalMode) return;
 
         Transform parent = GameObject.Find("ItemDropOff").transform;
 
-        GameObject results = Instantiate(resultPreset, parent.position + new Vector3(0, 0, 3.5f), parent.rotation, parent);
+        GameObject results = Instantiate(resultPreset, parent.position, parent.rotation, parent);
         results.transform.SetParent(parent);
+        results.transform.localPosition = new Vector3(-0.075f, 0, 0);
 
         foreach (Transform child in resultPreset.transform)
         {

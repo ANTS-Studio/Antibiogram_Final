@@ -17,6 +17,9 @@ public class IncubatorScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        //GenerateResults();
+        //OpenInterpretationGUI();
+
         int curLevel = GameController.Instance.level;
         if (curLevel == 2 || curLevel == 4) overwrite = true;
     }
@@ -104,7 +107,7 @@ public class IncubatorScript : MonoBehaviour
         foreach (Transform child in parentContainer)
         {
             if (child.name == "DrawablePetrieDishBackground" || child.name == "Results") child.gameObject.SetActive(true);
-            else if (child.name == "Results 1(Clone)" && overwrite) child.gameObject.SetActive(true);
+            else if (child.name == "Results 1(Clone)") child.gameObject.SetActive(true);
         }
     }
 }
