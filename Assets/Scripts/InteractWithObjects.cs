@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class InteractWithObjects : MonoBehaviour
     private List<string> HoldButtonInteractionObjects;
     private List<string> interactableItems;
     private List<string> secondaryInteractions;
-
+    private bool entryFlag = false;
     private float currentInteractionTimer = 0;
     public Image InteractionProgressImg;
 
@@ -107,6 +108,21 @@ public class InteractWithObjects : MonoBehaviour
                 panel.SetActive(true);
 
                 hitItem.gameObject.GetComponent<MetalFlaskScript>().Interaction();
+                if(!entryFlag) {
+                    int nextStep = GameController.Instance.GetNextStep();
+                    int thisStep = GameController.Instance.GetStepIndexByName("Stavljanje kulture u epruvetu i miješanje");
+                    if (nextStep != thisStep)
+                    {
+                        GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                        GameController.Instance.SetStepAsDone(thisStep);
+                    }
+                    else
+                    {
+                        GameController.Instance.SetStepAsDone(thisStep);
+                    }
+                    entryFlag = true;
+                
+                } 
                 break;
         }
     }

@@ -125,9 +125,23 @@ public class InterpretationScript : MonoBehaviour
         //AddMesuredValue(1);
         SetResAndSensValues();
         panel.SetActive(false);
-        sendButton.onClick.AddListener(() => IsInterpretationCorrect());
-        //Funkcija SetMeasurementValues(); se zapravo poziva iz druge skripte, dakle, ne smije biti u startu
-
+        sendButton.onClick.AddListener(() =>
+        {
+            bool result = IsInterpretationCorrect();
+            int nextStep = GameController.Instance.GetNextStep();
+            int thisStep = GameController.Instance.GetStepIndexByName("Interpretacija antibiograma");
+            if (nextStep != thisStep)
+            {
+                GameController.Instance.CheckIfPreviousStepsDone(thisStep);
+                GameController.Instance.SetStepAsDone(thisStep);
+                if(!result) GameController.Instance.Steps[thisStep].WronglyDone = true;
+            }
+            else
+            {
+                GameController.Instance.SetStepAsDone(thisStep);
+                if (!result) GameController.Instance.Steps[thisStep].WronglyDone = true;
+            }
+        });
     }
 
     public void AddMesuredValue(int newMesurement)

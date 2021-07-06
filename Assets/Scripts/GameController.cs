@@ -85,11 +85,11 @@ public class GameController : MonoBehaviour
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje rukavica", false, false, "Find gloves and put them on.",
-                    "Then, we put on glaves."));
+                    "Then, we put on gloves."));
                 ++index;
 
-                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the swab stick.",
-                    "Now, we take the swab stick."));
+                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the microstreaker.",
+                    "Now, we take the microstreaker."));
                 ++index;
 
                 Steps.Add(new Step(index, "Sterilizacija ušice", false, false,
@@ -104,14 +104,14 @@ public class GameController : MonoBehaviour
                     "Let's take the test tube and sterilize it with flame."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
-                //     "Put the swab stick in the test tube and mix.",
-                //     "We then put our swab stick in the test tube and mix."));
-                // ++index;
+                Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
+                    "Put the microstreaker in the test tube and mix.",
+                    "We then put our microstreaker in the test tube and mix."));
+                ++index;
 
                 Steps.Add(new Step(index, "Šaranje podloge", false, false,
-                    "Use the swab stick to go over the petri dish.",
-                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the swab stick."));
+                    "Use the microstreaker to go over the petri dish.",
+                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the microstreaker."));
                 ++index;
 
                 Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
@@ -138,23 +138,18 @@ public class GameController : MonoBehaviour
                     "We then close the petri dish and put it in the incubator, setting the temperature to 37 degrees Celsius."));
                 ++index;    
 
-                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
-                //     "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
-                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
-                //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
-                // ++index;
+                Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
+                    "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
+                    "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
+                ++index;
+                
+                Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
+                    "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
+                ++index;
 
                 Steps.Add(new Step(index, "Odlaganje rukavica u otpad", false, false,
                     "You need to put the gloves in the biohazardous waste.",
                     "Almost done. Our gloves need to go into biohazardous waste."));
-                ++index;
-
-                Steps.Add(new Step(index, "Odlaganje eze u otpad", false, false,
-                    "You need to throw the swab stick into biohazardous waste.",
-                    "And the swab stick too."));
                 ++index;
 
                 Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Wash your hands in the sink.",
@@ -174,11 +169,11 @@ public class GameController : MonoBehaviour
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje rukavica", false, false, "Find gloves and put them on.",
-                    "Then, we put on glaves."));
+                    "Then, we put on gloves."));
                 ++index;
 
-                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the swab stick.",
-                    "Now, we take the swab stick."));
+                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the microstreaker.",
+                    "Now, we take the microstreaker."));
                 ++index;
 
                 Steps.Add(new Step(index, "Sterilizacija ušice", false, false,
@@ -193,14 +188,14 @@ public class GameController : MonoBehaviour
                     "Let's take the test tube and sterilize it with flame."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
-                //     "Put the swab stick in the test tube and mix.",
-                //     "We then put our swab stick in the test tube and mix."));
-                // ++index;
+                Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
+                    "Put the microstreaker in the test tube and mix.",
+                    "We then put our microstreaker in the test tube and mix."));
+                ++index;
 
                 Steps.Add(new Step(index, "Šaranje podloge", false, false,
-                    "Use the swab stick to go over the petri dish.",
-                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the swab stick. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
+                    "Use the microstreaker to go over the petri dish.",
+                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the microstreaker. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
                 ++index;
 
                 Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
@@ -232,11 +227,6 @@ public class GameController : MonoBehaviour
                     "Almost done. Our gloves need to go into biohazardous waste."));
                 ++index;
 
-                Steps.Add(new Step(index, "Odlaganje eze u otpad", false, false,
-                    "You need to throw the swab stick into biohazardous waste.",
-                    "And the swab stick too."));
-                ++index;
-
                 Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Wash your hands in the sink.",
                     "We wash our hands one more time."));
                 ++index;
@@ -253,17 +243,17 @@ public class GameController : MonoBehaviour
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje rukavica", false, false, "Find gloves and put them on.",
-                    "Then, we put on glaves."));
+                    "Then, we put on gloves."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
-                //     "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
-                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective.",
-                //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
-                // ++index;
+                Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
+                    "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
+                    "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
+                ++index;
+                
+                Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective.",
+                    "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
+                ++index;
 
                 Steps.Add(new Step(index, "Odlaganje rukavica u otpad", false, false,
                     "You need to put the gloves in the biohazardous waste.",
@@ -286,20 +276,20 @@ public class GameController : MonoBehaviour
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje rukavica", false, false, "Find gloves and put them on.",
-                    "Then, we put on glaves."));
+                    "Then, we put on gloves."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
-                //     "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
-                //     "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
-                // ++index;
-                //
-                // Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
-                //     "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
-                // ++index;
+                Steps.Add(new Step(index, "Vađenje zdjelice iz inkubatora i mjerenje", false, false,
+                    "Take the petri dish out of the incubator and measure the inhibition zones for each antibiotic.",
+                    "The petri dish is left overnight for the results to be visible and interpreted. We currently have a petri dish available for interpretation, our colleagues left it for us. We need to measure the inhibition zones."));
+                ++index;
+                
+                Steps.Add(new Step(index, "Interpretacija antibiograma", false, false, "Go to the laptop and interpret the antibiogram.",
+                    "It's time to interpret our antibiogram. Go to the laptop. Check which range your measurements are in. Susceptible (S) means the antibiotic works, Resistant (R) means the antibiotic is not effective."));
+                ++index;
 
-                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the swab stick.",
-                    "Now, we take the swab stick."));
+                Steps.Add(new Step(index, "Uzimanje ušice", false, false, "Take the microstreaker.",
+                    "Now, we take the microstreaker."));
                 ++index;
 
                 Steps.Add(new Step(index, "Sterilizacija ušice", false, false,
@@ -314,14 +304,14 @@ public class GameController : MonoBehaviour
                     "Let's take the test tube and sterilize it with flame."));
                 ++index;
 
-                // Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
-                //     "Put the swab stick in the test tube and mix.",
-                //     "We then put our swab stick in the test tube and mix."));
-                // ++index;
+                Steps.Add(new Step(index, "Stavljanje kulture u epruvetu i miješanje", false, false,
+                    "Put the microstreaker in the test tube and mix.",
+                    "We then put our microstreaker in the test tube and mix."));
+                ++index;
 
                 Steps.Add(new Step(index, "Šaranje podloge", false, false,
-                    "Use the swab stick to go over the petri dish.",
-                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the swab stick. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
+                    "Use the microstreaker to go over the petri dish.",
+                    "Let's take the other petri dish and now go over the whole surface of the petri dish using the microstreaker. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
                 ++index;
 
                 Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
@@ -351,11 +341,6 @@ public class GameController : MonoBehaviour
                 Steps.Add(new Step(index, "Odlaganje rukavica u otpad", false, false,
                     "You need to put the gloves in the biohazardous waste.",
                     "Almost done. Our gloves need to go into biohazardous waste."));
-                ++index;
-
-                Steps.Add(new Step(index, "Odlaganje eze u otpad", false, false,
-                    "You need to throw the swab stick into biohazardous waste.",
-                    "And the swab stick too."));
                 ++index;
 
                 Steps.Add(new Step(index, "Pranje ruku izlaz", false, false, "Wash your hands in the sink.",
