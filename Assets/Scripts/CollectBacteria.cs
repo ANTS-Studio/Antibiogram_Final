@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CollectBacteria : MonoBehaviour
 {
-    private Text feedbackMsg;
     private Image InteractionProgressImg;
     private float currentInteractionTimer = 0;
     private PlayerInventory inventory;
@@ -13,7 +12,6 @@ public class CollectBacteria : MonoBehaviour
     private void Start()
     {
         InteractionProgressImg = GameObject.Find("proggressIndicator").GetComponent<Image>();
-        feedbackMsg = GameObject.Find("GenericFeedbackMsg").GetComponent<Text>();
 
         GameObject player = GameObject.FindWithTag("Player");
         inventory = player.GetComponent<PlayerInventory>();
@@ -38,25 +36,13 @@ public class CollectBacteria : MonoBehaviour
     void OnMouseDrag()
     {
         bool hasCorrectItem = inventory.IsInInventory("Eza");
-        Debug.Log(hasCorrectItem);
 
-        if (!hasCorrectItem)
-        {
-            StartCoroutine(ShowFeedbackMsg("You don't have the proper equipment in you inventory!"));
-            return;
-        }
+        if (!hasCorrectItem) return;
 
         //GetEzaBacteriaValue();
         if (Input.GetMouseButton(0)) IncrementCounter();
 
         UpdateIndicator(4f);
-    }
-
-    IEnumerator ShowFeedbackMsg(string msg)
-    {
-        feedbackMsg.text = msg;
-        yield return new WaitForSeconds(2);
-        feedbackMsg.text = "";
     }
 
     private void IncrementCounter()

@@ -114,23 +114,19 @@ public class GameController : MonoBehaviour
                     "Let's take the other petri dish and now go over the whole surface of the petri dish using the microstreaker."));
                 ++index;
 
-                Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
-                    "We close the petri dish."));
-                ++index;
-
                 Steps.Add(new Step(index, "Crtanje sektora po zdjelici", false, false,
                     "Take the marker and draw sectors over the petri dish.",
                     "It's time to draw sectors over the petri dish using a marker. We need to make sure that there is enough space for each antibiotic. Let's do eight."));
                 ++index;
 
                 Steps.Add(new Step(index, "Uzimanje i sterilizacija pincete", false, false,
-                    "Take the forceps and sterilize it using flame.",
-                    "Then, we take the forceps and sterilize it using flame."));
+                    "Take the tweezers and sterilize it using flame.",
+                    "Then, we take the tweezers and sterilize it using flame."));
                 ++index;
 
                 Steps.Add(new Step(index, "Uzimanje antibiotika pincetom i postavljanje na sektore", false, false,
                     "Take the antibiotics and put them on the petri dish.",
-                    "Using the forceps we will take antibiotics and put them in the middle of each sector in the petri dish."));
+                    "Using the tweezers we will take antibiotics and put them in the middle of each sector in the petri dish."));
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
@@ -198,23 +194,19 @@ public class GameController : MonoBehaviour
                     "Let's take the other petri dish and now go over the whole surface of the petri dish using the microstreaker. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
                 ++index;
 
-                Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
-                    "We close the petri dish."));
-                ++index;
-
                 Steps.Add(new Step(index, "Crtanje sektora po zdjelici", false, false,
                     "Take the marker and draw sectors over the petri dish.",
                     "It's time to draw sectors over the petri dish using a marker. We need to make sure that there is enough space for each antibiotic. Let's do eight."));
                 ++index;
 
                 Steps.Add(new Step(index, "Uzimanje i sterilizacija pincete", false, false,
-                    "Take the forceps and sterilize it using flame.",
-                    "Then, we take the forceps and sterilize it using flame."));
+                    "Take the tweezers and sterilize it using flame.",
+                    "Then, we take the tweezers and sterilize it using flame."));
                 ++index;
 
                 Steps.Add(new Step(index, "Uzimanje antibiotika pincetom i postavljanje na sektore", false, false,
                     "Take the antibiotics and put them on the petri dish.",
-                    "Using the forceps we will take antibiotics and put them in the middle of each sector in the petri dish."));
+                    "Using the tweezers we will take antibiotics and put them in the middle of each sector in the petri dish."));
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
@@ -314,23 +306,19 @@ public class GameController : MonoBehaviour
                     "Let's take the other petri dish and now go over the whole surface of the petri dish using the microstreaker. Top to bottom, then we turn the petri dish by 60 degrees. We do this two more times."));
                 ++index;
 
-                Steps.Add(new Step(index, "Zatvaranje zdjelice", false, false, "Close the petri dish.",
-                    "We close the petri dish."));
-                ++index;
-
                 Steps.Add(new Step(index, "Crtanje sektora po zdjelici", false, false,
                     "Take the marker and draw sectors over the petri dish.",
                     "It's time to draw sectors over the petri dish using a marker. We need to make sure that there is enough space for each antibiotic. Let's do eight."));
                 ++index;
 
                 Steps.Add(new Step(index, "Uzimanje i sterilizacija pincete", false, false,
-                    "Take the forceps and sterilize it using flame.",
-                    "Then, we take the forceps and sterilize it using flame."));
+                    "Take the tweezers and sterilize it using flame.",
+                    "Then, we take the tweezers and sterilize it using flame."));
                 ++index;
 
                 Steps.Add(new Step(index, "Uzimanje antibiotika pincetom i postavljanje na sektore", false, false,
                     "Take the antibiotics and put them on the petri dish.",
-                    "Using the forceps we will take antibiotics and put them in the middle of each sector in the petri dish."));
+                    "Using the tweezers we will take antibiotics and put them in the middle of each sector in the petri dish."));
                 ++index;
 
                 Steps.Add(new Step(index, "Stavljanje zdjelice u inkubator", false, false,
